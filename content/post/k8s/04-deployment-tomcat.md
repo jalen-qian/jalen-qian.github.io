@@ -85,7 +85,7 @@ kubectl delete deployment 部署名称
 
 - 编写部署脚本
 
-  ```
+  ```yaml
   $ vim tomcat-deployment.yml
   # 输入如下的内容
   apiVersion: extensions/v1beta1
