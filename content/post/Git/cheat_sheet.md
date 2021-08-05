@@ -316,6 +316,7 @@ $ git archive
 ```
 
 ### Git强制覆盖本地代码为远端仓库代码：
+
 ```bash
 git fetch --all
 git reset --hard origin/master

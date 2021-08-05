@@ -73,7 +73,7 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/client.html
         waline:
-            serverURL: https://goa3migh.lc-cn-e1-shared.com
+            serverURL: https://waline.jalen-qian.com
             lang: zh-CN
             visitor: true
             avatar: true
