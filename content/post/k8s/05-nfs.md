@@ -7,7 +7,7 @@ keywords: ["NFS"]
 description: "desc"
 tags: ["K8S","NFS"]
 categories: ["K8S", "NFS", "文件共享"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 在上一篇我们介绍了如何用`yml`脚本和`kubectl`命令的方式部署Tomcat集群，主要讲了如何创建部署，以及创建服务对外暴露端口供外部访问。这里部署的服务起到了转发和负载均衡器的作用。

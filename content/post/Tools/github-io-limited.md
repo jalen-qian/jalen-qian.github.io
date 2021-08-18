@@ -5,7 +5,7 @@ lastmod: 2020-10-04T13:37:56+08:00
 draft: false
 tags: ["疑难杂症"]
 categories: ["分类1"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 > 近期发现收藏的github.io页面都访问不了了，刚开始还以为是被墙了，后来才发现可以通过网络设置解决。

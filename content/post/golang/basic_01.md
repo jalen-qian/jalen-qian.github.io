@@ -7,7 +7,7 @@ keywords: ["变量","常量"]
 description: ""
 tags: ["Golang"]
 categories: ["Golang专栏"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 [参考文章](https://www.liwenzhou.com/posts/Go/01_var_and_const/)

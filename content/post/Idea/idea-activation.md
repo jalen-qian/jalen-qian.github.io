@@ -5,7 +5,7 @@ lastmod: 2020-10-17T01:37:56+08:00
 draft: false
 tags: ["Intellij Idea","激活"]
 categories: ["开发工具"]
-author: "钱文军"
+author: "Jalen"
 
 ---
 

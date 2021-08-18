@@ -7,7 +7,7 @@ keywords: ["K8S","贝亲商城"]
 description: "desc"
 tags: ["K8S"]
 categories: ["K8S"]
-author: "钱文军"
+author: "Jalen"
 ---
 
  经过前几篇的学习，已经基本了解了如何部署一个应用、如何创建文件共享、如何通过服务实现负载均衡以及如何通过`Renetd`实现服务对外暴露。接下来学习实战，如何部署一个通过 `Spring Boot` 开发的商城web应用——贝亲商城。

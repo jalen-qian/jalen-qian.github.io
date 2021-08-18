@@ -5,7 +5,7 @@ lastmod: 2020-09-11T01:37:56+08:00
 draft: false
 tags: ["Golang"]
 categories: ["Golang专栏"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 流程控制是每种编程语言控制逻辑走向和执行次序的重要部分，流程控制可以说是一门语言的“经脉”。

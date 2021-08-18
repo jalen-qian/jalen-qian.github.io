@@ -5,7 +5,7 @@ lastmod: 2020-09-10T01:37:56+08:00
 draft: false
 tags: ["Golang"]
 categories: ["Golang专栏"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 运算符用于在程序运行时执行数学或逻辑运算。

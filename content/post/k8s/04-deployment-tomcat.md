@@ -7,7 +7,7 @@ keywords: ["Deployment"]
 description: "desc"
 tags: ["K8S","Deployment"]
 categories: ["K8S","Deployment"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 

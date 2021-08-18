@@ -5,7 +5,7 @@ lastmod: 2020-09-10T01:37:56+08:00
 draft: false
 tags: ["Golang"]
 categories: ["Golang专栏"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 [参考文章](https://www.liwenzhou.com/posts/Go/02_datatype/)

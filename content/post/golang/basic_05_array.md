@@ -7,7 +7,7 @@ keywords: ["Go语言基础"]
 description: ""
 tags: ["Golang"]
 categories: ["Golang专栏"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 本文主要介绍Go语言中数组（array）及它的基本使用。

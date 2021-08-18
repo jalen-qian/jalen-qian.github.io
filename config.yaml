@@ -35,11 +35,11 @@ params:
 
     sidebar:
         emoji: 🍥
-        subtitle: 技术爱好者
+        subtitle: 技术爱好者，目前在大厂从事云原生和Golang后端开发工作
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/header.jpg
 
     article:
         math: true

@@ -7,7 +7,7 @@ keywords: ["K8S","资源限定"]
 description: "desc"
 tags: ["K8S"]
 categories: ["K8S"]
-author: "钱文军"
+author: "Jalen"
 ---
 
 在上一篇我们介绍了如何使用NFS实现文件共享以及如何将共享文件挂载到每个pod的容器中。

@@ -7,7 +7,7 @@ keywords: ["K8S"]
 description: ""
 tags: ["K8S"]
 categories: ["K8S"]
-author: "钱文军"
+author: "Jalen"
 ---
 
  经过前几篇的学习，基本入门了Kubernetes，下面我将一些基本的Kubernetes命令总结一下
