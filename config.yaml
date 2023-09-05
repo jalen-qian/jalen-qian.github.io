@@ -2,7 +2,7 @@ baseurl: http://localhost:1313
 languageCode: zh-CN
 theme: hugo-theme-stack
 paginate: 5
-title: 晚风的博客
+title: Jalen的博客
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
@@ -35,11 +35,11 @@ params:
 
     sidebar:
         emoji: 🍥
-        subtitle: 总结技术与架构，分享自己的学习所得，希望能与大家一起进步
+        subtitle: 专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构
         avatar:
             enabled: true
             local: true
-            src: img/header.jpg
+            src: img/golang-header.png
 
     article:
         math: true
@@ -132,7 +132,7 @@ params:
 menu:
     main:
         - identifier: home
-          name: Home
+          name: 主页
           url: /
           weight: -100
           pre: home
