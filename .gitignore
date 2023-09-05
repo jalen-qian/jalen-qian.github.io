@@ -1,2 +1,4 @@
 .idea
 /themes/even/.git/
+resources/_gen
+.hugo_build.lock
