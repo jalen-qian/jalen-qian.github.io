@@ -1,0 +1,3 @@
+[submodule "themes/stack"]
+	path = themes/stack
+	url = https://gitee.com/jalen-qian/hugo-theme-stack.git
