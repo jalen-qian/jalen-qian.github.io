@@ -1,6 +1,6 @@
 ---
 title: 关于我
-description: 后端码农一枚，目前在深圳明源云做云原生相关开发和项目管理。
+description: 后端码农一枚，目前在深圳大厂做云原生相关开发和项目管理。
 date: '2023-02-28'
 aliases:
   - about-me
