@@ -64,7 +64,7 @@ params:
         readingTime: true
         license:
             enabled: true
-            default: 转载需要保留原始链接，未经明确许可，禁止商业使用。Licensed under CC BY-NC-SA 4.0
+            default: '转载需要保留原始链接，未经明确许可，禁止商业使用。[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)'
 
     comments:
         enabled: true
