@@ -31,7 +31,7 @@ author: "Jalen"
 
 双击镜像文件，并拖动到应用程序中，完成安装。mac电脑系统安装应用程序就是如此简单。
 
-<img src="http://cdn1.jalen-qian.com/Jalen/2023090823591415rIFSBYe9.png" alt="image-20230908235914499" style="zoom: 50%;" />
+![img-2023090823591415rIFSBYe9](http://cdn1.jalen-qian.com/Jalen/2023090823591415rIFSBYe9.png)
 
 此时打开Typora，是未激活的状态，但是有14天的免费使用期限。
 
@@ -53,7 +53,7 @@ page-dist/static/js/LicenseIndex.180dd4c7.54395836.chunk.js
 
 用文本编辑器打开这个文件，搜索`hasActivated="true"==e.hasActivated`,并将这段替换为**`hasActivated="true"=="true"`**，记得保存哦。
 
-<img src="http://cdn1.jalen-qian.com/Jalen/20230909001801Xkhgqo14aO.png" alt="image-20230909001801932" style="zoom:50%;" />
+![image-20230909001801932](http://cdn1.jalen-qian.com/Jalen/20230909001801Xkhgqo14aO.png)
 
 保存之后，重新打开Typora，并点击左上角 Typora菜单->我的许可证，会发现已经激活成功了！
 
