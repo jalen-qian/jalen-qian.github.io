@@ -37,7 +37,7 @@ author: "Jalen"
 
 # 二、激活Typora
 
-打开访达，输入快捷键``Command+Shift+G`快捷进入目录，并输入`/Applications/Typora.app/Contents/Resources/TypeMark`并回车，快速进入目录。
+打开访达，输入快捷键`Command+Shift+G` 快捷进入目录，并输入 `/Applications/Typora.app/Contents/Resources/TypeMark`并回车，快速进入目录。
 
 ![image-20230909000558883](http://cdn1.jalen-qian.com/Jalen/20230909000558GDN7A2H6Ve.png)
 
@@ -57,6 +57,8 @@ page-dist/static/js/LicenseIndex.180dd4c7.54395836.chunk.js
 
 保存之后，重新打开Typora，并点击左上角 Typora菜单->我的许可证，会发现已经激活成功了！
 
-<img src="http://cdn1.jalen-qian.com/Jalen/20230909002004j8V1nRAloQ.png" alt="image-20230909002004443" style="zoom:50%;" />
+![image-20230909002004443](http://cdn1.jalen-qian.com/Jalen/20230909002004j8V1nRAloQ.png)
+
+
 
 （完）
