@@ -1,11 +1,11 @@
 baseurl: http://localhost:1313
 languageCode: zh-CN
-theme: hugo-theme-stack
+theme: stack
 paginate: 5
 title: Jalen的博客
 
 # Change it to your Disqus shortname before using
-disqusShortname: hugo-theme-stack
+disqusShortname: stack
 
 # GA Tracking ID
 googleAnalytics:

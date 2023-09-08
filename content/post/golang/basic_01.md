@@ -10,8 +10,6 @@ categories: ["Golang专栏"]
 author: "Jalen"
 ---
 
-[参考文章](https://www.liwenzhou.com/posts/Go/01_var_and_const/)
-
 ### 标识符与关键字
 - 标识符
 > 标识符就是程序员自己定义的特殊意义的词，比如变量名、常量名、函数名等，GO语言中只能用`字母`、`数字`和`_`来组成，并且只能以字母和`_`开头，比如`abc`、`_hello`、`_`、`_123`、`a123`
