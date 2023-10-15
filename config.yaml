@@ -97,7 +97,7 @@ params:
 
         # Waline client configuration see: https://waline.js.org/en/reference/component.html
         waline:
-            serverURL: https://waline.jalen-qian.com
+            serverURL: https://waline.jalen-qian.com/api/
             lang: zh-cn
             visitor: true
             avatar: true
