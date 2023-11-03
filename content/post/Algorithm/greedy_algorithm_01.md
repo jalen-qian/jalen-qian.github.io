@@ -1,5 +1,6 @@
 ---
 title: "贪心算法一：从一道基本题讨论贪心方法论"
+slug: "algorithm/greedy-algorithm-01"
 date: 2023-11-03T16:55:59+08:00
 lastmod: 2023-11-03T16:55:59+08:00
 draft: false
