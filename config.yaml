@@ -48,7 +48,7 @@ params:
     mainSections:
         - post
     rssFullContent: true
-    favicon: img/golang-header.png
+    favicon: img/gopher-favicon.png
 
     footer:
         since: 2020
