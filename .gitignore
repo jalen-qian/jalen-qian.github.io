@@ -2,3 +2,5 @@
 /themes/even/.git/
 /resources/_gen
 .hugo_build.lock
+/public/
+.DS_Store

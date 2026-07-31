@@ -1,0 +1,107 @@
+name: Translate Chinese posts
+
+on:
+  push:
+    branches:
+      - master
+
+    paths:
+      - "content/post/**/*.md"
+      - "!content/post/**/*.en.md"
+      - "scripts/translate_posts.py"
+      - "scripts/requirements.txt"
+
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-translate all Chinese posts"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: ai-article-translation
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Translate Chinese posts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+
+          HUGO_CONTENT_ROOT: content/post
+          AI_TRANSLATION_CACHE: .ai-translation-cache.json
+
+          FORCE_TRANSLATE: >-
+            ${{ inputs.force && 'true' || 'false' }}
+
+          DELETE_ORPHAN_TRANSLATIONS: "true"
+
+        run: |
+          python scripts/translate_posts.py
+
+      - name: Create translation pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+          branch: ai/english-translations
+          base: master
+
+          delete-branch: true
+
+          commit-message: >-
+            Add or update English article translations
+
+          title: >-
+            AI: update English article translations
+
+          body: |
+            This Pull Request contains AI-generated English
+            translations for new or modified Chinese Hugo posts.
+
+            Please review:
+
+            - English title
+            - Technical terminology
+            - Front matter
+            - Categories and tags
+            - Markdown links
+            - Image paths
+            - Hugo shortcodes
+            - Mathematical formulas
+            - Code blocks
+
+            The Pull Request should be merged only after review.
+
+          add-paths: |
+            content/post/**/*.en.md
+            .ai-translation-cache.json
+
+          draft: false
