@@ -22,6 +22,19 @@ body {
 }
 
 /*
+ * Give article content more room on wide displays without squeezing either
+ * sidebar. Below the 2xl breakpoint Stack's original responsive layout is
+ * left untouched, including its tablet and phone behavior.
+ */
+@media (min-width: 1536px) {
+    .container.extended {
+        max-width: 1800px;
+        --left-sidebar-max-width: 240px;
+        --right-sidebar-max-width: 360px;
+    }
+}
+
+/*
  * IntelliJ IDEA-inspired code blocks (Light and Darcula).
  *
  * This site-level stylesheet intentionally lives outside the Stack theme so
