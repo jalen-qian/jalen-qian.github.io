@@ -1,0 +1,150 @@
+{
+  "files": {
+    "content/post/Algorithm/binary_tree.md": {
+      "model": "gpt-5.6",
+      "sha256": "0dae712a432e438ad8000e617213e87191d4269d87c7ad57ce7ec649ed2fe4cf",
+      "target": "content/post/Algorithm/binary_tree.en.md"
+    },
+    "content/post/Algorithm/greddy_algorithm_02.md": {
+      "model": "gpt-5.6",
+      "sha256": "8a722c2742d5a3c7cea623adc43495581bb55e81acc24a73c6757ba87ca72dcf",
+      "target": "content/post/Algorithm/greddy_algorithm_02.en.md"
+    },
+    "content/post/Algorithm/greedy_algorithm_01.md": {
+      "model": "gpt-5.6",
+      "sha256": "a6474da53787b06ef44936da89c63f947675b2dff09d3475fed1998ac4976c51",
+      "target": "content/post/Algorithm/greedy_algorithm_01.en.md"
+    },
+    "content/post/Docker/aliyun_mirrors.md": {
+      "model": "gpt-5.6",
+      "sha256": "d6440593873d56c57e3e8101197b75f707fbe927d47358c56e18ed9aa5c6f362",
+      "target": "content/post/Docker/aliyun_mirrors.en.md"
+    },
+    "content/post/Docker/docker启动rabbitmq.md": {
+      "model": "gpt-5.6",
+      "sha256": "8ce17fcc15c829e4986c1bdabb74a5fd0c74dc832036e52ec04f879ed62fdc4c",
+      "target": "content/post/Docker/docker启动rabbitmq.en.md"
+    },
+    "content/post/Docker/install-docker-error.md": {
+      "model": "gpt-5.6",
+      "sha256": "0d6d980756d698a6c10974efc631598ffb88b87171a4e92a408f197ce8c981df",
+      "target": "content/post/Docker/install-docker-error.en.md"
+    },
+    "content/post/Docker/yum_install_docker_repo.md": {
+      "model": "gpt-5.6",
+      "sha256": "a8bac905b68493e178c2dbf513b355c05bca0ca0dfd519f33c7713e8395818c3",
+      "target": "content/post/Docker/yum_install_docker_repo.en.md"
+    },
+    "content/post/Git/cheat_sheet.md": {
+      "model": "gpt-5.6",
+      "sha256": "0772a53c50c699ceb5865aa213f1485da1fed466bfce0e850fad4cdf08743236",
+      "target": "content/post/Git/cheat_sheet.en.md"
+    },
+    "content/post/GoLand/protobuf-plugin-crash.md": {
+      "model": "gpt-5.6",
+      "sha256": "30a3c702663888ee026460058a22e627eae4045d9e890ce52fbf2ebf28e7ca5c",
+      "target": "content/post/GoLand/protobuf-plugin-crash.en.md"
+    },
+    "content/post/GoLand/version-of-delve-too-old.md": {
+      "model": "gpt-5.6",
+      "sha256": "01eab64cef524948e5b2dd93670999fb9f2841bc3e23aa96499391dc5be935b9",
+      "target": "content/post/GoLand/version-of-delve-too-old.en.md"
+    },
+    "content/post/Hugo/hugo-command.md": {
+      "model": "gpt-5.6",
+      "sha256": "df2a68daf13f6450fad23d50e7e24d0a8978b6234fc3c8361a3b4fb6e35090c2",
+      "target": "content/post/Hugo/hugo-command.en.md"
+    },
+    "content/post/Hugo/hugo-create-site.md": {
+      "model": "gpt-5.6",
+      "sha256": "6346517e510de0bea8f4f8c529ba503217f74a6ed9b932e213cae0df22b14a0a",
+      "target": "content/post/Hugo/hugo-create-site.en.md"
+    },
+    "content/post/Nacos/run-nacos-by-docker.md": {
+      "model": "gpt-5.6",
+      "sha256": "0255577a4a15480ee3673a0ae414829cbb5cd8de0bd7256350d71d86324c7986",
+      "target": "content/post/Nacos/run-nacos-by-docker.en.md"
+    },
+    "content/post/Tools/github-io-limited.md": {
+      "model": "gpt-5.6",
+      "sha256": "5e2cb999d55ac733f6350a525597bc174f404754fa3228fcbb2fa14a4b185b3f",
+      "target": "content/post/Tools/github-io-limited.en.md"
+    },
+    "content/post/Tools/typora_mac.md": {
+      "model": "gpt-5.6",
+      "sha256": "e29dd1b15a11d95cced0aad8f55910759be6ae5e90f6ae81bb5395c01d5154b2",
+      "target": "content/post/Tools/typora_mac.en.md"
+    },
+    "content/post/golang/basic_01.md": {
+      "model": "gpt-5.6",
+      "sha256": "0b515c64c7c5873a3c336421f87c6d2d287ea469b03c5d7744785b52f46a3b50",
+      "target": "content/post/golang/basic_01.en.md"
+    },
+    "content/post/golang/basic_02_operators.md": {
+      "model": "gpt-5.6",
+      "sha256": "b4936982087d13f04170a2c116df55b9574dea23a5244a22f1d739ebe4e3da06",
+      "target": "content/post/golang/basic_02_operators.en.md"
+    },
+    "content/post/golang/basic_03_datatype.md": {
+      "model": "gpt-5.6",
+      "sha256": "0bb1eed475f8150843a180bbad63bc685c2e29c28e580037285d7475fb43615a",
+      "target": "content/post/golang/basic_03_datatype.en.md"
+    },
+    "content/post/golang/basic_04.md": {
+      "model": "gpt-5.6",
+      "sha256": "812a29528b45810ab969944dd55cf259fbf33f36eddcb3727b5a66578240ee98",
+      "target": "content/post/golang/basic_04.en.md"
+    },
+    "content/post/golang/basic_05_array.md": {
+      "model": "gpt-5.6",
+      "sha256": "fab30d3617c0077ecdfea1a8937f6952734081d2a6c3fbf136c7b65cd595c8d9",
+      "target": "content/post/golang/basic_05_array.en.md"
+    },
+    "content/post/golang/basic_06_slice.md": {
+      "model": "gpt-5.6",
+      "sha256": "e229bb6066a23d031d4b05f2767dffcd65a1fd00d6d52a52d76b7a2ed7ce67b8",
+      "target": "content/post/golang/basic_06_slice.en.md"
+    },
+    "content/post/golang/go_interview/channel_01.md": {
+      "model": "gpt-5.6",
+      "sha256": "7971d32e67ea28c0d10027e1c602cbd3a12e2954c159ef9294c1e9624a9f2af6",
+      "target": "content/post/golang/go_interview/channel_01.en.md"
+    },
+    "content/post/k8s/04-deployment-tomcat.md": {
+      "model": "gpt-5.6",
+      "sha256": "74cd1ee616cfed76b999f02f3ab775a225cb8dfe5a912c2390f9d3761562f06b",
+      "target": "content/post/k8s/04-deployment-tomcat.en.md"
+    },
+    "content/post/k8s/05-nfs.md": {
+      "model": "gpt-5.6",
+      "sha256": "44d5db4a985b51dbb8851f9a4650d9c5a0e4fff24612df8c006bf7b657d8ef91",
+      "target": "content/post/k8s/05-nfs.en.md"
+    },
+    "content/post/k8s/06-rinted.md": {
+      "model": "gpt-5.6",
+      "sha256": "a2f45730f64299d43f5632cd95a50597e5a754b85ebe39e515e360d177dbb3e2",
+      "target": "content/post/k8s/06-rinted.en.md"
+    },
+    "content/post/k8s/07-config-exchange-resource-limit.md": {
+      "model": "gpt-5.6",
+      "sha256": "db4f49eca93ecb62f80211b7c91f3cdc2a57b362fc22dd0d7da3cec4c551176b",
+      "target": "content/post/k8s/07-config-exchange-resource-limit.en.md"
+    },
+    "content/post/k8s/08-beiqin.md": {
+      "model": "gpt-5.6",
+      "sha256": "a9780ef70524004c7aa2a75e56f3f2bc3bb0c28e87053e3b4dec2cdf8d6f4c48",
+      "target": "content/post/k8s/08-beiqin.en.md"
+    },
+    "content/post/k8s/09-k8s-commands.md": {
+      "model": "gpt-5.6",
+      "sha256": "41776c4659a87e21c5b670bc3033965758727c2bbca4f748c8b8bbe7685261bc",
+      "target": "content/post/k8s/09-k8s-commands.en.md"
+    },
+    "content/post/k8s/delete-terminating-ns.md": {
+      "model": "gpt-5.6",
+      "sha256": "b63468d02b59c65b3bf05839c7b994e05282cc857b17333b59be95985a77a59e",
+      "target": "content/post/k8s/delete-terminating-ns.en.md"
+    }
+  },
+  "version": 1
+}
