@@ -1,6 +1,6 @@
 .idea
 /themes/even/.git/
-/resources/_gen
+/resources/_gen/
 .hugo_build.lock
 /public/
 .DS_Store
