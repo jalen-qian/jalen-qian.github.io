@@ -8,6 +8,7 @@ on:
     paths:
       - "content/post/**/*.md"
       - "!content/post/**/*.en.md"
+      - ".github/workflows/translate.yml"
       - "scripts/translate_posts.py"
       - "scripts/requirements.txt"
 
@@ -36,7 +37,6 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          submodules: recursive
 
       - name: Set up Python
         uses: actions/setup-python@v7
