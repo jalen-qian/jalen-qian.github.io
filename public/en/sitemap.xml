@@ -2,104 +2,104 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.jalen-qian.com/en/</loc>
+    <loc>/en/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/"
+                href="/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/"
+                href="/en/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/archives/</loc>
+    <loc>/en/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/archives/"
+                href="/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/archives/"
+                href="/en/archives/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/page/</loc>
+    <loc>/en/page/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/page/"
+                href="/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/page/"
+                href="/en/page/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/about/</loc>
+    <loc>/en/about/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/"
+                href="/%E5%85%B3%E4%BA%8E%E6%88%91/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/about/"
+                href="/en/about/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/categories/</loc>
+    <loc>/en/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/categories/"
+                href="/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/categories/"
+                href="/en/categories/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/links/</loc>
+    <loc>/en/links/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/%E9%93%BE%E6%8E%A5/"
+                href="/%E9%93%BE%E6%8E%A5/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/links/"
+                href="/en/links/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/search/</loc>
+    <loc>/en/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/search/"
+                href="/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/search/"
+                href="/en/search/"
                 />
   </url><url>
-    <loc>https://www.jalen-qian.com/en/tags/</loc>
+    <loc>/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.jalen-qian.com/tags/"
+                href="/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.jalen-qian.com/en/tags/"
+                href="/en/tags/"
                 />
   </url>
 </urlset>

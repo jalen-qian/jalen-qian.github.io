@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>hugo on Jalen的博客</title>
-        <link>https://www.jalen-qian.com/categories/hugo/</link>
+        <link>/categories/hugo/</link>
         <description>Recent content in hugo on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 10 Sep 2020 08:37:56 +0800</lastBuildDate><atom:link href="https://www.jalen-qian.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Sep 2020 08:37:56 +0800</lastBuildDate><atom:link href="/categories/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Hugo] 使用Hugo&#43;nginx搭建个人博客网站</title>
-        <link>https://www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
+        <link>/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>https://www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+        <guid>/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;服务器平台：Centos 64bit&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -715,10 +715,10 @@ Hugo 有主题市场 &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.
         </item>
         <item>
         <title>Hugo常用命令</title>
-        <link>https://www.jalen-qian.com/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+        <link>/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>https://www.jalen-qian.com/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+        <guid>/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
         <description>&lt;p&gt;hugo是基于命令行的静态网站生成工具, 掌握基本的命令是很有必要的.&lt;/p&gt;
 &lt;h2 id=&#34;常用命令列表&#34;&gt;常用命令列表&lt;/h2&gt;
 &lt;p&gt;通过&lt;code&gt;hugo help&lt;/code&gt;命令可以获取hugo命令行的帮助文档. 下面会对每个命令做更详细的一些介绍. 在开始之前需要先在本机安装hugo, 并在环境变量中配置好hugo.&lt;/p&gt;

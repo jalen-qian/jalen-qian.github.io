@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>负载均衡 on Jalen的博客</title>
-        <link>https://www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+        <link>/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
         <description>Recent content in 负载均衡 on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 15 Jan 2021 09:47:00 +0800</lastBuildDate><atom:link href="https://www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 15 Jan 2021 09:47:00 +0800</lastBuildDate><atom:link href="/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>K8S笔记6 基于Rinetd的Service负载均衡实现</title>
-        <link>https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</link>
+        <link>/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</guid>
+        <guid>/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</guid>
         <description>&lt;p&gt;在上一篇我们介绍了如何使用NFS实现文件共享以及如何将共享文件挂载到每个pod的容器中。&lt;/p&gt;
 &lt;h1 id=&#34;service实现负载均衡&#34;&gt;Service实现负载均衡&lt;/h1&gt;
 &lt;p&gt;&lt;img src=&#34;http://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png&#34;
