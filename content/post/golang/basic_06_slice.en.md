@@ -37,13 +37,13 @@ var a = [3]int{1, 2, 3}
 
 A **slice** is a variable-length data structure consisting of elements of the same type. It is an abstraction over array types. Slices are highly flexible and support dynamic capacity expansion.
 
-A slice is a wrapper around an array and is a reference type rather than a value type. Internally, a slice contains `容量`, `长度`, and `指针`.
+A slice is a wrapper around an array and is a reference type rather than a value type. Internally, a slice contains a `capacity`, `length`, and `pointer`.
 
 ## Defining a Slice
 
 The syntax for declaring a slice is as follows:
 ```go
-var name []T // T指对应的类型
+var name []T // T-finger type.
 ```
 - name: the variable name
 - T: the type of elements in the slice
@@ -52,12 +52,12 @@ Example:
 ```go
 func main() {
 	i := 10
-	// 声明切片类型
-	var a []string              // 声明string类型切片
-	var b = []int{}             // 声明int类型切片，并初始化
-	var c = []bool{true, false} // 声明bool类型的切片并初始化
-	var d = []*int{&i, nil}     // 声明一个整型指针类型，并初始化
-	var e = []bool{true, false} // 声明一个bool类型的切片，并初始化
+	// Declaration of slice type
+	var a []string              // Declare stanning type slices
+	var b = []int{}             // Declaration of int type slices, initialization
+	var c = []bool{true, false} // Declare and initialize slices of the bool type
+	var d = []*int{&i, nil}     // Declare an integer pointer type and initialize
+	var e = []bool{true, false} // Declare a Bool type slice and initialize it
 	fmt.Println(a)              // []
 	fmt.Println(b)              // []
 	fmt.Println(c)              // [true false]
@@ -66,13 +66,13 @@ func main() {
 	fmt.Println(b == nil)       // false
 	fmt.Println(c == nil)       // false
 	fmt.Println(d == nil)       // false
-	fmt.Println(c == e)         // 切片不是值类型，只能和nil比较。Invalid operation: c==e (the operator == is not defined on []bool)
+	fmt.Println(c == e)         // Slices are not a value type and can only be compared with nil. Invalid operation: c=e
 }
 ```
 
 ## Slice Length and Capacity
 
-As mentioned earlier, a slice internally encapsulates `容量` and `长度`. We can use Go's built-in `len()` function to obtain the length of a slice and the `cap()` function to obtain its capacity.
+As mentioned earlier, a slice internally encapsulates its `capacity` and `length`. We can use Go's built-in `len()` function to obtain the length of a slice and the `cap()` function to obtain its capacity.
 
 ```go
 var a []int
@@ -102,7 +102,7 @@ var a = b[low:high]
 
 `low` and `high` represent the lower bound (**inclusive**) and upper bound (**exclusive**), respectively. The slice length is `high - low`, and the slice capacity is determined by the length of the operand.
 
-In the following code, the slice `s` contains the elements at index positions `1 <= 索引 < 4` of the array `a`. Its length is `4 - 1 = 3`, and its capacity is based on the array length `5`.
+In the following code, the slice `s` contains the elements at index positions `1 <= index < 4` of the array `a`. Its length is `4 - 1 = 3`, and its capacity is based on the array length `5`.
 
 ```go
 func main(){
@@ -159,8 +159,8 @@ In a full slice expression, only `low` can be omitted. If omitted, it defaults t
 ```go
 func main() {
 	a := [6]int{1, 2, 3, 4, 5, 6}
-	s1 := a[1:3]    // 普通切片表达式
-	s2 := a[1:3:5]  // 完整切片表达式
+	s1 := a[1:3]    // Normal Slice Expression
+	s2 := a[1:3:5]  // Full Slice Expression
 	fmt.Printf("s1:%v, len(s1):%v, cap(s1):%v\n", s1, len(s1), cap(s1))
 	fmt.Printf("s2:%v, len(s2):%v, cap(s2):%v\n", s2, len(s2), cap(s2))
 }
@@ -259,9 +259,9 @@ When a slice is copied through assignment, both slices share the same underlying
 ```go
 func main() {
 	a := [3]int{10, 20, 30}
-	// s1切片由a数组通过切片表达式获得
+	// S1 slices obtained from a array of slice expressions
 	s1 := a[:]
-	// 通过赋值拷贝得到s2切片
+	// Get S2 slices by giving copies
 	s2 := s1
 	fmt.Printf("s1:%v, len(s1):%v, cap(s1):%v\n", s1, len(s1), cap(s1))
 	fmt.Printf("s2:%v, len(s2):%v, cap(s2):%v\n", s2, len(s2), cap(s2))
@@ -296,11 +296,11 @@ Slices can be iterated over in the same way as arrays. Two iteration methods are
 ```go
 func main() {
 	s := []int{1, 2, 3, 4, 5}
-	// 通过索引进行遍历
+	// Through indexing
 	for i := 0; i < len(s); i++{
 		fmt.Printf("index:%d, value:%d\n", i, s[i])
 	}
-	// 通过for range进行遍历
+	// Go through it through the forrange.
 	for i, v := range s {
 		fmt.Printf("index:%d, value:%d\n", i, v)
 	}
@@ -317,7 +317,7 @@ func main() {
 	s1 = append(s1, 4)    // [1 2 3 4]
 	s1 = append(s1, 5, 6) // [1 2 3 4 5 6]
 	a := [3]int{7, 8, 9}
-	s1 = append(s1, a...) // 编译不通过，不能用数组
+	s1 = append(s1, a...) // Unable to compile, no arrays
 	s1 = append(s1, []int{7, 8, 9}...) // [1 2 3 4 5 6 7 8 9]
 }
 ```
@@ -334,10 +334,10 @@ func main(){
 Although there is nothing wrong with the following code, it is unnecessary:
 
 ```go
-// 没有必要初始化
+// There's no need for initialization.
 s := []int{}
 s = append(s, 1, 2, 3)
-// 没有必要初始化
+// There's no need for initialization.
 s1 := make([]int)
 s1 = append(s1, 1, 2, 3)
 ```

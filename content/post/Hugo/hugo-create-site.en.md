@@ -55,20 +55,20 @@ Enter the `go version` command to verify whether the installation was successful
 ### 2.3.1 Create GOPATH for Third-Party Go Packages and Projects
 
 ```
-mkdir -p /usr/local/goPath/src    #存放第三方包及项目
-mkdir -p /usr/local/goPath/bin    #存放项目编译后的可执行文件
-mkdir -p /usr/local/goPath/pkg    #存放项目编译后的文件
+mkdir -p /usr/local/goPath/src    #Storage of third-party packages and projects
+mkdir -p /usr/local/goPath/bin    #Storage of project compiled and enforceable documents
+mkdir -p /usr/local/goPath/pkg    #Store compiled project documents
 ```
 ## 2.4 Configure Environment Variables
 
 Add the `/usr/local/go/bin/` directory to the `PATH` environment variable and configure `GOROOT`.
 
 ```
-export PATH=$PATH:/usr/local/go/bin:/usr/local/goPath/bin #添加环境变量
-export GOROOT=/usr/local/go           # golang解析器的存放路径
-export GOPATH=/usr/local/goPath     #golang项目及第三方包存放路径
+export PATH=$PATH:/usr/local/go/bin:/usr/local/goPath/bin #Add Environment Variable
+export GOROOT=/usr/local/go           # Path to storage of galang resolver
+export GOPATH=/usr/local/goPath     #Path to storage for galang projects and third-party packages
 
-export GOPROXY=https://mirrors.aliyun.com/goproxy/#设置go代理
+export GOPROXY=https://mirrors.aliyun.com/goproxy/#Setup GoAgent
 ```
 > Note that this is only temporary. To make it permanent, modify the
 > `/etc/profile` file, add these lines of code to the end of the file, and then run:
@@ -134,7 +134,7 @@ source /etc/profile
 ## 3.4 Verify That Hugo Was Installed Successfully
 
 ```
-hugo version #输出Hugo版本号表示安装成功
+hugo version #Output Hugo version number means installation is successful
 ```
 ![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909182050.png)
 
@@ -159,14 +159,14 @@ The Hugo command creates a `blog` project with the following structure:
 
 ```
 .
-├── archetypes # 存放生成博客的模版
-├── assets # 存放被 Hugo Pipes 处理的文件
-├── config # 存放 hugo 配置文件 支持 JSON YAML TOML 三种格式配置文件
-├── content # 存放 markdown 文件
-├── data # 存放 Hugo 处理的数据
-├── layouts # 存放布局文件
-├── static # 存放静态文件 图片 CSS JS文件
-└── themes # 存放主题
+├── archetypes # Store template for blogging
+├── assets # Store files processed by Hugo Pipes
+├── config # Store the hogo configuration file Supports the JSON YAML TOML configuration file
+├── content # Store markdown files
+├── data # Store data processed by Hugo
+├── layouts # Store Layout File
+├── static # Store static files
+└── themes # Store Theme
 ```
 ## 3.6 Add a Theme
 
@@ -358,10 +358,10 @@ sudo chmod a+x nginx
 Afterward, you can use the following four commands to start, stop, and restart the Nginx service:
 
 ```
-service start nginx #开启服务
-service stop nginx #停止服务
-service restart nginx #重启服务
-service reload nginx #重新加载服务
+service start nginx #Open service.
+service stop nginx #Stop Service
+service restart nginx #Restart Service
+service reload nginx #Reload Service
 ```
 
 > P.S. You can enter the `ps aux|grep nginx` command to check whether the Nginx server is running.
@@ -380,14 +380,14 @@ Modify the default configuration as follows. There are three main changes:
 ```
 http {
     server {
-        listen       80; ## 改动点1：输入想要监听的端口号
-        server_name  www.jalen-qian.com; ##改动点2：填写外网访问博客网站的域名或者外网IP（无域名时）
+        listen       80; ## Change point 1: Enter the port number that you want to listen to
+        server_name  www.jalen-qian.com; ##Change point 2: Fill out the domain name or IP of the website (when no domain name exists)
       
         # Load configuration files for the default server block.
         include /etc/nginx/default.d/*.conf;
 
         location / {
-        root         /usr/local/goPath/src/github.com/blog/public; ##改动点3：输入nginx需要找到博客网站项目的路径，注意是public目录
+        root         /usr/local/goPath/src/github.com/blog/public; ##Change point 3: Enter nginx needs to find a path to the blog project, note the public directory
         }
 
         error_page 404 /404.html;
@@ -407,8 +407,8 @@ Open the blog project's root directory and enter the following command:
 
 ```
 hugo --theme=even --baseUrl="http:www.jalen-qian.com"
-## --theme后面跟的是主题名称，你下载了什么主题，就写对应的名字
-## --baseUrl后面是外网通过nginx访问Hugo项目的路径，注意要与上面nginx.conf中的一致
+## Theme is followed by a theme name.
+## --baseUrl is followed by an extranet access path to the Hugo project via nginx, with attention to consistency with the above nginx.conf
 ```
 # 6. Update the Blog
 

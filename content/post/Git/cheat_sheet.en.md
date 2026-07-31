@@ -26,13 +26,13 @@ Below is my list of commonly used Git commands. The translations of several Git-
 ## 1. Create a Repository
 
 ```bash
-# 在当前目录新建一个Git代码库
+# Create a new Git repository in the current directory
 $ git init
 
-# 新建一个目录，将其初始化为Git代码库
+# Create a new directory and initialize it into Git code Library
 $ git init [project-name]
 
-# 下载一个项目和它的整个代码历史
+# Download a project and its entire code history.
 $ git clone [url]
 ```
 
@@ -41,13 +41,13 @@ $ git clone [url]
 The Git configuration file is `.gitconfig`. It can be located in the user's home directory for global configuration or in the project directory for project-specific configuration.
 
 ```bash
-# 显示当前的Git配置
+# Show the current Git configuration
 $ git config --list
 
-# 编辑Git配置文件
+# Edit Git profile
 $ git config -e [--global]
 
-# 设置提交代码时的用户信息
+# Set user information for submitting code
 $ git config [--global] user.name "[name]"
 $ git config [--global] user.email "[email address]"
 ```
@@ -55,95 +55,95 @@ $ git config [--global] user.email "[email address]"
 ## 3. Add/Delete Files
 
 ```bash
-# 添加指定文件到暂存区
+# Add specified file to temporary storage
 $ git add [file1] [file2] ...
 
-# 添加指定目录到暂存区，包括子目录
+# Add specified directories to temporary storage, including subdirectories
 $ git add [dir]
 
-# 添加当前目录的所有文件到暂存区
+# Add all files of the current directory to the temporary storage area
 $ git add .
 
-# 添加每个变化前，都会要求确认
-# 对于同一个文件的多处变化，可以实现分次提交
+# Before adding every change, you will ask for confirmation.
+# For multiple changes in the same document, sub-submission is possible
 $ git add -p
 
-# 删除工作区文件，并且将这次删除放入暂存区
+# Delete the workspace file and place this deletion in the reserve
 $ git rm [file1] [file2] ...
 
-# 停止追踪指定文件，但该文件会保留在工作区
+# Stop tracking the specified file, but it will remain in the working area
 $ git rm --cached [file]
 
-# 改名文件，并且将这个改名放入暂存区
+# Rename file and place it in the reserve
 $ git mv [file-original] [file-renamed]
 ```
 
 ## 4. Commit Changes
 
 ```bash
-# 提交暂存区到仓库区
+# Commit to storage area
 $ git commit -m [message]
 
-# 提交暂存区的指定文件到仓库区
+# Submit the specified file to the repository area for the temporary storage area
 $ git commit [file1] [file2] ... -m [message]
 
-# 提交工作区自上次commit之后的变化，直接到仓库区
+# Submission of changes in the workspace since last session to the warehouse area
 $ git commit -a
 
-# 提交时显示所有diff信息
+# Show all diff information when submitting
 $ git commit -v
 
-# 使用一次新的commit，替代上一次提交
-# 如果代码没有任何新变化，则用来改写上一次commit的提交信息
+# Use one new submission instead of the previous submission
+# If there are no new changes to the code, use to rewrite the last submission of the committee
 $ git commit --amend -m [message]
 
-# 重做上一次commit，并包括指定文件的新变化
+# Redo last session and include new changes to the specified file
 $ git commit --amend [file1] [file2] ...
 ```
 
 ## 5. Branches
 
 ```bash
-# 列出所有本地分支
+# List all local branches
 $ git branch
 
-# 列出所有远程分支
+# List all remote branches
 $ git branch -r
 
-# 列出所有本地分支和远程分支
+# List all local and remote branches
 $ git branch -a
 
-# 新建一个分支，但依然停留在当前分支
+# New branch, but still in the current branch
 $ git branch [branch-name]
 
-# 新建一个分支，并切换到该分支
+# Create a new branch and switch to it
 $ git checkout -b [branch]
 
-# 新建一个分支，指向指定commit
+# Create a new branch, point to the specified committee
 $ git branch [branch] [commit]
 
-# 新建一个分支，与指定的远程分支建立追踪关系
+# Create a new branch to track the specified remote branch
 $ git branch --track [branch] [remote-branch]
 
-# 切换到指定分支，并更新工作区
+# Switch to the specified branch and update the workspace
 $ git checkout [branch-name]
 
-# 切换到上一个分支
+# Switch to Previous Branch
 $ git checkout -
 
-# 建立追踪关系，在现有分支与指定的远程分支之间
+# Establish a tracking relationship between the existing branch and the designated remote branch
 $ git branch --set-upstream [branch] [remote-branch]
 
-# 合并指定分支到当前分支
+# Merge specified branch to current branch
 $ git merge [branch]
 
-# 选择一个commit，合并进当前分支
+# Select a committee to merge into the current branch
 $ git cherry-pick [commit]
 
-# 删除分支
+# Remove Branch
 $ git branch -d [branch-name]
 
-# 删除远程分支
+# Remove Remote Branch
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 ```
@@ -151,159 +151,159 @@ $ git branch -dr [remote/branch]
 ## 6. Tags
 
 ```bash
-# 列出所有tag
+# List All Tags
 $ git tag
 
-# 新建一个tag在当前commit
+# New Tag
 $ git tag [tag]
 
-# 新建一个tag在指定commit
+# New Tag Aspecting
 $ git tag [tag] [commit]
 
-# 删除本地tag
+# Delete Local Tag
 $ git tag -d [tag]
 
-# 删除远程tag
+# Remove Remote Tag
 $ git push origin :refs/tags/[tagName]
 
-# 查看tag信息
+# View Tag Information
 $ git show [tag]
 
-# 提交指定tag
+# Commit Assign Tag
 $ git push [remote] [tag]
 
-# 提交所有tag
+# Commit All Tags
 $ git push [remote] --tags
 
-# 新建一个分支，指向某个tag
+# New branch, point to a tag
 $ git checkout -b [branch] [tag]
 ```
 
 ## 7. View Information
 
 ```bash
-# 显示有变更的文件
+# Show Changed Files
 $ git status
 
-# 显示当前分支的版本历史
+# Show the version history of the current branch
 $ git log
 
-# 显示commit历史，以及每次commit发生变更的文件
+# Show the history of the group and the files that change each time the group changes
 $ git log --stat
 
-# 搜索提交历史，根据关键词
+# Search for submission history, by keyword
 $ git log -S [keyword]
 
-# 显示某个commit之后的所有变动，每个commit占据一行
+# Shows all changes after a certain group, each one takes a line
 $ git log [tag] HEAD --pretty=format:%s
 
-# 显示某个commit之后的所有变动，其"提交说明"必须符合搜索条件
+# Show all changes after a certain group, whose "presentation" must meet the search criteria
 $ git log [tag] HEAD --grep feature
 
-# 显示某个文件的版本历史，包括文件改名
+# Shows the history of the version of a document, including the renaming of a file
 $ git log --follow [file]
 $ git whatchanged [file]
 
-# 显示指定文件相关的每一次diff
+# Show each diff associated with the specified file
 $ git log -p [file]
 
-# 显示过去5次提交
+# Show past 5 submissions
 $ git log -5 --pretty --oneline
 
-# 显示所有提交过的用户，按提交次数排序
+# Show all submitted users, sort by number of submissions
 $ git shortlog -sn
 
-# 显示指定文件是什么人在什么时间修改过
+# Show when the specified file was modified
 $ git blame [file]
 
-# 显示暂存区和工作区的差异
+# Show differences between temporary storage areas and work areas
 $ git diff
 
-# 显示暂存区和上一个commit的差异
+# Show the difference between the temporary storage area and the previous section
 $ git diff --cached [file]
 
-# 显示工作区与当前分支最新commit之间的差异
+# Show differences between the workspace and the current branch
 $ git diff HEAD
 
-# 显示两次提交之间的差异
+# Show discrepancies between two submissions
 $ git diff [first-branch]...[second-branch]
 
-# 显示今天你写了多少行代码
+# Show how many lines you wrote today.
 $ git diff --shortstat "@{0 day ago}"
 
-# 显示某次提交的元数据和内容变化
+# Show metadata and content changes submitted at a given time
 $ git show [commit]
 
-# 显示某次提交发生变化的文件
+# Show a file submitting a change
 $ git show --name-only [commit]
 
-# 显示某次提交时，某个文件的内容
+# Displays the contents of a file when it is submitted
 $ git show [commit]:[filename]
 
-# 显示当前分支的最近几次提交
+# Show the latest submissions of the current branch
 $ git reflog
 ```
 
 ## 8. Remote Synchronization
 
 ```bash
-# 下载远程仓库的所有变动
+# Download all changes in remote warehouse
 $ git fetch [remote]
 
-# 显示所有远程仓库
+# Show all remote repositories
 $ git remote -v
 
-# 显示某个远程仓库的信息
+# Show information about a remote repository
 $ git remote show [remote]
 
-# 增加一个新的远程仓库，并命名
+# Add a new remote repository and name it
 $ git remote add [shortname] [url]
 
-# 取回远程仓库的变化，并与本地分支合并
+# Retrieving remote warehouse changes and merging with local branches
 $ git pull [remote] [branch]
 
-# 上传本地指定分支到远程仓库
+# Upload local specified branch to remote repository
 $ git push [remote] [branch]
 
-# 强行推送当前分支到远程仓库，即使有冲突
+# Force the current branch to a remote warehouse, even in conflict
 $ git push [remote] --force
 
-# 推送所有分支到远程仓库
+# Send all branches to remote warehouse
 $ git push [remote] --all
 ```
 
 ## 9. Undo Changes
 
 ```bash
-# 恢复暂存区的指定文件到工作区
+# Restore the specified file to the working area
 $ git checkout [file]
 
-# 恢复某个commit的指定文件到暂存区和工作区
+# Restore a specified file to the temporary and working areas
 $ git checkout [commit] [file]
 
-# 恢复暂存区的所有文件到工作区
+# Restore all files in the temporary storage area to the working area
 $ git checkout .
 
-# 重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
+# Reset the specified file for the temporary storage area, consistent with the previous session, but the workspace remains unchanged
 $ git reset [file]
 
-# 重置暂存区与工作区，与上一次commit保持一致
+# Reset the hold area and the work area, in line with previous session
 $ git reset --hard
 
-# 重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+# Reset the pointer of the current branch to the specified group while reset the hold area, but the workspace remains unchanged
 $ git reset [commit]
 
-# 重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
+# Reset the current branch of HEAD as the designated group, and reset the temporary and working areas in line with the assigned group
 $ git reset --hard [commit]
 
-# 重置当前HEAD为指定commit，但保持暂存区和工作区不变
+# Reset the current HEAD as a specified group but keep the temporary and working areas unchanged
 $ git reset --keep [commit]
 
-# 新建一个commit，用来撤销指定commit
-# 后者的所有变化都将被前者抵消，并且应用到当前分支
+# Create a new committee to cancel designation
+# All changes in the latter will be offset by the former and applied to the current branch
 $ git revert [commit]
 
-# 暂时将未提交的变化移除，稍后再移入
+# Remove pending changes for the time being and move them later
 $ git stash
 $ git stash pop
 ```
@@ -311,7 +311,7 @@ $ git stash pop
 ## 10. Other Commands
 
 ```bash
-# 生成一个可供发布的压缩包
+# Generate a compressed package for release
 $ git archive
 ```
 

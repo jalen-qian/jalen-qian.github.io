@@ -3,7 +3,7 @@ title: "Go Basics: Variables and Constants"
 date: 2020-09-10T16:47:00+08:00
 lastmod: 2020-09-10T16:47:00+08:00
 draft: false
-keywords: ["变量","常量"]
+keywords: ["variables","constants"]
 description: ""
 tags: ["Golang"]
 categories: ["Golang Series"]
@@ -12,7 +12,7 @@ author: "Jalen"
 
 ### Identifiers and Keywords
 - Identifiers
-> Identifiers are words with special meanings defined by programmers, such as variable names, constant names, and function names. In Go, identifiers can only consist of `字母`, `数字`, and `_`, and they must begin with a letter or `_`, such as `abc`, `_hello`, `_`, `_123`, and `a123`.
+> Identifiers are words with special meanings defined by programmers, such as variable names, constant names, and function names. In Go, identifiers can only consist of `letters`, `digits`, and `_`, and they must begin with a letter or `_`, such as `abc`, `_hello`, `_`, `_123`, and `a123`.
 
 - Keywords
 
@@ -80,7 +80,7 @@ var(
 
 ##### Variable Initialization
 When a variable is declared in Go, its corresponding memory region is automatically initialized. Each variable is initialized with the zero value of its type. For example:
-The default value for integer and floating-point variables is `0`. The default value for string variables is `空字符串""`. The default value for boolean variables is `false`. The default value for slices, functions, and pointer variables is `nil`.
+The default value for integer and floating-point variables is `0`. The default value for string variables is an `empty string ""`. The default value for boolean variables is `false`. The default value for slices, functions, and pointer variables is `nil`.
 
 We can also specify an initial value when declaring a variable. The syntax is as follows:
 
@@ -104,7 +104,7 @@ Note that no variable types are specified here. This is because the Go compiler 
 When a variable is declared and assigned a value at the same time, its type can be omitted. Go automatically determines the type of the variable on the left-hand side based on the value on the right-hand side. For example:
 
 ```Go
-var name = "Lisi" //由于赋值的值是字符串，所以name的类型编译器会自动指定为字符串
+var name = "Lisi" //As the value given is a string, the type name compiler will automatically assign it to a string
 var age  = 15
 ```
 
@@ -115,13 +115,13 @@ package main
 
 import "fmt"
 
-var m = 100 //声明全局变量m，全局变量声明后可以不使用，局部变量声明后必须使用
+var m = 100 //Declares global variablesm, which may not be used after the global variables are declared, and local variables must be used after the declaration
 
-//n := "str" //报错，:=不可声明全局变量
+//n: = "str" / error reporting, = non-declarationable global variable
 
 func main() {
 	n := "abb"
-	m := 100 //声明局部变量m，并使用:=
+	m := 100 //Declares the local variable m and uses: =
 
 	//100
 	//abb
@@ -141,14 +141,14 @@ package main
 import "fmt"
 
 /**
- * 返回两个变量，姓名和年龄
+ * Returns two variables, name and age
  */
 func studentMsg(name string, age int) (string, int) {
 	return name, age
 }
 
 func main() {
-	//这里如果只需要姓名，年龄忽略，可以用匿名变量`_`来接收
+	//If only a name is needed here, age is ignored, an anonymous variable can be used. `Come and receive
 	name, _ := studentMsg("张三", 25)
 	_, age := studentMsg("李四", 28)
 	

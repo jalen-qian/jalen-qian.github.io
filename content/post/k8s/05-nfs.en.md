@@ -16,9 +16,9 @@ Because multiple `pod` instances provide services simultaneously, handling share
 
 # Introduction to NFS
 
-`NFS` (Network File System) is a network file system developed by SUN. It is an `Unix表示层协议 (presentation layer protocol)` that allows users to access files elsewhere on a network as if they were using their own computer.
+`NFS` (Network File System) is a network file system developed by SUN. It is a Unix presentation-layer protocol that allows users to access files elsewhere on a network as if they were using their own computer.
 
-`NFS` is a TCP-based application. Its core implementation uses `RPC (Remote Procedure Call) 远程过程调用` to transfer files while ensuring that the caller can use remote files as conveniently as local files.
+`NFS` is a TCP-based application. Its core implementation uses `RPC (Remote Procedure Call)` to transfer files while ensuring that the caller can use remote files as conveniently as local files.
 
 # Cluster File Sharing
 
@@ -34,7 +34,7 @@ How can multiple `Pod` instances in a cluster read and write the same data? As s
 
 A Node is required as the NFS service node. We will directly use the `master` node as the shared file node. Perform the following operations on the master:
 
-1. First, install `NFS 工具` and `rpcbind`
+1. First, install the `NFS tools` and `rpcbind`.
 
    ```shell
    $ yum install -y nfs-utils rpcbind
@@ -74,7 +74,7 @@ A Node is required as the NFS service node. We will directly use the `master` no
 
 ## Using the NFS Service on Clients
 
-1. On the host where the client Node is located, install `nfs工具集`. You only need to install `nfs-tools`; there is no need to install `rpcbind`
+1. On the host where the client Node is located, install the `NFS toolset`. You only need to install `nfs-tools`; there is no need to install `rpcbind`.
 
    ```shell
    $ yum install -y nfs-utils
@@ -172,7 +172,7 @@ You can update this Tomcat cluster using the `kubel apply` command, or use `kube
 
    ![image-20210115152217018](http://cdn1.jalen-qian.com/20210115152217itk483FhMn.png)
 
-   We can then use the `docker exec -it [容器ID] /bin/bash` command to enter the container and check whether the mounted files exist in the `/usr/local/tomcat/webapps` folder
+   We can then use the `docker exec -it [container-ID] /bin/bash` command to enter the container and check whether the mounted files exist in the `/usr/local/tomcat/webapps` folder.
 
    ![image-20210115152446645](http://cdn1.jalen-qian.com/20210115152446Llz9LzoBkf.png)
 
@@ -194,6 +194,6 @@ This completes the configuration of NFS-based file sharing for the K8S cluster.
 Mounts created using the mount command will be lost after the system restarts, so `/etc/fstab` must be configured.
 
 ```shell
-# /etc/fstab中添加如下配置
+# Add the following configuration to /etc/fstab
 192.168.233.128:/usr/local/data/www-data /mnt nfs defaults 0 0
 ```

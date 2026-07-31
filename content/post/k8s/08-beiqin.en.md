@@ -3,7 +3,7 @@ title: "K8S Notes 8: Deploying the Pigeon Baby & Child Store with K8S"
 date: 2021-01-18T09:47:00+08:00
 lastmod: 2021-01-18T09:47:00+08:00
 draft: false
-keywords: ["K8S","贝亲商城"]
+keywords: ["K8S","Beiqin Store"]
 description: "desc"
 tags: ["K8S"]
 categories: ["K8S"]
@@ -37,15 +37,15 @@ The following are all the resource files required to deploy the Pigeon Store app
 ```shell
 [root@master www-data]# tree beiqin
 beiqin
-├── beiqin-app-deploy.yml   # web应用部署脚本文件
-├── beiqin-app-service.yml  # web应用服务部署脚本文件
-├── beiqin-db-deploy.yml    # mysql部署脚本文件
-├── beiqin-db-service.yml   # mysql服务部署脚本文件
+├── beiqin-app-deploy.yml   # Web applies deployment script files
+├── beiqin-app-service.yml  # Web Application Service Deployment Script File
+├── beiqin-db-deploy.yml    # Mysql deploys script files
+├── beiqin-db-service.yml   # Mysql Service Deployment Script File
 ├── dist
-│   ├── application.yml     # 应用程序配置文件
-│   └── beiqin-app.jar      # spring-boot开发的应用程序jar包，可以在openjdk容器中直接运行
+│   ├── application.yml     # Application Profile
+│   └── beiqin-app.jar      # Spring-boot developed application jar package, which can run directly in openjdk containers
 └── sql
-    └── beiqin.sql          # mysql脚本文件
+    └── beiqin.sql          # Mysql script file
 ```
 
 ## Deploying the Pigeon Store
@@ -59,32 +59,32 @@ Here, we will reuse the configuration from [K8S Notes 5: NFS-Based Cluster File 
 #### 2.1 Create the `beiqin-db-deploy.yml` File
 
 ```yaml
-apiVersion: apps/v1beta1         # 新版的k8s,版本号写法
-kind: Deployment                 # 脚本类型：创建部署
+apiVersion: apps/v1beta1         # New version of k8s, version number.
+kind: Deployment                 # Script Type: Create Deployment
 metadata:
-  name: beiqin-db-deploy         # 部署名称
+  name: beiqin-db-deploy         # Name of deployment
 spec:
-  replicas: 1                    # 副本数，由于是mysql，只需要1个即可
+  replicas: 1                    # The number of copies, because it's mysql, only one.
   template:
     metadata:
       labels:
-        app: beiqin-db-deploy    # pod标签
+        app: beiqin-db-deploy    # Pod tag
     spec:
-      volumes:                   # 创建挂载卷
-      - name: beiqin-db-volume   # 挂载卷名称
+      volumes:                   # Create Mount Volume
+      - name: beiqin-db-volume   # Mount Volume Name
         hostPath: 
-          path: /mnt/beiqin/sql # 挂载路径（数据卷在Node宿主机上的路径）
+          path: /mnt/beiqin/sql # Mount path (the path of the data volume on the Node host)
       containers:
       - name: beiqin-db-deploy
-        image: mysql:5.7        # 使用镜像：mysql:5.7
+        image: mysql:5.7        # Use mirror: Mysql: 5.7
         ports:
-        - containerPort: 3306   # 容器对集群暴露的端口号：3306
-        env:                    # 注意：env是之前没配置过的，表示容器的环境变量
-        - name: MYSQL_ROOT_PASSWORD  # 环境变量1：mysql root密码
-          value: "root"              # 环境变量的值，注意字符串要用""包起来
-        volumeMounts:                # 容器挂载信息
+        - containerPort: 3306   # Port number of container to cluster exposure: 3306
+        env:                    # Note: env is a previously unconfigured environmental variable for containers
+        - name: MYSQL_ROOT_PASSWORD  # Environmental variable 1: Mysql root password
+          value: "root"              # The value of the environment variable. Note the string.
+        volumeMounts:                # Can not open message
         - name: beiqin-db-volume
-          mountPath: /docker-entrypoint-initdb.d  # 挂载路径，挂载到这个目录，容器启动时会自动加载里面的sql脚本文件
+          mountPath: /docker-entrypoint-initdb.d  # Mount path, mount to this directory and automatically load the sql script file in the container when it starts
 
 ```
 
@@ -98,17 +98,17 @@ $ kubectl create -f beiqin-db-deploy.yml
 #### 2.3 Check the Deployment Status
 
 ```shell
-# 查看部署的pod
+# View deployed pops
 $ kubectl get pod -o wide
 NAME                                READY   STATUS    RESTARTS   AGE     IP            NODE    NOMINATED NODE   READINESS GATES
 beiqin-db-deploy-757d87dc77-g5wrf   1/1     Running   0          5m17s   10.244.1.12   node1   <none>           <none>
 
-# 进入pod容器内部，查看mysql是否能登录 & 是否执行了脚本创建了数据库和表
+# Go inside the pod container and see if mysql can log in and & execute scripts to create databases and tables
 $ kubectl exec -it beiqin-db-deploy-757d87dc77-g5wrf /bin/bash
 
-# 在容器内部，登录mysql
+# Inside the container, login mesql
 $ mysql -uroot -proot
-# 查看数据库，可以发现数据库已经创建
+# View the database and find that it has been created
 mysql> show databases;
 +--------------------+
 | Database           |
@@ -121,7 +121,7 @@ mysql> show databases;
 +--------------------+
 5 rows in set (0.06 sec)
 
-# 查看表，发现表也已经创建
+# View the table and find it already created
 mysql> use beiqin;
 Reading table information for completion of table and column names
 You can turn off this feature to get a quicker startup with -A
@@ -149,31 +149,31 @@ Create `beiqin-db-service.yml`. This script is much simpler than the deployment 
 
 ```yaml
 apiVersion: v1
-kind: Service # 类型：服务
+kind: Service # Type: Services
 metadata:
-  name: beiqin-db-service # 服务名称
-  labels: # 服务也是一个特殊的pod，也需要配置标签
+  name: beiqin-db-service # Name of service
+  labels: # The service is also a special pod that needs to be configured.
     app: beiqin-db-service
 spec:
-  selector: # 选择关联的pod标签，也就是上一步创建的db部署pod
+  selector: # Select associated pop tag, which is the db deployment pop created in the previous step
     app: beiqin-db-deploy
   ports:
-  - port: 3310 # 服务对外暴露端口，对外指的是容器外，集群内
-    targetPort: 3306 # 服务容器内端口
+  - port: 3310 # Service external exposure port, outside container, inside cluster
+    targetPort: 3306 # Port within service container
 ```
 
 #### 2.5 Deploy the Service
 
 ```shell
 $ kubectl create -f beiqin-db-service.yml
-# 验证服务是否正常 kubectl get svc 和 kubectl get service 完全等效
+# Kubecl get svc and kubecl get service fully equivalent
 $ kubectl get svc
 NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
 beiqin-db-service   ClusterIP   10.107.5.137   <none>        3310/TCP   7s
 kubernetes          ClusterIP   10.96.0.1      <none>        443/TCP    27h
-# 这里我们可以看到，服务的虚拟IP是 10.107.5.137 ，对外暴露端口是 3310（pod外，集群内）
+# Here we can see that the service's virtual IP is 10.107.5.137 and the external exposure port is 3310 (outside pod, inside the cluster)
 
-# 进一步查看服务的详细信息
+# See more details about the service
 $ kubectl describe svc beiqin-db-service
 Name:              beiqin-db-service
 Namespace:         default
@@ -181,10 +181,10 @@ Labels:            app=beiqin-db-service
 Annotations:       <none>
 Selector:          app=beiqin-db-deploy
 Type:              ClusterIP
-IP:                10.107.5.137 # 虚拟IP
-Port:              <unset>  3310/TCP # 对外暴露的端口
-TargetPort:        3306/TCP # 目标端口
-Endpoints:         10.244.1.12:3306 # 关联的pod虚拟IP和端口号，10.244.1.12是启动的那个db部署pod的虚拟IP
+IP:                10.107.5.137 # Virtual IP
+Port:              <unset>  3310/TCP # Externally exposed port
+TargetPort:        3306/TCP # Destination Port
+Endpoints:         10.244.1.12:3306 # Associated pod virtual IPs and port numbers. 10.244.1.12 is the virtual IP for db deployment pops initiated.
 Session Affinity:  None
 Events:            <none>
 
@@ -202,7 +202,7 @@ kind: Deployment
 metadata:
   name: beiqin-app-deploy
 spec:
-  replicas: 2 # 副本数：2
+  replicas: 2 # Number of copies: 2
   template:
     metadata:
       labels:
@@ -211,15 +211,15 @@ spec:
       volumes:
       - name : beqin-app-volume
         hostPath:
-          path: /mnt/beiqin/dist # 数据卷宿主机挂载目录，存放jar包和应用配置
+          path: /mnt/beiqin/dist # Mount directory of the data host to store the jar package and application configuration
       containers:
       - name: beiqin-app-deploy
-        image: openjdk:8u222-jre  # 容器镜像，使用openjdk:8u222-jre
-        command: ["/bin/sh"] # 注意：这里 command表示容器启动时执行的指令，这里执行shell命令
-        args: ["-c","cd /usr/local/beiqin/dist;java -jar beiqin-app.jar"] # 指令参数
+        image: openjdk:8u222-jre  # Portable mirror, using openjdk:8u222-jre
+        command: ["/bin/sh"] # Note: Herecommand indicates the direction of the container when activated, and here the shell command.
+        args: ["-c","cd /usr/local/beiqin/dist;java -jar beiqin-app.jar"] # Command Parameters
         volumeMounts:
         - name: beqin-app-volume
-          mountPath: /usr/local/beiqin/dist # 容器内挂载的目录
+          mountPath: /usr/local/beiqin/dist # Table of contents mounted in containers
 ```
 
 #### 3.2 Create the Deployment
@@ -259,7 +259,7 @@ Create the service in the cluster:
 ```shell
 $ kubectl create -f beiqin-app-service.yml 
 service/beiqin-app-service created
-# 查看服务pod状态
+# View service pod status
 $ kubectl get svc
 NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 beiqin-app-service   ClusterIP   10.97.138.238   <none>        80/TCP     58s

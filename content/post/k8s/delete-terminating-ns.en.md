@@ -7,7 +7,7 @@ keywords: []
 description: ""
 tags: ["Kubernetes"]
 categories: ["Kubernetes"]
-author: "钱文军"
+author: "Wenjun Qian"
 ---
 
 # How to Delete a Namespace Stuck in the Terminating State

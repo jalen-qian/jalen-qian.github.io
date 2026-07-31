@@ -8,7 +8,7 @@ keywords: []
 description: ""
 tags: ["Greedy Algorithms"]
 categories: ["Algorithms"]
-author: "钱文军"
+author: "Wenjun Qian"
 ---
 
 > In the previous post, we used a relatively basic algorithm problem to discuss a practical approach to solving greedy algorithm problems. In short, solving greedy problems is largely about accumulating experience. It is difficult to rigorously prove the correctness of the greedy strategy for each problem, and such proofs are not generally applicable. In practice, we do not need to prove it; instead, we can verify it directly through experiments.
@@ -24,13 +24,13 @@ author: "钱文军"
 Suppose you have only one conference room, and several projects need to use it for presentations. The conference room cannot accommodate two project presentations at the same time. Given the start and end times of each project, arrange the presentation schedule so that the maximum number of presentations can be held, and return that maximum number. One project must finish before the next can begin, meaning that the start time of the next project must be greater than or equal to the end time of the previous project.
 
 ```go
-// Program 项目会议宣讲
+// Program represents a conference presentation project.
 type Program struct {
-    Start int // 开始时间
-    End   int // 结束时间
+    Start int // Start time
+    End   int // End time
 }
 
-// BestArrange 返回最多可以安排的场次
+// BestArrange returns the maximum number of presentations that can be scheduled.
 func BestArrange(programs []Program) int {
     //...
 }
@@ -73,14 +73,14 @@ The answer is: we do not need to prove it. We can verify it directly by writing 
 Once the greedy strategy has been determined, the approach is straightforward: first sort the entire array by `end` in ascending order, and then iterate through it. During each iteration, schedule a meeting and record its end time. If the project `Start >= currentTime`, it can be scheduled. Finally, count the number of scheduled presentations. The implementation is as follows:
 
 ```go
-// BestArrange2 返回最多可以安排的场次，贪心策略：每次优先选择结束时间最早的。
+// BestArrange2 uses a greedy strategy: always choose the project that ends earliest.
 func BestArrange2(programs []Program) int {
-    // 先按照结束之间从早到晚排好序
+    // Sort projects by end time in ascending order.
     sort.Slice(programs, func(i, j int) bool {
         return programs[i].End < programs[j].End
     })
-    curTime := 0 //当前时间点，从0开始
-    count := 0   // 统计最后安排的次数
+    curTime := 0 // Current point on the timeline, starting at 0
+    count := 0   // Number of presentations scheduled
     for _, program := range programs {
         if program.Start >= curTime {
             count ++
@@ -98,29 +98,29 @@ func BestArrange2(programs []Program) int {
 First, we implement a brute-force solution to this problem. This method **enumerates every possible arrangement and returns the maximum number of presentations**. Recursion can be used here. The code is as follows:
 
 ```go
-// BestArrange1 暴力方法：穷举所有情况，并返回选择的会议场数最多情况下的场数
-// 使用递归实现
+// BestArrange1 uses brute force to enumerate every possible schedule and returns the maximum count.
+// It is implemented recursively.
 func BestArrange1(programs []Program) int {
-    // 主函数传入所有项目，开始时间是0，之前已经安排的场数也是0
+    // Start with all projects, a timeline at 0, and no presentations scheduled.
     return bestArrange1Process(programs, 0, 0)
 }
 
-// @param leftPrograms表示选择了某个项目后，还剩下的所有项目
-// @param timeLine 选择完某个项目开完会议后的当前时间线
-// @param done 之前已经安排了多少场会议
-// 返回这种情况下，最大的场数
+// @param leftPrograms contains the projects remaining after one has been selected.
+// @param timeLine is the current time after the selected presentation ends.
+// @param done is the number of presentations already scheduled.
+// Returns the maximum number of presentations achievable from this state.
 func bestArrange1Process(leftPrograms []Program, timeLine int, done int) int {
-    // 如果剩下的项目为空，则直接返回之前已经安排的场数
+    // If no projects remain, return the number already scheduled.
     if len(leftPrograms) == 0 {
         return done
     }
     max := done
-    // 穷举选择剩下的项目中，所有的项目，从当前时间开始，看哪一场最好
+    // Try every remaining project that can start at the current time.
     for i := 0; i < len(leftPrograms); i++ {
-        // 当前已经选了，将剩下的项目，除去当前已经选的，拷贝所有的，并递归
+        // Remove the selected project, copy the remainder, and recurse.
         if leftPrograms[i].Start >= timeLine {
             next := copyButExcept(leftPrograms, i)
-            // 递归，时间线是当前选择的项目结束时间，已经完成的场次是当前done+1
+            // Advance the timeline to this project's end and increment the completed count.
             max = utils.Max(max, bestArrange1Process(next, leftPrograms[i].End, done+1))
         }
     }
@@ -154,7 +154,7 @@ Therefore, the main function invokes it as follows:
 
 ```go
 func BestArrange1(programs []Program) int {
-    // 主函数传入所有项目，开始时间是0，之前已经安排的场数也是0
+    // Start with all projects, a timeline at 0, and no presentations scheduled.
     return bestArrange1Process(programs, 0, 0)
 }
 ```
@@ -167,7 +167,7 @@ After the recursive function selects a project to execute through brute force, c
 
 ```go
 func TestBestArrange(t *testing.T) {
-    testTimes := 100000 // 测试次数
+    testTimes := 100000 // Number of tests
     maxSize := 100
     timeMax := 100
     t.Log("测试开始...")
@@ -183,9 +183,9 @@ func TestBestArrange(t *testing.T) {
     t.Log("测试成功")
 }
 
-// 返回随机的项目样本
-// maxSize 最大项目个数
-// timeMax 每个项目，最大的时间
+// Returns a random sample of projects.
+// maxSize is the maximum number of projects.
+// timeMax is the maximum time value for each project.
 func generateRandomPrograms(maxSize int, timeMax int) []Program {
     myRand := rand.New(rand.NewSource(time.Now().UnixNano()))
     ans := make([]Program, myRand.Intn(maxSize+1))

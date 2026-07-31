@@ -63,5 +63,5 @@ Hugo includes a built-in web server. After running `hugo server`, you can access
 
 Below are commonly used parameters for `hugo server`. Note that they are case-sensitive:
 
-- `-p 端口`: Changes the default port.
+- `-p port`: Changes the default port.
 - `-D`: When previewing the website using the server, draft files whose `draft` property is set to `true` are not included in the preview. Add `-D` to preview draft files.

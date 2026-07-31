@@ -11,9 +11,6 @@ on:
     paths:
       - "content/post/**/*.md"
       - "!content/post/**/*.en.md"
-      - ".github/workflows/translate.yml"
-      - "scripts/translate_posts.py"
-      - "scripts/requirements.txt"
 
   workflow_dispatch:
     inputs:

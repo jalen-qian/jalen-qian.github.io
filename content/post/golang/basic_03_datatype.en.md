@@ -56,20 +56,20 @@ package main
 import "fmt"
 
 func main() {
-    //Go语言整型没有二进制的形式，但是可以通过%b输出二进制
+    //Go language integer does not take binary form, but can output binary by %b Production
     var a int = 10
-    //输出二进制
-    fmt.Printf("a的二进制是%b\n", a) //a的二进制是1010
+    //Output Binary
+    fmt.Printf("a的二进制是%b\n", a) //A binary is 1010.
 
-    //八进制整数，以0开头
+    //Octal integer, beginning with 0
     var b int = 077
-    fmt.Printf("b的十进制是%d\n", b) // b的十进制是63
-    fmt.Printf("b的八进制是%o\n", b) // b的八进制是77
+    fmt.Printf("b的十进制是%d\n", b) // The decimal for b is 63.
+    fmt.Printf("b的八进制是%o\n", b) // The octal for b is 77.
 
-    //十六进制整数
+    //Hexadecimal integer
     c := 0xff
-    fmt.Println(c)               // 255 默认以十进制整数输出
-    fmt.Printf("c的十六进制是%x\n", c) // c的十六进制是ff
+    fmt.Println(c)               // 255 Default output integer in decimal
+    fmt.Printf("c的十六进制是%x\n", c) // Hexadecimal for c is ff.
 
 }
 
@@ -88,18 +88,18 @@ import "fmt"
 func main() {
     a := 3.24322
     fmt.Printf("a=%f\n", a) //a=3.243220
-    //打印a的类型，说明默认是float64
-    fmt.Printf("a的类型是%T\n",a) //a的类型是float64
+    //Type of printa indicating default is float64
+    fmt.Printf("a的类型是%T\n",a) //A type is float64.
 
     var b float32 = 3.22
     fmt.Printf("b=%f\n",b)//b=3.220000
 
-    //将b赋值给a，报错，不能赋值
+    //Give a value to b.
     //a = b //cannot use b (type float32) as type float64 in assignment
 
-    //如果要赋值，使用强制类型转换
+    //If you want value, use mandatory type conversion
     a = float64(b)
-    fmt.Printf("a=%f,a的类型是%T\n",a,a) //a=3.220000,a的类型是float64
+    fmt.Printf("a=%f,a的类型是%T\n",a,a) //a=3.220000, a type is float64
 }
 ```
 
@@ -120,21 +120,21 @@ func main() {
     var b complex128 = 3 + 4i
     fmt.Println(b) //(3+4i)
 
-    //默认为complex128
+    //Default is complex128
     var c = 4 + 5i
-    fmt.Printf("c的类型为%T", c) //c的类型为complex128
+    fmt.Printf("c的类型为%T", c) //Type of c is complex128
 }
 
 ```
 
 ### Booleans
-In Go, boolean data is declared using the `bool` type. A boolean can have only two values: `true(真)` and `false(假)`.
+In Go, boolean data is declared using the `bool` type. A boolean can have only two values: `true` and `false`.
 > 1. The default value of a boolean variable is `false`.<br>
 > 2. Go does not allow integers to be explicitly converted to booleans.
 > 3. Booleans cannot participate in arithmetic operations or be converted to other types.
 
 ### Strings
-Strings are native data types in Go and can be used in the same way as other native data types such as int, bool, float32, and float64. Strings in Go are internally encoded using `UTF-8`. A string's value is the content enclosed in `双引号(")`. Non-ASCII characters can be included directly in Go source code. For example:
+Strings are native data types in Go and can be used in the same way as other native data types such as int, bool, float32, and float64. Strings in Go are internally encoded using `UTF-8`. A string's value is the content enclosed in `double quotes (")`. Non-ASCII characters can be included directly in Go source code. For example:
 
 ```go
 var a = "hello"
@@ -168,7 +168,7 @@ func main() {
 ```
 
 ##### Multiline Strings
-Use `反引号` to define a multiline string:
+Use `backticks` to define a multiline string:
 ```go
 package main
 
@@ -177,16 +177,16 @@ import "fmt"
 func main() {
     /*
 
-            第一行
-            第二行
-        第三行
-                哈哈哈
+            First line
+            Second line
+        Third line
+                Ha ha ha!
      */
     var multiLine = `
-        第一行
-        第二行
-    第三行
-            哈哈哈
+        First line
+        Second line
+    Third line
+            Ha ha ha!
     
     `
     fmt.Println(multiLine)
@@ -214,35 +214,35 @@ import (
 )
 
 func main() {
-    //求长度
+    //Length requested
     s1 := "hello world"
     length := len(s1)
-    fmt.Printf("s1的长度是%d\n", length) //s1的长度是11
-    //len返回int类型
+    fmt.Printf("s1的长度是%d\n", length) //The length of s1 is 11.
+    //Len returns int type
     fmt.Printf("%T\n", length) //int
 
-    //拼接字符串
+    //Collapse String
     s2 := "面朝大海"
     s3 := "春暖花开"
-    fmt.Println(s2 + "," + s3) //面朝大海,春暖花开
+    fmt.Println(s2 + "," + s3) //Face to sea. Spring blossoms.
     s4 := fmt.Sprintf("%s,%s", s2, s3)
-    fmt.Println(s4) //面朝大海,春暖花开
+    fmt.Println(s4) //Face to sea. Spring blossoms.
 
-    //分割字符串
-    //strings.Split 可以将字符串用特定符号分割成字符串数组
+    //Split String
+    //You can divide strings into string numbers by a specific symbol. Group
     s5 := "床前明月光，疑似地上霜，举头望明月，低头思故乡"
     s6 := strings.Split(s5, "，")
-    fmt.Printf("%v\n", s6) //[床前明月光 疑似地上霜 举头望明月 低头思故乡]
-    fmt.Println(s6[2])     //举头望明月
+    fmt.Printf("%v\n", s6) //[Moonlight before bed, suspected frost on the ground, look up to the moon, look down at home]
+    fmt.Println(s6[2])     //Look up at the moon.
 
-    //判断是否包含
-    //不包含
+    //Whether or not to include
+    //Other Organiser
     if strings.Contains(s5, "s") {
         fmt.Println("包含")
     } else {
         fmt.Println("不包含")
     }
-    //判断前缀、后缀
+    //Prefix, postfix.
     if strings.HasPrefix(s5, "床前") {
         fmt.Println("包含前缀\"床前\"")
     }
@@ -250,17 +250,17 @@ func main() {
         fmt.Println("包含后缀\"故乡\"")
     }
 
-    //判断子串出现的位置
-    //子串"明月"出现的位置是：6
-    //因为一个字符是一个字节，一个rune占3个字节
+    //The location of the substring
+    //The sub-string "Tomorrow Moon" appears at 6:
+    //Because a character is a byte and a rune is three bytes.
     fmt.Printf("子串\"明月\"出现的位置是：%d\n",strings.Index(s5,"明月"))
-    //子串"明月"最后出现的位置是：45
+    //The last location of the sub-string is 45
     fmt.Printf("子串\"明月\"最后出现的位置是：%d\n",strings.LastIndex(s5,"明月"))
 
     //join
     var arr = []string{"hello","world"}
     arr2 := strings.Join(arr," ")
-    //将切片中的字符串用“空格”拼接
+    //Collapse the string in the slice with the Space
     fmt.Println(arr2)//hello world
 }
 ```
@@ -285,11 +285,11 @@ import "fmt"
 func main() {
     a := '中'
     b := 'a'
-    //rune类型实际上是int32
-    fmt.Printf("a的类型是 %T, b的类型是%T\n", a, b) //a的类型是 int32, b的类型是int32
+    //Rune type is actually in 32.
+    fmt.Printf("a的类型是 %T, b的类型是%T\n", a, b) //A type is int32, b type is int32
 
-    //这里uint8范围是0-255，而字符'中'超过了uint8的范围，utf-8编码'中'的编码是20013
-    //var c uint8 = '中'
+    //Here's the range of uint8 is 0-255, and the character's "above the range of uint8", the code of utf-8 is 20013.
+    //var c uint8 = 'in'
     //fmt.Println(c) //constant 20013 overflows uint8
 
     var c uint32 = '中'
@@ -297,21 +297,21 @@ func main() {
 
     var d rune = '人'
     fmt.Println(d)//20154
-    fmt.Printf("%T\n",d)//int32 所以说int32 == rune
+    fmt.Printf("%T\n",d)//= rune
 
-    //int32类型变量能直接赋值给rune类型，也进一步说明了rune与int32是同一种类型
+    //Int32 variable types can be given a direct value to the rune type, which further explains that rune is the same type as int32
     var f int32 = '民'
     d = f
-    fmt.Printf("%c\n",d)//民
+    fmt.Printf("%c\n",d)//Min
 
     s := "hello沙河"
-    //输出：
+    //Output:
     //104(h) 101(e) 108(l) 108(l) 111(o) 230(æ) 178(²) 153() 230(æ) 178(²) 179(³)
     for i := 0; i < len(s); i++ { //byte
         fmt.Printf("%v(%c) ", s[i], s[i])
     }
     fmt.Println()
-    //104(h) 101(e) 108(l) 108(l) 111(o) 27801(沙) 27827(河)
+    //104 (h) 101 (e) 108 (l) 108 (l) 111 (o) 27801 (sa) 27827 (river)
     for _, r := range s { //rune
         fmt.Printf("%v(%c) ", r, r)
     }
@@ -330,20 +330,20 @@ package main
 import "fmt"
 
 func main() {
-    //这首诗写错了，需要将“皓月”改为“明月”
+    //This poem is wrong. We need to change the word "Moon" to "Moon".
     s := "床前皓月光，疑似地上霜。举头望皓月，低头思故乡。"
     fmt.Println(&s)//0xc00004e1c0
-    //强制类型转换为rune数组数组
+    //Force type to rune arrays Group
     strArr := []rune(s)
-    //遍历，将皓改为明
+    //Let's go through it.
     for i,c := range strArr{
         if c == '皓'{
             strArr[i] = '明'
         }
     }
-    //强制转换回字符串
-    s = string(strArr)//床前明月光，疑似地上霜。举头望明月，低头思故乡。
-    //打印改变后的字符串和地址
+    //Force conversion back to string
+    s = string(strArr)//In front of the bed, the moonlight appears to be frost. Look forward to the moon tomorrow and think back home.
+    //Print changed string and address
     fmt.Println(s)
     fmt.Println(&s)//0xc00004e1c0
 }
@@ -363,14 +363,14 @@ For example, when calculating the hypotenuse of a right triangle using the Sqrt(
 func sqrtDemo() {
     var a, b = 3, 4
     var c int
-    // math.Sqrt()接收的参数是float64类型，需要强制转换
+    // Math.Sqrt() accepted parameter is float64 type, mandatory conversion required
     c = int(math.Sqrt(float64(a*a + b*b)))
     fmt.Println(c)
 }
 ```
 
 #### Exercise
-1. Write a program to count the number of Chinese characters in the string "hello沙河小王子なつめ".
+1. Writer a program to count the number of Chinese princes in the string "hello"
 ```go
 package main
 
@@ -379,14 +379,14 @@ import (
     "unicode"
 )
 
-//判断是否字符是汉字
+//Whether the characters are Han
 func isHan(char rune) bool {
     return unicode.Is(unicode.Han, char)
 }
 
 func main() {
     /*
-        练习题：编写程序，统计字符串 "hello沙河小王子なつめ"中汉字的个数
+        Practice question: Writing program, counting the number of Chinese characters in the string "Hello Shai"
     */
     str := "hello沙河小王子なつめ"
     var hanNums int
@@ -395,7 +395,7 @@ func main() {
             hanNums++
         }
     }
-    fmt.Printf("汉字个数是%d\n", hanNums)//汉字个数是5
+    fmt.Printf("汉字个数是%d\n", hanNums)//The Han count is five.
 
 }
 

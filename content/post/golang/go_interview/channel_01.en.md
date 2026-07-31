@@ -7,7 +7,7 @@ keywords: []
 description: ""
 tags: ["Interview Questions"]
 categories: ["Golang Series"]
-author: "钱文军"
+author: "Wenjun Qian"
 ---
 
 # Interview Question
@@ -36,19 +36,19 @@ import (
 	"sync"
 )
 
-// 面试题：每个函数起一个goroutine,轮流打印 cat dog fish 各100次
-// 3个goroutine, 打印顺序是 cat dog fish cat dog fish ... 依此类推
+// Interview questions: one goroutine per function, printing cat dog fish every 100 times
+// 3 Goroutine, print order is cat dog fish cat dog fish... and so on.
 var wg sync.WaitGroup
 
 func main() {
 	chCatOk := make(chan struct{}, 1)
 	chDogOk := make(chan struct{}, 1)
 	chFishOk := make(chan struct{}, 1)
-	wg.Add(3) // 有3个协程，所以加3
+	wg.Add(3) // There were three courses, so I added three.
 	go printAnimal("cat", chCatOk, chDogOk)
 	go printAnimal("dog", chDogOk, chFishOk)
 	go printAnimal("fish", chFishOk, chCatOk)
-	// 先通知cat执行
+	// Notify cat first.
 	chCatOk <- struct{}{}
 	wg.Wait()
 	fmt.Println("执行结束")
@@ -56,12 +56,12 @@ func main() {
 
 func printAnimal(word string, ch1 <-chan struct{}, ch2 chan<- struct{}) {
 	count := 0
-	// 退出前标记完成
+	// Mark completed before exit
 	defer wg.Done()
 	for _ = range ch1 {
 		fmt.Println(word)
 		count++
-		ch2 <- struct{}{} // 通知协程2你可以执行了
+		ch2 <- struct{}{} // Notify goroutine 2 that it may proceed.
 		if count == 100 {
 			return
 		}

@@ -23,52 +23,52 @@ In the previous article, we introduced how to deploy a Tomcat cluster using the 
 - The deployment command is as follows:
 
 ```shell
-kubectl create -f [部署yml脚本文件]  # 创建部署
+kubectl create -f [部署yml脚本文件]  # Create Deployment
 ```
 
 ## Basic Deployment Script Format
 
 ```yaml
-apiVersion: extensions/v1beta1  # api的版本号
-kind: Deployment                # 当前脚本的“类型” Deployment表示部署; Service表示服务；Pod表示Pod脚本
-metadata:                       # 元数据，主要用来配置当前部署脚本的基本信息
-  name: tomcat-deploy           # 当前部署的名称
-spec:                           # 详细定义信息
-  replicas: 2                   # 部署副本数量，也就是会起几个pod
-  template:                     # 部署模板信息
-    metadata:                   # 部署模板的元数据
-      labels:                   # pod标签
-        app: tomcat-cluster     # 这里指定了自定义的标签 tomcat-cluster
-    spec:                       # 模板的详细信息
-      containers:               # 容器相关信息
-      - name: tomcat-cluster    # 容器的名称
-        image: tomcat:latest    # 容器的镜像，这里是tomcat的最新版本镜像 tag为latest
+apiVersion: extensions/v1beta1  # Api's version number
+kind: Deployment                # The "type" of the current script indicates deployment; Service means service; Pod means Pod script
+metadata:                       # Metadata, mainly used to configure basic information on currently deployed scripts
+  name: tomcat-deploy           # Name of current deployment
+spec:                           # Detailed definition information
+  replicas: 2                   # Number of copies deployed, that's a few pops.
+  template:                     # Deployment template information
+    metadata:                   # Deployment of metadata for templates
+      labels:                   # Pod tag
+        app: tomcat-cluster     # Custom labels are specified here
+    spec:                       # Details of the template
+      containers:               # Container information
+      - name: tomcat-cluster    # Name of container
+        image: tomcat:latest    # Mirror of the container. Here's the latest version of Tomcat.
         ports:
-        - containerPort: 8080   # 容器对外暴露的端口
+        - containerPort: 8080   # Port for external exposure of containers
 ```
 
 ## Common kubectl Commands Related to Deployment
 
 ```shell
-# 创建部署
+# Create Deployment
 kubectl create -f 部署yml文件
 
-# 更新部署配置，如果是第一次部署，这个命令和 kubectl create 等效
+# Update deployment configuration, if first deployed, this command is equivalent to kubectl profile
 kubectl apply -f 部署yml文件
 
-# 查看已部署pod
+# View deployed pop
 kubectl get pod [-o wide]
 
-# 查看Pod详细信息
+# View Pod Details
 kubectl describe pod pod名称
 
-# 查看pod输出日志 -f 表示是否实时更新
+# See if pop output log -f is updated in real time
 kubectl logs [-f] pod名称
 
-# 查看已经创建的部署
+# View created deployments
 kubectl get deployment
 
-# 删除某个部署
+# Delete a deployment
 kubectl delete deployment 部署名称
 ```
 
@@ -126,7 +126,7 @@ Here, we store all deployment scripts in the `/usr/local/k8s/tomcat-deploy` dire
 
   We can see that two `pod` have been started, and both are in the `Running` state. These two `pod` are deployed on `node1` and `node2`, respectively.
 
-- At this point, the Tomcat cluster has been deployed. We can use the `kubectl describe pod [pod名称]` command to view detailed information about the pod deployment.
+- At this point, the Tomcat cluster has been deployed. We can use the `kubectl describe pod [pod-name]` command to view detailed information about the pod deployment.
 
   ```shell
   $ kubectl describe pod tomcat-deploy-5fd4fc7ddb-7vw4f
@@ -186,14 +186,14 @@ Here, we store all deployment scripts in the `/usr/local/k8s/tomcat-deploy` dire
 We deployed an `tomcat` cluster above, but this cluster can only be accessed from within the cluster. How can we expose `tomcat` for external access? Looking back at our `Deployment` deployment script, we can see the following two lines:
 
 ```
-# tomcat-deploy.yml文件
+# Tomcat-deploy.yml files
 ports:
         - containerPort: 8080
 ```
 
 We only set the container's exposed port to 8080, without configuring any settings for external access.
 
-As shown below, we can deploy a `服务`. This `服务` is also a pod and has its own virtual IP address and port. The service pod is deployed on the master node. When an external request arrives, it is first sent to port 8000 of the service and then distributed to the two Tomcat containers according to the load-balancing rules. The service here can be understood as a load balancer on the K8S cluster.
+As shown below, we can deploy a `Service`. This `Service` is also a pod and has its own virtual IP address and port. The service pod is deployed on the master node. When an external request arrives, it is first sent to port 8000 of the service and then distributed to the two Tomcat containers according to the load-balancing rules. The service here can be understood as a load balancer on the K8S cluster.
 
 ![image-20210115120623179](http://cdn1.jalen-qian.com/20210115120623ZjBsrcRTfZ.png)
 

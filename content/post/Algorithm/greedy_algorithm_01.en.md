@@ -8,7 +8,7 @@ keywords: []
 description: ""
 tags: ["Greedy Algorithms"]
 categories: ["Algorithms"]
-author: "钱文军"
+author: "Wenjun Qian"
 ---
 
 > A greedy algorithm solves a problem using a greedy strategy. Its core idea is to define a clear and effective strategy that selects the currently optimal solution at each step, with the expectation of reaching the global optimum. In some cases, a greedy strategy produces the optimal solution; in others, it does not. A successful greedy strategy is one that reaches the global optimum.
@@ -58,15 +58,15 @@ For example:
 
 ```
 ["def", "abc", "c"]
-按照这个策略排序，得到的结果是:["abc", "c", "def"]
-最终的结果就是："abccdef"
+By this strategy, the result is:
+The end result is "abccdef."
 ```
 
 The code implementation is:
 
 ```go
 func minConcatenation(arr []string) string {
-  // 传入的比较器，字典序小的排在前面，字典序大的排后面
+  // Incoming comparators, small dictionaries in front, large dictionaries in the back
     sort.Slice(arr, func(i, j int) bool {
         return arr[i] < arr[j]
     })
@@ -84,9 +84,9 @@ We can easily construct a counterexample, such as the following:
 
 ```
 ["ba","b"]
-排完序后是["b", "ba"]， 然后结果是 "bba"
+After the sequence, the result was "bba."
 
-但是很明显，正确答案是 "bab" 更小。
+But obviously, the correct answer is "bab" smaller.
 ```
 
 **A single counterexample is enough to show that this greedy strategy fails.**
@@ -109,7 +109,7 @@ The code implementation is:
 
 ```go
 func minConcatenation(arr []string) string {
-  // 传入的比较器，拼接后再比较 a.b < b.a 则 a 排前面, 否则b排前面
+  // The imported comparator, which will be compared after a.b < b.a., and a row in front, or b row in front
     sort.Slice(arr, func(i, j int) bool {
         return arr[i]+arr[j] < arr[j]+arr[i]
     })
@@ -141,31 +141,31 @@ Its value is `a * k^len(b) + b` (`a` multiplied by `k` raised to the power of th
 For convenience in the mathematical description, suppose ` k^len(b)` is represented by a function `m(b)`. We then have:
 
 ```
-上面的字符串拼接，分别可以表示为：
+, which can be defined as:
 1) a·b = a*m(b) + b
 2) b·a = b*m(a) + a
 3) b·c = b*m(c) + c
 4) c·b = c*m(b) + b
 
-则有：
+For example:
 1) a*m(b) + b <= b*m(a) + a
 2) b*m(c) + c <= c*m(b) + b
 
-我们将1)不等式两步共同减去一个b，然后再共同乘以c(由于c是字符串，是非负数，所以乘完后不改变符号方向)
+We're going to split it by two steps, minus one b, then multiply it by one c. Since c is a string and is a non-negative number, no sign direction is changed after multiplying)
 => a*m(b) <= b*m(a) + a - b
 => a*m(b)*c <= b*m(a)* c + a*c - b*c
 
-我们将2)不等式两边共同减去一个b，然后再乘以a(同理也不改变符号方向)
+We'll divide them by one b and multiply them by a.
 => b*m(c) + c - b <= c*m(b)
 => b*m(c)*a + a*c - a*b <= a*m(b)*c
 
-所以有：b*m(c)*a + a*c - a*b <= a*m(b)*c <= b*m(a)* c + a*c - b*c
-所以有：b*m(c)*a + a*c - a*b <= b*m(a)*c + a*c - b*c
-两边都有a*c，消除掉，得：
+Thus: b*m(c)*a + a*c - a*b < = a*m(b)*c < = b*m(a)*c + a*c - b*c
+Thus: b*m(c)*a + a*c - a*b < = b*m(a)*c + a*c - b*c
+There's a*c on both sides.
 a*b*m(c) - a*b <= b*c*m(a) - b*c
-将两边的b消除掉，得：
+Remove the b on both sides.
 a*m(c) - a <= c*m(a) - c
-而这个式子就是：a·c <= c·a
+And this is: a c < = c a
 ```
 
 From the derivation above, **we have proven that the sorting rule in Greedy Strategy 2 is transitive**.
@@ -181,19 +181,19 @@ After sorting, suppose `a` is any string that appears earlier and `b` is any str
 We now need to prove that **swapping the positions of `a` and `b` necessarily increases the lexicographic order of the entire result**. The proof is as follows:
 
 ```
-我们假设a和b之间只隔着两个字符串m1和m2，如下所示：
+We assume that there are only two strings m1 and m2 between a and b, as follows:
 [......a,m1,m2,b......]
-由于这是排好序的，所以 a·m1 肯定 <= m1·a
+As this is sequenced, a.m1 sure < = m1a
 [......a,m1,m2,b......] <= [......m1,a,m2,b......]
-同理，a在m2前面，a·m2 <= m2·a，所以如果继续将m2和a交换，有
+a Before m2, a. m2 < = m2 a, so if the exchange of m2 and a continues, yes
 [......m1,a,m2,b......] <= [......m1,m2,a,b......]
-同理有
+The same thing.
 [......m1,m2,a,b......] <= [......m1,m2,b,a......]
 [......m1,m2,b,a......] <= [......m1,b,m2,a......]
 [......m1,b,m2,a......] <= [......b,m1,m2,a......]
-由于上面已经证明了这种排序策略具有传递性，所以最终有：
+As this sorting strategy has been shown to be transmissible, it is ultimately:
 [......a,m1,m2,b......] <= [......b,m1,m2,a......]
-说明：任意交换最终数组中的任意两个字符串，都会使得最终的字典序增大。
+Note: Any exchange of any two strings in the final array increases the final dictionary sequence.
 ```
 
 Although the example above contains only two strings between `a` and `b`, it is easy to see that regardless of how many strings lie between them, swapping any such `a` and `b` will increase the lexicographic order of the final result. Therefore, after sorting, the overall concatenation must be lexicographically smallest. This completes the proof.
@@ -232,31 +232,31 @@ Now that we have introduced experimental verification using a test harness, we c
 The brute-force code is as follows:
 
 ```go
-// 方法一：暴力方法，获取所有可能的排列组合，并得到字典序最小的
+// Method I: Violent methods, with all possible sequencing and least dictionaries
 func minConcatenation1(arr []string) string {
     if len(arr) == 0 {
         return ""
     }
-    // 得到所有可能的排列组合拼接后的结果
+    // Get the results of all possible grouping.
     ans := process1(arr)
-    // 将这些结果按照字典序从小到大排序
+    // Sort the results from small to large by dictionary
     sort.Slice(ans, func(i,j int) bool {
         return ans[i] < ans[j]
     })
-    // 第1个就是要返回的值
+    // Number one is the return value.
     return ans[0]
 }
 
-// 传入一个字符串数组，返回所有排列组合后拼接的字符串结果
-// 比如传入 ["ab", "cd"]
-// 会返回 ["abcd", "cdab"]
+// Enter a string array and return the result of the string spelled after all grouping
+// Like in.
+// Will return ["abcd", "cdab"]
 func process1(arr []string) []string {
     ans := make([]string, 0)
     if len(arr) == 0 {
         ans = append(ans, "")
         return ans
     }
-    // 以i位置的字符串开头，然后将删除i位置的字符串后，剩下的字符串列表继续排列组合，并在头部拼接上i位置的字符串
+    // Starts with the string of the i position, and after the string of the i position is removed, the remaining string list continues to be organized and the characters of the i position are spelled on the head Thread
     for i := 0; i < len(arr); i++ {
         first := arr[i]
         removedList := removeIndexString(arr, i)
@@ -268,7 +268,7 @@ func process1(arr []string) []string {
     return ans
 }
 
-// 删除i位置的字符串，返回新的数组
+// Remove string from i position, return new number Group
 func removeIndexString(arr []string, index int) []string {
     N := len(arr)
     if N == 0 {
@@ -308,9 +308,9 @@ import (
 )
 
 func TestMinConcatenation(t *testing.T) {
-    testTimes := 100000 // 测试次数
-    maxStrLength := 5   // 样本中最大字符串长度
-    maxArrayLength := 6 // 样本中数组最大大小
+    testTimes := 100000 // Number of tests
+    maxStrLength := 5   // Maximum string length in sample
+    maxArrayLength := 6 // Maximum size of array in sample
     t.Log("测试开始...")
     for i := 0; i < testTimes; i++ {
         arr := generateRandomStrArr(maxStrLength, maxArrayLength)
@@ -349,10 +349,10 @@ func generateRandomString(maxLength int) string {
 }
 
 func copyStringArray(arr []string) []string {
-    // 创建一个新的字符串数组，长度与输入数组相同
+    // Create a new string array with the same length as the input array
     copiedArray := make([]string, len(arr))
 
-    // 使用循环将每个元素复制到新数组中
+    // Use a cycle to copy each element to a new array Medium
     for i, value := range arr {
         copiedArray[i] = value
     }

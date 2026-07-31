@@ -7,7 +7,7 @@ keywords: []
 description: ""
 tags: ["Algorithms","Binary Trees"]
 categories: ["Algorithms"]
-author: "钱文军"
+author: "Wenjun Qian"
 ---
 
 # Binary Trees
@@ -28,54 +28,54 @@ Binary trees can also be traversed level by level, visiting the nodes on each le
   2       3  
  / \     / \ 
 4   5   6   7
-遍历就是：1 2 3 4 5 6 7
+It's like: 1 2 3 4 5 6 7
 ```
 
 ### Traversing a Binary Tree Recursively
 #### 1. Preorder Traversal
 ```go
-// Pre 先序遍历
+// Pre performs a preorder traversal.
 func (r *RecursiveTraversalBT) Pre(root *Node) {
 	if root == nil {
 		return
 	}
-	// 先打印根节点
+	// Print root nodes first
 	fmt.Printf("%d ", root.Value)
-	// 再打印左子树
+	// Print left tree again
 	r.Pre(root.Left)
-	// 再打印右子树
+	// Print right subtree again
 	r.Pre(root.Right)
 }
 ```
 
 #### 2. Inorder Traversal
 ```go
-// In 中序遍历
+// In-Sequence
 func (r *RecursiveTraversalBT) In(root *Node) {
 	if root == nil {
 		return
 	}
-	// 先打印左子树
+	// Print left tree first
 	r.In(root.Left)
-	// 再打印自己
+	// Then visit the current node.
 	fmt.Printf("%d ", root.Value)
-	// 最后打印右子树
+	// Final printing of the right subtree
 	r.In(root.Right)
 }
 ```
 
 #### 3. Postorder Traversal
 ```go
-// Pos 后序遍历
+// Post-Pos Sequence
 func (r *RecursiveTraversalBT) Pos(root *Node) {
 	if root == nil {
 		return
 	}
-	// 先打印左子树
+	// Print left tree first
 	r.Pos(root.Left)
-	// 再打印右子树
+	// Print right subtree again
 	r.Pos(root.Right)
-	// 最后打印自己
+	// Finally visit the current node.
 	fmt.Printf("%d ", root.Value)
 }
 ```
@@ -88,10 +88,10 @@ func f(root *Node) {
 		return
 	}
 	fmt.Println("第一次到达")
-	// 遍历左子树
+	// Through the left tree.
 	f(root.Left)
 	fmt.Println("第二次到达")
-	// 遍历右子树
+	// Through the right tree.
 	f(root.Right)
 	fmt.Println("第三次到达")
 }
@@ -115,23 +115,23 @@ Explanation: For every subtree, its root node is pushed onto the stack first and
 
 The code is as follows:
 ```go
-// Pre 先序遍历
+// Pre performs a preorder traversal.
 func (r *UnRecursiveTraversalBT) Pre(root *Node) {
 	if root == nil {
 		return
 	}
-	// 创建一个栈，并先把根节点压入
+	// Create a stack and push the root node first.
 	stack := class_03.NewMyStack[*Node]()
 	stack.Push(root)
 	for !stack.IsEmpty() {
 		cur := stack.Pop()
-		// 出栈就打印
+		// Print when you're out.
 		fmt.Printf("%d ", cur.Value)
-		// 有右子树，就入栈
+		// If you have a right tree, you enter it.
 		if cur.Right != nil {
 			stack.Push(cur.Right)
 		}
-		// 有左子树，就入栈
+		// Push the left subtree when present.
 		if cur.Left != nil {
 			stack.Push(cur.Left)
 		}
@@ -151,7 +151,7 @@ The final output is therefore the reverse of root-right-left, which is left-righ
 
 The code is as follows:
 ```go
-// Pos1 后序遍历
+// Post-Pos1 Sequence
 func (r *UnRecursiveTraversalBT) Pos1(root *Node) {
 	if root == nil {
 		return
@@ -161,9 +161,9 @@ func (r *UnRecursiveTraversalBT) Pos1(root *Node) {
 	s1.Push(root)
 	for !s1.IsEmpty() {
 		head := s1.Pop()
-		// 只要出栈，不打印，而是压入另一个栈
+		// Just go out, don't print, but press into another.
 		s2.Push(head)
-		// 弹出后依次压入左和右，实现整体 头 右 左 的顺序弹出
+		// Push the left and right children to produce root-right-left order.
 		if head.Left != nil {
 			s1.Push(head.Left)
 		}
@@ -171,7 +171,7 @@ func (r *UnRecursiveTraversalBT) Pos1(root *Node) {
 			s1.Push(head.Right)
 		}
 	}
-	// 所有事情做完，依次将s2弹出
+	// Everything's done. Out
 	for !s2.IsEmpty() {
 		fmt.Printf("%d ", s2.Pop().Value)
 	}
@@ -216,33 +216,33 @@ Prepare a stack and a cur variable. Initially, cur points to the root node. Cont
 
 A concrete example:
 ```
-我们以这颗树为例：
+We take this tree as an example:
       1      
     /   \    
   2       3  
  / \     / \ 
 4   5   6   7
-1. 初始cur不断往左边界走，直到走到4，一直入栈，stack = 1 2 4  栈顶是4，此时cur走到4的左孩子，是空
-2. 弹出4打印，栈是 1 2，cur指向4的右孩子，cur又是空
-3. 弹出2打印，栈是 1，cur指向2的右孩子为5，不为空，5入栈，栈是 1 5，cur来到5的左孩子，是空
-4. 弹出5打印，栈是 1，cur指向5的右孩子为空
-5. 弹出1打印，栈是空，cur指向1的右孩子，是3
+1. At the beginning, cur went to the left border until it went to four, went to the inn, stack = one, two, four on the top, and then cur went to the left child, and it was empty.
+2. Eject 4 printing. The inn is 12, Cur points to the right child. Cur is empty.
+3. Eject 2 print, the stack is 1, Cur points to 5 to the right child, not empty, 5 to the left child, 15 to the left child, is empty
+4. Eject 5 print. The stack is 1, Cur points to the right child as empty.
+5. Pop one print, the inn is empty, Cur points to the right one, three.
 6. 3入栈，栈是3，cur指向3的左孩子6
 7. 6入栈，栈是3 6，cur指向6的左孩子，为空
-8. 弹出6打印，栈是3，cur指向6的右孩子为空
-9. 弹出3打印，栈为空，cur指向3的右孩子7
+8. Eject 6 print, the inn is 3, Cur points to the right child as empty.
+9. Eject 3 printout. The inn is empty. Cur points to the right child of 3.
 10.7入栈，栈是7，cur指向7的左孩子，是空
-11.弹出7打印，cur指向7的右孩子，是空，此时栈是空，cur也是空，循环退出。
-至此，依次打印了 4 2 5 1 6 3 7
+11.Eject 7 printing, Cur points to the right child of 7. It is empty, and it is empty, and Cur is empty and the cycle exits.
+So, four, two, five, one, six, three, seven.
 ```
 The code is as follows:
 ```go
-// In 中序遍历
+// In-Sequence
 func (r *UnRecursiveTraversalBT) In(root *Node) {
 	if root == nil {
 		return
 	}
-	// 创建一个栈，如果当前节点有左孩子，就压入，并不断往左边界靠
+	// Push nodes while following the left boundary of the tree.
 	stack := class_03.NewMyStack[*Node]()
 	cur := root
 	for !stack.IsEmpty() || cur != nil {
@@ -269,7 +269,7 @@ Prepare a queue and first enqueue the root node.
 
 Example:
 ```
-我们以这颗树为例：
+We take this tree as an example:
       1      
     /   \    
   2       3  
@@ -284,7 +284,7 @@ Example:
 7. 6弹出，打印，无左右子树，不入队列
 8. 7弹出，打印，入左右子树，不入队列
 
-综上，整体打印顺序是 1 2 3 4 5 6 7 按照层遍历。
+In summary, the overall print order is 1 2 3 4 5 6 7 by layer.
 ```
 Summary: This process traverses the tree level by level, but during traversal, we do not know where each level begins or ends. Some algorithm problems require this information, such as finding the maximum width of a level.
 
@@ -304,9 +304,9 @@ For example, during preorder traversal, nil nodes are not omitted but are repres
    /\      / \      / \     / \
  nil nil nil nil   nil nil nil nil
  
-先序方式序列化就是： "1,2,4,#,#,5,#,#,3,6,#,#,7,#,#"
+The sequence is: "1,2,4,#, #, 5, #, #, #, 3, 6, #, #, 7, #"
 
-反序列化时，也是按照先序的方式重新建树
+When it's re-sequenced, it's re-established in a priori way.
 ```
 
 A binary tree can be serialized and deserialized using preorder, postorder, or level-order traversal.
@@ -318,7 +318,7 @@ Consider the following two trees:
        /
       1
       
-      和
+      and
       1__
          \
           2
@@ -332,78 +332,78 @@ To avoid ambiguity, we specify that an empty tree must always be serialized as "
 ### Code Implementation
 
 ```go
-// 序列化和反序列化二叉树
+// Sequenced and inverse fork tree
 
-// 给定一个二叉树的头节点，返回序列化后的字符串
-// 规则：节点值之间用逗号隔开，空节点用#表示
+// Sets the head node of a fork tree, returns the serialized string
+// Rule: Comma-separated between node values and empty node #
 
-// SerializeAndReconstructBT 实现二叉树的序列化和反序列化
+// SerializeAndReconstractBT to sequence and inverse the fork tree
 type SerializeAndReconstructBT struct{}
 
-// PreSerialize 先序方式序列化成字符串
+// PreSerialize sequenced into string
 func (s *SerializeAndReconstructBT) PreSerialize(head *TreeNode) string {
 	queue := class_03.NewMyQueue[string]()
-	// 序列化
+	// Sequenced
 	s.preSerialize(head, queue)
-	// 将队列转换成字符串
+	// Convert Queue to String
 	return s.queueToStr(queue)
 }
 
-// 递归方式实现先序序列化
+// Recursively sequenced
 func (s *SerializeAndReconstructBT) preSerialize(head *TreeNode, queue *class_03.MyQueue[string]) {
 	if head == nil {
 		queue.Push("#")
 	} else {
-		// 先入队
+		// Let's go first.
 		queue.Push(strconv.Itoa(head.Val))
-		// 再递归左子树和右子树
+		// Then to the left and the right.
 		s.preSerialize(head.Left, queue)
 		s.preSerialize(head.Right, queue)
 	}
 }
 
-// InSerialize 中序方式序列化成字符串
+// Sequenced sequence of InSerialize
 func (s *SerializeAndReconstructBT) InSerialize(head *TreeNode) string {
 	queue := class_03.NewMyQueue[string]()
-	// 序列化
+	// Sequenced
 	s.inSerialize(head, queue)
-	// 将队列转换成字符串
+	// Convert Queue to String
 	return s.queueToStr(queue)
 }
 
-// 递归方式实现中序序列化
+// Recursively sequence the middle sequence
 func (s *SerializeAndReconstructBT) inSerialize(head *TreeNode, queue *class_03.MyQueue[string]) {
 	if head == nil {
 		queue.Push("#")
 	} else {
-		// 先执行左子树
+		// Do left tree first.
 		s.inSerialize(head.Left, queue)
-		// 再入队
+		// Incoming.
 		queue.Push(strconv.Itoa(head.Val))
-		// 再执行右子树
+		// And execute the right subtree.
 		s.inSerialize(head.Right, queue)
 	}
 }
 
-// PosSerialize 后序方式序列化成字符串
+// Pos Serialize Sequenced to String
 func (s *SerializeAndReconstructBT) PosSerialize(head *TreeNode) string {
 	queue := class_03.NewMyQueue[string]()
-	// 序列化
+	// Sequenced
 	s.posSerialize(head, queue)
-	// 将队列转换成字符串
+	// Convert Queue to String
 	return s.queueToStr(queue)
 }
 
-// 递归方式实现后序序列化
+// Recursive sequence
 func (s *SerializeAndReconstructBT) posSerialize(head *TreeNode, queue *class_03.MyQueue[string]) {
 	if head == nil {
 		queue.Push("#")
 	} else {
-		// 先执行左子树
+		// Do left tree first.
 		s.posSerialize(head.Left, queue)
-		// 再执行右子树
+		// And execute the right subtree.
 		s.posSerialize(head.Right, queue)
-		// 再入队
+		// Incoming.
 		queue.Push(strconv.Itoa(head.Val))
 	}
 }
@@ -425,50 +425,50 @@ func (s *SerializeAndReconstructBT) queueToStr(queue *class_03.MyQueue[string]) 
 	return ans
 }
 
-// LevelSerialize 按层遍历序列化
+// Level Serialize Sequence by Layer
 func (s *SerializeAndReconstructBT) LevelSerialize(head *TreeNode) string {
 	queue := class_03.NewMyQueue[string]()
-	// 序列化
-	// 准备一个Node队列，用来实现按层遍历的
+	// Sequenced
+	// Prepare a Node queue for all layers.
 	nodeQueue := NewTreeNodeQueue()
-	// 头节点先入队列
+	// First in line.
 	nodeQueue.Push(head)
 	for !nodeQueue.IsEmpty() {
-		// 先出队列一个
+		// Let's go first.
 		head = nodeQueue.Poll()
-		// 出队列就加入序列化，可能是空，要判断，空就序列化成#
+		// When you're out of the queue, add sequence. It's probably empty.
 		if head == nil {
 			queue.Push("#")
 		} else {
 			queue.Push(strconv.Itoa(head.Val))
-			// 左右子树入队列，不判断空，因为空也要序列化
+			// The right and right sub-trees are in the queue. They don't judge empty, because empty is sequenced.
 			nodeQueue.Push(head.Left)
 			nodeQueue.Push(head.Right)
 		}
 	}
-	// 将队列转换成字符串
+	// Convert Queue to String
 	return s.queueToStr(queue)
 }
 
-// 反序列化
+// Inverse sequence
 
-// BuildByPreSerialize 通过先序遍历序列化后的字符串反序列化成树
+// BuildByPreSerialize transforms the string back into a tree by sequencing it.
 func (s *SerializeAndReconstructBT) BuildByPreSerialize(preSer string) *TreeNode {
-	// 空树
+	// Empty Tree
 	if preSer == "" || preSer == "#" {
 		return nil
 	}
-	// 还原成序列化队列
+	// Revert to Serialization Queue
 	preQueue := s.getQueue(preSer)
-	// 根据队列来构建目标树
+	// Build a target tree by queue
 	ans := s.buildByPreQueue(preQueue)
 	return ans
 }
 
 func (s *SerializeAndReconstructBT) buildByPreQueue(queue *class_03.MyQueue[string]) *TreeNode {
-	// 从队列中取出一个，作为头节点
+	// Take one out of the queue as header Points
 	head := s.buildNodeByQueue(queue)
-	// 递归
+	// Recursive
 	if head != nil {
 		head.Left = s.buildByPreQueue(queue)
 		head.Right = s.buildByPreQueue(queue)
@@ -476,7 +476,7 @@ func (s *SerializeAndReconstructBT) buildByPreQueue(queue *class_03.MyQueue[stri
 	return head
 }
 
-// BuildByPosSerialize 通过后序遍历序列化后的字符串反序列化成树
+// BuildByPosSerialize inverse string to tree after serialization
 //        1
 //       / \
 //      2   3
@@ -484,36 +484,36 @@ func (s *SerializeAndReconstructBT) buildByPreQueue(queue *class_03.MyQueue[stri
 //        4
 // #,#,2,#,#,4,#,3,1
 func (s *SerializeAndReconstructBT) BuildByPosSerialize(posSer string) *TreeNode {
-	// 空树
+	// Empty Tree
 	if posSer == "" || posSer == "#" {
 		return nil
 	}
-	// 后序遍历队列顺序：左 右 头， 先是左子树，再是右子树，最后是头节点
-	// 而先序遍历我们已经实现了，先序遍历为：头，左，右。
+	// Back-to-back sequences: left right head, first left tree, then right subtree, then head node
+	// And we've done it all the time: head, left, right.
 
-	// 在改后序遍历非递归方法的代码时，我们是先将先序遍历的 头，左，右 改成 头，右，左 （这个改动很简单，交换两行代码顺序就能做到，本质是一样的）
-	// 然后再用一个栈来逆序，改成了 左，右，头的顺序，也就是实现了后序遍历（每次要打印时，不打印，而是入栈，最后弹出）
+	// In reordering the code of the non-retrogression method, we're going to start with the head, left, right, then the head, right, left.
+	// And then you reverse it with a stack, and you turn it into a left, right, head sequence, which means you've got to go through it.
 
-	// 这里也是一样，如果将posSer的值按顺序压入一个栈中，则变成了 头，右，左的顺序，然后我们再按照先序遍历的方式处理
+	// It's the same here, if the value of the posser is pressed sequentially into a canal, it becomes the head, right, left order, and then we proceed in a sequential way.
 
-	// 还原成序列化栈
+	// Revert to Serialized Stack.
 	posStack := s.getStack(posSer)
-	// 根据队列来构建目标树
+	// Build a target tree by queue
 	ans := s.buildByPosStack(posStack)
 	return ans
 }
 
 func (s *SerializeAndReconstructBT) buildByPosStack(posStack *class_03.MyStack[string]) *TreeNode {
-	// 当前栈是 头 右 左的顺序，先弹出的是头，再弹出的是右子树，再弹出的是左子树
-	// 1. 弹出头的值
+	// The current stack is the head, right, left, first the head, then the right, then the left.
+	// 1. Ejection value
 	strValue := posStack.Pop()
 	if strValue == "#" {
 		return nil
 	}
-	// 先构建头节点
+	// Build header first
 	headValue, _ := strconv.Atoi(strValue)
 	head := &TreeNode{Val: headValue}
-	// 递归，构建左右子节点，注意栈中的顺序是 头 右 左，所以构建时，也要遵循先右后左的顺序
+	// Recursive, build left and right subpoints, note that the order in the stack is head right left, so build follows the order first right and then left
 	if head != nil {
 		head.Right = s.buildByPosStack(posStack)
 		head.Left = s.buildByPosStack(posStack)
@@ -521,7 +521,7 @@ func (s *SerializeAndReconstructBT) buildByPosStack(posStack *class_03.MyStack[s
 	return head
 }
 
-// BuildByLevelSerialize 按层遍历的方式反序列化
+// BuildByLevelSerialize back-sequencing in layers
 //        1
 //       / \
 //      2   3
@@ -529,27 +529,27 @@ func (s *SerializeAndReconstructBT) buildByPosStack(posStack *class_03.MyStack[s
 //        4
 // 1,2,3,#,#,4,#,#,#
 func (s *SerializeAndReconstructBT) BuildByLevelSerialize(preSer string) *TreeNode {
-	// 空树
+	// Empty Tree
 	if preSer == "" || preSer == "#" {
 		return nil
 	}
-	// 还原成序列化队列
+	// Revert to Serialization Queue
 	preQueue := s.getQueue(preSer)
-	// 根据队列来构建目标树
+	// Build a target tree by queue
 	ans := s.buildByLevelQueue(preQueue)
 	return ans
 }
 
 func (s *SerializeAndReconstructBT) buildByLevelQueue(queue *class_03.MyQueue[string]) *TreeNode {
 	head := s.buildNodeByQueue(queue)
-	// 构建一个Node队列
+	// Build a Node queue
 	nodeQueue := NewTreeNodeQueue()
-	// 头节点入队列
+	// Queue front nodes
 	nodeQueue.Push(head)
 	for !nodeQueue.IsEmpty() {
-		// 头节点出队列
+		// Queue header
 		node := nodeQueue.Poll()
-		// 构建当前head的左子树 queue中的下两个一定是当前节点的左右子树
+		// The next two of the left trees of the current head queue must be the right and right trees of the current node
 		left := s.buildNodeByQueue(queue)
 		right := s.buildNodeByQueue(queue)
 		if node != nil {
@@ -669,7 +669,7 @@ func (this *Codec) encode(root *Node) *TreeNode {
 	return btRoot
 }
 
-// 将所有孩子挂在btRoot的左孩子右边界上
+// Attach all children along the right boundary of btRoot's left child.
 func (this *Codec) ec(children []*Node) *TreeNode {
 	var head *TreeNode
 	var cur *TreeNode
@@ -722,8 +722,8 @@ For example:
               6
                \
                 7
-第2 3层的宽度都是2，则返回2。
-显然不是层数越高宽度越高。
+The width of the 2rd layer is 2 and returns 2.
+Obviously it's not the higher the width of the layers.
 ```
 
 ### Approach
@@ -747,44 +747,44 @@ Suppose a tree has the following structure:
 The process proceeds as follows:
 ```
 max=0; curEnd=nil; nextEnd=nil; count=0;
-1. 遍历到1,1入队列，curEnd = 1; queue = [1];
+1. Queue to 1, 1, Curend = 1; queue = [1];
 
 2. 1出队列，count++; 
-   1左孩子2入队列，nextEnd=2; 
-   1右孩子3入队列，nextEnd=3; 
-   由于1==curEnd，当前行结束，max更新为1，同时curEnd=nextEnd,nextEnd=nil, count清零; 
-   最终：queue=[3,2]; count=0; max=1; curEnd=3; nextEnd=nil
+   1Left child 2 in queue, nextend = 2;
+   1Right child 3 in line, nextend = 3;
+   As 1=curEnd, the current line ends, max is updated to 1, while curEnd=nextEnd, nextEnd=nil, count zero;
+   Final: queue= [3,2]; count=0; max=1; Curend=3; nextend= Neil
 
 3. 2出队列，count++，count=1;
-   2左孩子4入队列，nextEnd=4;
-   2右孩子5入队列，nextEnd=5;
-   最终：queue=[5,4,3]; count=1; max=1; curEnd=3; nextEnd=5;
+   2Left child 4 in line, nextend = 4;
+   2Right child 5 in line, nextend = 5;
+   Ultimately: queue= [5,4,3]; count=1; max=1; Curend=3; nextend=5;
 
 4. 3出队列，count++,count=2;
-   3没有左孩子，不如队列
-   3右孩子入队列，nextEnd=6;
-   由于3==curEnd，当前行结束，max更新为2，同时curEnd=nextEnd,nextEnd=nil, count清零
-   最终：queue=[6,5,4]；count=0; max=2; curEnd=6; nextEnd=nil;
+   3No left child, why don't we line up?
+   3Right child in line, nextend = 6;
+   As 3=curEnd, current line end, max update to 2, while curEnd=nextEnd, nextEnd=nil, count zero
+   Final: queue = [6,5,4]; count = 0; max = 2; Curend = 6; nextend = Neil;
 
 5. 4出队列，count++，count=1，4没有孩子，不入队列。
 
 6. 5出队列，count++，count=2；
-   5的左孩子7入队列，nextEnd=7;
-   最终：queue=[7,6]; count=2; max=2; curEnd=6; nextEnd=7;
+   5Left child 7 in line, nextend = 7;
+   Ultimately: queue = [7,6]; count = 2; max = 2; Curend = 6; nextend = 7;
 
 7. 6出队列，count++，count=3；
-   6的右孩子8入队列，nextEnd=8;
-   由于6==curEnd，当前行结束，max更新为3，同时curEnd=nextEnd,nextEnd=nil, count清零
-   最终：queue=[8,7]; count=0; max=3; curEnd=8; nextEnd=nil;
+   6Right child 8 in line, nextend = 8;
+   Due to 6=curEnd, current line end, max update to 3 with curEnd=nextEnd, nextEnd=nil, count zero
+   Final: queue = [8,7]; count = 0; max = 3; Curend = 8; nextend = Neil;
    
 8. 7出队列，count++,count=1;
-   7没有孩子，不入队列，7也不等于curEnd，当前行继续;
+   7No children, no queue, 7 is not the same as curend, and the current line continues;
    
 9. 8出队列，count++,count=2;
-   8没有孩子，不入队列；
-   由于8==curEnd，当前行结束，max=3比2大不更新，同时curEnd=nextEnd,nextEnd=nil, count清零。
-   最终：queue=[]; count=2; max=3; curEnd=nil; nextEnd=nil;
-   此时队列为空，整个遍历流程结束，返回最大值3。
+   8No children, no queues;
+   As a result of 8=curEnd, the current line ends, max = 3 = 2 = not updated, while curEnd = nextEnd, nextEnd = Nil, count zero.
+   Ultimately: queue=[]; count=2; max=3; Curend=nil; nextend=nil;
+   At this point, the team is empty and the entire process is over and returns the maximum value 3.
 
 ```
 Summary: Whenever a node is visited—that is, dequeued—we prepare the final node of the next level in advance and continually move it to the right. When the current level ends, nextEnd will point exactly to the final node of the next level.
@@ -797,27 +797,27 @@ package class_11_12
 
 import "ZuoShenAlgorithmGo/utils"
 
-// 给定一颗二叉树，返回最大的宽度
+// Set a fork tree and return maximum width
 
-// MaxWidth 不使用容器实现
+// MaxWidth doesn't use containers to make it happen.
 func MaxWidth(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	// 生成一个TreeNode类型的队列
+	// Generate a queue of the FreeNode type
 	queue := NewTreeNodeQueue()
-	var curEnd = root     // 当前行的结束
-	var nextEnd *TreeNode // 下一行的结束
-	var count int         // 统计当前行的宽度
-	var max int           // 整个树最大的宽度
-	// 先将头节点入队
+	var curEnd = root     // End of current line
+	var nextEnd *TreeNode // End of next line
+	var count int         // Statistics the width of the current row
+	var max int           // Maximum width of the whole tree
+	// Enqueue the root node first.
 	queue.Push(root)
-	// 队列不为空，则一直进行
+	// Queue is not empty, but it's going on.
 	for !queue.IsEmpty() {
-		// 弹出一个节点，就统计当前行宽度+1
+		// Dequeue one node and increment the current level width.
 		cur := queue.Poll()
 		count++
-		// 只要有左右子树，则一定是下一行的，下一行结束节点先记住
+		// As long as there are right and right trees, it's the next line. Stay.
 		if cur.Left != nil {
 			queue.Push(cur.Left)
 			nextEnd = cur.Left
@@ -826,7 +826,7 @@ func MaxWidth(root *TreeNode) int {
 			queue.Push(cur.Right)
 			nextEnd = cur.Right
 		}
-		// 判断当前行是否现在结束了，如果当前行结束了，则统计max，并重置count,curEnd,nextEnd 3个变量
+		// Determines whether the current line is now over, and if the current line is over, calculates max and resets the count, curend, nextend 3 variables
 		if cur == curEnd {
 			max = utils.Max(max, count)
 			count = 0
@@ -837,38 +837,38 @@ func MaxWidth(root *TreeNode) int {
 	return max
 }
 
-// MaxWidthWithMap 使用容器实现
+// MaxWidthWithMap
 func MaxWidthWithMap(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	// 生成一个TreeNode类型的队列
+	// Generate a queue of the FreeNode type
 	queue := NewTreeNodeQueue()
-	// 生成一个map记录每个节点在第几层
+	// Generate a Map to record each node at the first level
 	nodeLevelMap := make(map[*TreeNode]int)
-	curLevel := 1 // 记录当前在第几层
-	count := 0    // 统计当前层的个数
-	max := 0      // 统计整棵树最大的宽度
-	// 先将头节点入队，同时标记root在第1层
+	curLevel := 1 // Recording the current level
+	count := 0    // Number of current layers of statistics
+	max := 0      // Count the maximum width of the whole tree
+	// First head node in line, while marking root on the first floor.
 	queue.Push(root)
 	nodeLevelMap[root] = 1
 
-	// 队列不为空，则一直进行
+	// Queue is not empty, but it's going on.
 	for !queue.IsEmpty() {
-		// 弹出一个节点
+		// Popup a Node
 		cur := queue.Poll()
-		// 获取这个节点在第几层
+		// Get this node on the first floor.
 		curNodeLevel := nodeLevelMap[cur]
-		// 如果还是当前层，则当前层的数量++
+		// If current layer, the number of current layer ++
 		if curNodeLevel == curLevel {
 			count++
 		} else {
-			// 如果不是当前层了，则curLevel跳到下一层
+			// If it's not the current layer, CurLevel jumps to the next layer.
 			curLevel = curNodeLevel
 			count = 1
 		}
 		max = utils.Max(max, count)
-		// 只要有左右子树，则一定是下一行的，入队同时将层数记录下来
+		// As long as there's a tree on the right and the right, it's the next line.
 		if cur.Left != nil {
 			queue.Push(cur.Left)
 			nodeLevelMap[cur.Left] = curLevel + 1
@@ -936,7 +936,7 @@ package class_11_12
 
 import "ZuoShenAlgorithmGo/class_03"
 
-// 给定一个有父指针的二叉树的某个节点，返回该节点的后继节点
+// Sets a node of a fork tree with a parent pointer, returns the node of the node Points
 
 type TreeNodeP struct {
 	Val    int
@@ -949,11 +949,11 @@ func GetSuccessorNode(node *TreeNodeP) *TreeNodeP {
 	if node == nil {
 		return nil
 	}
-	// 有右子树，则获取右子树最左侧的节点
+	// With right subtree, get the leftmost node of the right subtree
 	if node.Right != nil {
 		return getLeftMost(node.Right)
 	} else {
-		// 没有右子树
+		// No right tree.
 		parent := node.Parent
 		for parent != nil && parent.Right == node {
 			node = parent
@@ -963,9 +963,9 @@ func GetSuccessorNode(node *TreeNodeP) *TreeNodeP {
 	}
 }
 
-// 找一棵树最左侧的节点
+// Find the left end of a tree.
 func getLeftMost(node *TreeNodeP) *TreeNodeP {
-	// 一直往左划，直到划到Left为空
+	// Row left until Left is empty.
 	cur := node
 	for cur.Left != nil {
 		cur = cur.Left
@@ -973,26 +973,26 @@ func getLeftMost(node *TreeNodeP) *TreeNodeP {
 	return cur
 }
 
-// GetSuccessorNodeNormal 普通方法找到后继节点，同时做对数器测试
+// GetSuccessor NodeNormal common method to find a follow-up node and do a logarithmometer test
 func GetSuccessorNodeNormal(node *TreeNodeP) *TreeNodeP {
 	if node == nil {
 		return nil
 	}
-	// 找到根节点
+	// Found Roots
 	root := node
 	for root.Parent != nil {
 		root = root.Parent
 	}
-	// 中序遍历
+	// Middle Sequence
 	inQueue := class_03.NewMyQueue[*TreeNodeP]()
 	inTreeNodeP(root, inQueue)
-	// 中序遍历顺序弹出，并找下一个
+	// Middle-sequence eject and find the next
 	for !inQueue.IsEmpty() && inQueue.Peek() != node {
 		inQueue.Poll()
 	}
-	// 弹出当前节点
+	// Popup Current Node
 	inQueue.Poll()
-	// 弹出当前节点的下一个
+	// Popup Next of the current node
 	return inQueue.Poll()
 }
 
@@ -1024,14 +1024,14 @@ After folding three times, a concave crease and a convex crease appear above and
 In other words, each time we fold the paper, a concave crease and a convex crease appear above and below every crease introduced during the previous fold. This forms a complete binary tree, as shown below:
 
 ```                      
-我们用|表示凹折痕，用}表示凸折痕，对折3次的样子如下：
+We're dented, } } } } , and three times folded as follows:
 
-                         1凹
+                         1Dent
                     /            \
-              2凹                       2凸
+              2Zoom 2
             /     \                  /      \
-        3凹        3凸           3凹           3凸        
-上 【    |    |     }     |       |      }      }     】 下
+        3Zoom. Three. Three.
+Go, go, go, go!
 ```
 
 The objective of the problem is to print the inorder traversal of the tree above.
@@ -1048,33 +1048,33 @@ package class_11_12
 
 import "fmt"
 
-// 二叉树折纸问题
+// The issue of dident tree origami
 
-// PrintAllFolds 折N次依次打印折痕顺序
+// PrintAllFolds in the order in which the creases are printed in turn
 func PrintAllFolds(n int) {
-	// 从第1层开始打印（从根节点开始），而且总共有n，且第1层的折痕是凹折痕
+	// Print from 1st floor (starting with root node) and a total of n, and the creases from 1st layer are dent marks
 	process(1, n, true)
 	fmt.Println()
 }
 
-// 递归过程：想象一个如题的二叉树，当前是在这个二叉树的第i层的某个节点，总共有N层。
-// 并且当前节点的折痕是 down == true 则是凹折痕，false 则为凸折痕
-// 打印这个子树的中序遍历
+// Recursive process: Imagine a problem-like fork tree, which is currently at some point in the first layer of the fork tree, with a total of N layers.
+// And the crease of the current node is down = true, the dent, the false.
+// Print the middle sequence of this subtree
 func process(i int, n int, down bool) {
-	// 如果当前层已经超过了总层数，则返回
+	// If the current layer exceeds the total number, return
 	if i > n {
 		return
 	}
-	// 先左再头再右，中序遍历。
-	// 先打印左子树，我的左子树一定是凹折痕，且层数比我大1
+	// First left, then head, and then right.
+	// I'll print the left tree. My left tree must have a dent and a layer bigger than me.
 	process(i+1, n, true)
-	// 再打印我自己
+	// Print me again.
 	if down {
 		fmt.Print("凹 ")
 	} else {
 		fmt.Print("凸 ")
 	}
-	// 最后打印右子树，我的右子树一定是凸折痕，且层数比我大1
+	// Finally printing the right tree, my right tree must be crumbling, and it's one more layer than I am.
 	process(i+1, n, false)
 }
 ```

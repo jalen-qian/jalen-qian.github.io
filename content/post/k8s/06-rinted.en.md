@@ -3,7 +3,7 @@ title: "K8S Notes 6: Implementing Service Load Balancing with Rinetd"
 date: 2021-01-15T09:47:00+08:00
 lastmod: 2021-01-15T09:47:00+08:00
 draft: false
-keywords: ["K8S","Rinetd","负载均衡"]
+keywords: ["K8S","Rinetd","load balancing"]
 description: "desc"
 tags: ["K8S","Rinetd","Load Balancing"]
 categories: ["K8S","Rinetd","Load Balancing"]
@@ -26,15 +26,15 @@ kind: Service
 metadata:
   name: tomcat-service
   labels:
-    app: tomcat-service # Service也是一个特殊的pod，需要设置lables
+    app: tomcat-service # Service is a special pop that needs to be set up.
 spec:
-#  type: NodePort # Service类型
+#  Type: NodePort #Service
   selector:
-    app: tomcat-cluster # 指定绑定的pod
+    app: tomcat-cluster # Specify bound pod
   ports:
-  - port: 8000 # Service在k8s集群内部暴露的端口
-    targetPort: 8080 # 被映射的容器暴露端口
-#    nodePort: 32500 # 集群每个Node节点上对外暴露的端口
+  - port: 8000 # Service was exposed inside the K8s cluster. Port
+    targetPort: 8080 # Maped container exposure end mouth
+#    # External exposure at every Node node in the cluster Port
 ```
 
 ![image-20210115173037045](http://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png)
@@ -43,27 +43,27 @@ Apply the Service changes:
 
 ```shell
 $ kubectl apply -f tomcat-service.yml
-# 查看服务状态
+# View service status
 $ kubectl get service
-# 输出信息如下
+# Output message
 NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
 kubernetes       ClusterIP   10.96.0.1       <none>        443/TCP    23h
 tomcat-service   ClusterIP   10.99.160.131   <none>        8000/TCP   2m23s
-#这里可以看到服务的虚拟IP为 10.99.160.131 
+#Here you can see the virtual IP for service is 10.99.160.131.
 ```
 
 Add the user test file `index.jsp` to the NFS shared directory to verify the load-balancing behavior.
 
 ```shell
-# 在Master节点（NFS Server）中执行如下命令
+# Execute the following order in Master Node (NFS Server)
 $ mkdir /usr/local/data/www-data/test/
-# 编写一个用户测试的jsp文件
+# Prepare a user tested jsp file
 $ echo "IP:<%=request.getLocalAddr()%>" > /usr/local/data/www-data/test/index.jsp
-# 查看Service内部IP
+# View Service Internal IP
 $ kubectl get service tomcat-service
-# 使用curl测试，10.99.160.131 为上一步中获取的 ClusterIP
+# Using curl testing, 10.99.160.131 for the ClusterIP obtained in the previous step
 $ curl 10.99.160.131:8000/test/index.jsp
-# 返回处理请求的pod容器的ip
+# Return to ip for processing requested pod containers
 # IP:10.244.2.10
 # IP:10.244.1.10
 ```
@@ -85,22 +85,22 @@ In the preceding steps, we implemented load balancing within the cluster. During
 `Rinetd` can only be installed from source code.
 
 ```shell
-# 进入到 /usr/local目录
+# Enter to /usr/ local directory
 $ cd /usr/local
-# 下载rinetd安装包
+# Download rinetd installation package
 $ wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
-# 如果没有wget yum install wget 下载
-# 解压
+# Other Organiser
+# Unpressure
 $ tar -zxvf rinetd.tar.gz
-# 进入解压的目录
+# Enter the depressure directory
 $ cd rinetd
-# 修改目录下的 rinetd.c ,改变端口范围
+# Modify rinnetd.c in directory, change port range
 $ sed -i 's/65536/65535/g' rinetd.c
-# 创建rinted依赖目录，这个目录是rinetd这个软件强制要求，必须手动创建
+# Create a rinted dependent directory, which is mandatory for the software, which must be created manually
 $ mkdir -p /usr/man/
-# 安装C语言编译器
+# Installation of a C-language compiler
 $ yum install -y gcc
-# 编译并安装
+# Compile and install
 $ make && make install
 ```
 
@@ -110,9 +110,9 @@ We need to add the configuration file `/etc/rinetd.conf`.
 
 ```shell
 $ vim /etc/rinetd.conf
-# 增加IP映射，这句的意思是，将所有访问本机8000端口的请求，都转发到虚拟IP 10.99.160.131的8000端口
+# Add IP map, which means forwarding all requests for access to the 8000 port on the virtual IP 10.99.16.131 mouth
 0.0.0.0 8000 10.99.160.131 8000
-# 或者直接执行 echo "0.0.0.0 8000 10.99.160.131 8000" > /etc/rinetd.conf
+# Or direct execution of echo "0.0.0.0.8000 10.99.160.131.800 " /etc/rined.conf
 ```
 
 ## Running Rinetd.conf

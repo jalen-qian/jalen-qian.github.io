@@ -20,17 +20,17 @@ The syntax for `if` conditional statements in Go is as follows:
 
 ```go
 if 表达式1 {
-    分支1
+    Branch 1
 } else if 表达式2 {
-    分支2
+    Branch 2
 } else{
-    分支3
+    Branch 3
 }
 ```
 
 When expression 1 evaluates to `true`, branch 1 is executed. Otherwise, expression 2 is evaluated. If it is satisfied, branch 2 is executed. If neither condition is satisfied, branch 3 is executed. Both `else if` and `else` in an if statement are optional and can be included as needed.
 
-Go requires the opening brace `{` that corresponds to `if` to appear on the same line as `if和表达式`. Placing `{` elsewhere will trigger a compilation error. Similarly, `{` corresponding to `else` must appear on the same line as `else`, and `else` must also appear on the same line as the closing brace of the preceding `if` or `else if`.
+Go requires the opening brace `{` that corresponds to `if` to appear on the same line as the `if` expression. Placing `{` elsewhere will trigger a compilation error. Similarly, `{` corresponding to `else` must appear on the same line as `else`, and `else` must also appear on the same line as the closing brace of the preceding `if` or `else if`.
 
 For example:
 
@@ -73,7 +73,7 @@ The basic syntax of a for loop is as follows:
 
 ```bash
 for 初始语句;条件表达式;结束语句{
-    循环体语句
+    Cycle statement
 }
 ```
 
@@ -116,7 +116,7 @@ This syntax is similar to `while` in other programming languages. A conditional 
 
 ```go
 for {
-    循环体语句
+    Cycle statement
 }
 ```
 
@@ -225,13 +225,13 @@ func gotoDemo1() {
     for i := 0; i < 10; i++ {
         for j := 0; j < 10; j++ {
             if j == 2 {
-                // 设置退出标签
+                // Set Exit Tab
                 breakFlag = true
                 break
             }
             fmt.Printf("%v-%v\n", i, j)
         }
-        // 外层for循环判断
+        // Outer for circulation judgement
         if breakFlag {
             break
         }
@@ -246,14 +246,14 @@ func gotoDemo2() {
     for i := 0; i < 10; i++ {
         for j := 0; j < 10; j++ {
             if j == 2 {
-                // 设置退出标签
+                // Set Exit Tab
                 goto breakTag
             }
             fmt.Printf("%v-%v\n", i, j)
         }
     }
     return
-    // 标签
+    // Label
 breakTag:
     fmt.Println("结束for循环")
 }

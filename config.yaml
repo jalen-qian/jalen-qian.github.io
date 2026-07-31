@@ -19,6 +19,9 @@ languages:
         title: Jalen's blog
         description:
         weight: 2
+        params:
+            sidebar:
+                subtitle: Focused on Go (Golang), Java, cloud-native technologies, mobile internet, project management, and software architecture.
 
 # Change it to your Disqus shortname before using
 disqusShortname: stack

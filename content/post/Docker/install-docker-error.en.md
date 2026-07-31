@@ -43,30 +43,30 @@ For the first method, [this article](https://www.runoob.com/docker/centos-docker
 
 **Download the RPM package for `containerd.io` and install the new version of containerd.io**
 ```
-## 如果你的系统没有安装wget，先安装
+## If your system isn't installed, install it first.
 $sudo yum install -y wget
 
-## Centos7执行下面的命令 
+## Centos 7 executes the following orders.
 $wget https://download.docker.com/linux/centos/7/x86_64/edge/Packages/containerd.io-1.3.7-3.1.el7.x86_64.rpm
 
-## Centos8执行下面的命令
+## Cantos 8 carries out the following orders.
 $wget https://download.docker.com/linux/centos/8/x86_64/edge/Packages/containerd.io-1.3.7-3.1.el8.x86_64.rpm
 
-## 执行完后，当前目录下会有一个containerd.io-1.3.7-XXX.rpm文件
-## 使用这个rpm安装
+## After implementation, there will be a containerd.io-1.3.7-XXX.rpm file under the current directory
+## Install with this rpm
 $sudo yum install -y containerd.io-1.3.7-3.1.el8.x86_64.rpm
 
-## 安装完后再安装docker
+## Docker will be installed after installation
 $sudo yum install docker-ce docker-ce-cli containerd.io
 
 ```
 
 #### Verify That Docker Was Installed Successfully
 ```
-#启动docker
+#Start Docker
 
 $systemctl start docker
 
-#检查docker版本
+#Check the docker version
 $docker -v
 ```

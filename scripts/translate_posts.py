@@ -89,12 +89,14 @@ Requirements:
    - aiTranslate
 6. Preserve protected placeholder tokens exactly. Never translate,
    delete, duplicate, or modify them.
-7. Preserve code, commands, class names, method names, variable names,
-   file paths, API names, and configuration keys.
-8. Preserve URLs and image paths.
-9. Preserve HTML and Hugo shortcodes.
-10. Preserve LaTeX and mathematical formulas.
-11. Translate explanations around technical terms, but use standard
+7. Preserve executable code, commands, class names, method names,
+   variable names, file paths, API names, and configuration keys exactly.
+8. Translate natural-language comments inside fenced code blocks into
+   English while preserving comment markers, indentation, and code.
+9. Preserve URLs and image paths.
+10. Preserve HTML and Hugo shortcodes.
+11. Preserve LaTeX and mathematical formulas.
+12. Translate explanations around technical terms, but use standard
     English terminology for:
     - software engineering
     - algorithms
@@ -103,10 +105,10 @@ Requirements:
     - DevOps
     - artificial intelligence
     - machine learning
-12. Do not add information that does not exist in the source article.
-13. Do not remove any section from the source article.
-14. Keep existing English technical terms when they are already correct.
-15. Produce valid UTF-8 Markdown.
+13. Do not add information that does not exist in the source article.
+14. Do not remove any section from the source article.
+15. Keep existing English technical terms when they are already correct.
+16. Produce valid UTF-8 Markdown.
 """
 
 
@@ -121,13 +123,6 @@ LANGUAGE_SUFFIX_RE = re.compile(
 
 AI_TRANSLATE_DISABLED_RE = re.compile(
     r"(?mi)^\s*aiTranslate\s*[:=]\s*false\s*$"
-)
-
-FENCED_CODE_RE = re.compile(
-    r"(?ms)"
-    r"^(?P<fence>`{3,}|~{3,})[^\n]*\n"
-    r".*?"
-    r"^(?P=fence)[ \t]*$"
 )
 
 HUGO_SHORTCODE_RE = re.compile(
@@ -303,19 +298,14 @@ def protect_segments(
 
     result = content
 
-    # 先保护完整代码块。
-    result = FENCED_CODE_RE.sub(
-        replace_match,
-        result,
-    )
-
-    # 再保护 Hugo shortcode。
+    # Protect Hugo shortcodes, but leave fenced code blocks visible so the
+    # model can translate natural-language comments inside them.
     result = HUGO_SHORTCODE_RE.sub(
         replace_match,
         result,
     )
 
-    # 最后保护行内代码。
+    # Protect inline code outside fenced code blocks.
     result = INLINE_CODE_RE.sub(
         replace_match,
         result,

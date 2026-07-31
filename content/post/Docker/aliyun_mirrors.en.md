@@ -11,7 +11,7 @@ author: "Jalen"
 > As we all know, after installing Docker on CentOS, pulling official Docker images locally can be very slow. In this case, you can configure a registry mirror. Docker and many cloud service providers in China offer registry mirror services, for example:
 
 - NetEase: **https://hub-mirror.c.163.com/**
-- Alibaba Cloud: **https://<你的ID>.mirror.aliyuncs.com**
+- Alibaba Cloud: **https://<your-ID>.mirror.aliyuncs.com**
 - Qiniu Cloud: **https://reg-mirror.qiniu.com**
 
 Most cloud platforms in China provide image acceleration services. It is recommended that you select the corresponding service provider based on the cloud platform where Docker is hosted.
@@ -40,7 +40,7 @@ $sudo tee /etc/docker/daemon.json <<-'EOF'
   "registry-mirrors": ["https://你的ID.mirror.aliyuncs.com"]
 }
 EOF
-//重新加载daemon
+//Reload daemon
 $sudo systemctl daemon-reload
 $sudo systemctl restart docker
 ```

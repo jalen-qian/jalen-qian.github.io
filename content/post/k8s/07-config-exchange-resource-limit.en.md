@@ -3,7 +3,7 @@ title: "K8S Notes 7: Updating Cluster Configuration and Setting Resource Limits"
 date: 2021-01-15T09:47:00+08:00
 lastmod: 2021-01-15T09:47:00+08:00
 draft: false
-keywords: ["K8S","资源限定"]
+keywords: ["K8S","resource limits"]
 description: "desc"
 tags: ["K8S"]
 categories: ["K8S"]
@@ -23,9 +23,9 @@ $ kubectl apply -f yml文件路径
 Delete a deployment or service:
 
 ```shell
-# 删除部署
+# Delete Deployment
 $ kubectl delete deployment 部署名称
-# 删除服务
+# Delete Service
 $ kubectl delete service 服务名称
 ```
 
@@ -38,12 +38,12 @@ containers:
   - name: tomcat-cluster
   image: tomcat:latest
   resources:
-    requests:        # 容器运行所需最小资源，不满足则无法运行
-      cpu: 1         # 1核cpu 可以是小数，比如 0.5，表示宿主机只要有0.5核cpu是闲置状态，就可以部署这个容器
-      memory: 500Mi  # 500M内存
-    limits:          # 容器运行过程中，最多占用的资源
-      cpu: 2         # 最多占用2核cpu
-      memory: 1024Mi # 最多占用1G内存
+    requests:        # Minimum resource required to run the container, if not satisfied, cannot run
+      cpu: 1         # One nuclear cpu can be decimal, for example 0.5, which means that this container can be deployed as long as the host is 0.5 nuclear cpu is idle.
+      memory: 500Mi  # 500M RAM
+    limits:          # Most occupied resources during container operation
+      cpu: 2         # Up to 2 corecpu
+      memory: 1024Mi # Up to 1G RAM
 ```
 
 ## Testing Resource Adjustments and Deployment
@@ -56,7 +56,7 @@ kind: Deployment
 metadata:
   name: tomcat-deploy
 spec: 
-  replicas: 3 #副本数量从2改为3个
+  replicas: 3 #Number of copies changed from 2 to 3
   template:
     metadata:
       labels:
@@ -69,7 +69,7 @@ spec:
       containers:
       - name: tomcat-cluster
         image: tomcat:latest
-        resources: # 增加资源限定
+        resources: # Additional resource limitations
           requests:
             cpu: 0.5
             memory: 200Mi
@@ -122,7 +122,7 @@ Containers:
       Started:      Fri, 15 Jan 2021 18:50:43 +0800
     Ready:          True
     Restart Count:  0
-    Limits:         # 资源限制已经生效
+    Limits:         # Resource constraints are in effect
       cpu:     2
       memory:  500Mi    
     Requests:
