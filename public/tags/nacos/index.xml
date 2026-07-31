@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Nacos on Jalen的博客</title>
-        <link>https//:www.jalen-qian.com/tags/nacos/</link>
+        <link>www.jalen-qian.com/tags/nacos/</link>
         <description>Recent content in Nacos on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 19 May 2021 17:31:56 +0800</lastBuildDate><atom:link href="https//:www.jalen-qian.com/tags/nacos/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 19 May 2021 17:31:56 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/nacos/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Nacos]通过docker启动一个Nacos</title>
-        <link>https//:www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</link>
+        <link>www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</link>
         <pubDate>Wed, 19 May 2021 17:31:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</guid>
+        <guid>www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;前言：今天接到一个需求，由于客户集群的应用多是基于需要将配置中心的配置推送到&lt;code&gt;Nacos&lt;/code&gt;中，手动研究了一下，通过docker快速启动了一个本地的&lt;code&gt;Nacos&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;

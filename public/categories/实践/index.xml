@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>实践 on Jalen的博客</title>
-        <link>https//:www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</link>
+        <link>www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</link>
         <description>Recent content in 实践 on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 08 Sep 2023 22:58:56 +0800</lastBuildDate><atom:link href="https//:www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 08 Sep 2023 22:58:56 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>mac安装并激活Typora</title>
-        <link>https//:www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</link>
+        <link>www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</link>
         <pubDate>Fri, 08 Sep 2023 22:58:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</guid>
+        <guid>www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</guid>
         <description>&lt;img src="http://cdn1.jalen-qian.com/Jalen/20230909002959sJgfBGQ7lE.webp" alt="Featured image of post mac安装并激活Typora" /&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://typoraio.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Typora&lt;/a&gt;是一款非常好用的Markdown编辑器，能做到所见即所得，同时支持丰富的样式和数学公式等。刚好最近更换了mac电脑，就研究了下如何在mac上安装和激活Typora.&lt;/p&gt;

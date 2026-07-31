@@ -2,317 +2,317 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https//:www.jalen-qian.com/</loc>
+    <loc>www.jalen-qian.com/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/"
+                href="www.jalen-qian.com/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/"
+                href="www.jalen-qian.com/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/</loc>
+    <loc>www.jalen-qian.com/categories/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/categories/"
+                href="www.jalen-qian.com/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/categories/"
+                href="www.jalen-qian.com/categories/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/post/</loc>
+    <loc>www.jalen-qian.com/post/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/</loc>
+    <loc>www.jalen-qian.com/tags/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/tags/"
+                href="www.jalen-qian.com/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/tags/"
+                href="www.jalen-qian.com/tags/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</loc>
+    <loc>www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</loc>
+    <loc>www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</loc>
     <lastmod>2023-11-04T11:22:47+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</loc>
+    <loc>www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</loc>
     <lastmod>2023-11-03T16:55:59+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
+    <loc>www.jalen-qian.com/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/</loc>
     <lastmod>2023-10-25T23:17:52+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <loc>www.jalen-qian.com/p/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2023-10-25T23:17:52+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>www.jalen-qian.com/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2023-10-25T23:17:52+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/kubernetes/</loc>
+    <loc>www.jalen-qian.com/tags/kubernetes/</loc>
     <lastmod>2023-10-08T18:48:17+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/kubernetes/</loc>
+    <loc>www.jalen-qian.com/categories/kubernetes/</loc>
     <lastmod>2023-10-08T18:48:17+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E5%A4%84%E4%BA%8Eterminating%E7%8A%B6%E6%80%81%E7%9A%84namespace/</loc>
+    <loc>www.jalen-qian.com/p/%E5%A6%82%E4%BD%95%E5%88%A0%E9%99%A4%E5%A4%84%E4%BA%8Eterminating%E7%8A%B6%E6%80%81%E7%9A%84namespace/</loc>
     <lastmod>2023-10-08T18:48:17+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</loc>
+    <loc>www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</loc>
     <lastmod>2023-09-11T19:16:31+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</loc>
+    <loc>www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</loc>
     <lastmod>2023-09-11T19:16:31+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
+    <loc>www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</loc>
     <lastmod>2023-09-11T19:16:31+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</loc>
+    <loc>www.jalen-qian.com/p/mac%E5%AE%89%E8%A3%85%E5%B9%B6%E6%BF%80%E6%B4%BBtypora/</loc>
     <lastmod>2023-09-08T22:58:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</loc>
     <lastmod>2023-09-08T22:58:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/page/</loc>
+    <loc>www.jalen-qian.com/page/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/page/"
+                href="www.jalen-qian.com/en/page/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/page/"
+                href="www.jalen-qian.com/page/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</loc>
+    <loc>www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/about/"
+                href="www.jalen-qian.com/en/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/"
+                href="www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/golang/</loc>
+    <loc>www.jalen-qian.com/tags/golang/</loc>
     <lastmod>2021-08-04T16:41:45+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</loc>
     <lastmod>2021-08-04T16:41:45+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</loc>
+    <loc>www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/</loc>
     <lastmod>2021-05-19T17:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/nacos/</loc>
+    <loc>www.jalen-qian.com/tags/nacos/</loc>
     <lastmod>2021-05-19T17:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</loc>
+    <loc>www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</loc>
     <lastmod>2021-05-19T17:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/goland/</loc>
+    <loc>www.jalen-qian.com/tags/goland/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/goland/</loc>
+    <loc>www.jalen-qian.com/categories/goland/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</loc>
+    <loc>www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/idea/</loc>
+    <loc>www.jalen-qian.com/tags/idea/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/idea/</loc>
+    <loc>www.jalen-qian.com/categories/idea/</loc>
     <lastmod>2021-04-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/k8s/</loc>
+    <loc>www.jalen-qian.com/tags/k8s/</loc>
     <lastmod>2021-01-18T17:55:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/k8s/</loc>
+    <loc>www.jalen-qian.com/categories/k8s/</loc>
     <lastmod>2021-01-18T17:55:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2021-01-18T17:55:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/</loc>
     <lastmod>2021-01-18T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/deployment/</loc>
+    <loc>www.jalen-qian.com/tags/deployment/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/deployment/</loc>
+    <loc>www.jalen-qian.com/categories/deployment/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/</loc>
+    <loc>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/nfs/</loc>
+    <loc>www.jalen-qian.com/tags/nfs/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/nfs/</loc>
+    <loc>www.jalen-qian.com/categories/nfs/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/rinetd/</loc>
+    <loc>www.jalen-qian.com/tags/rinetd/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/rinetd/</loc>
+    <loc>www.jalen-qian.com/categories/rinetd/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
+    <loc>www.jalen-qian.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
+    <loc>www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</loc>
+    <loc>www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</loc>
     <lastmod>2021-01-15T09:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/github.io-%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
+    <loc>www.jalen-qian.com/p/github.io-%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-10-04T13:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</loc>
+    <loc>www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</loc>
     <lastmod>2020-10-04T13:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
+    <loc>www.jalen-qian.com/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
     <lastmod>2020-10-04T13:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</loc>
+    <loc>www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/dockercentos%E4%B8%8B%E7%BB%99doctor%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</loc>
+    <loc>www.jalen-qian.com/p/dockercentos%E4%B8%8B%E7%BB%99doctor%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
+    <loc>www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/centos/</loc>
+    <loc>www.jalen-qian.com/tags/centos/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/docker/</loc>
+    <loc>www.jalen-qian.com/tags/docker/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/docker/</loc>
+    <loc>www.jalen-qian.com/categories/docker/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/git/</loc>
+    <loc>www.jalen-qian.com/tags/git/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/git/</loc>
+    <loc>www.jalen-qian.com/categories/git/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <loc>www.jalen-qian.com/p/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/yum/</loc>
+    <loc>www.jalen-qian.com/tags/yum/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
+    <loc>www.jalen-qian.com/tags/%E9%98%BF%E9%87%8C%E4%BA%91/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</loc>
+    <loc>www.jalen-qian.com/tags/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/</loc>
     <lastmod>2020-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/goland-debug%E5%87%BA%E7%8E%B0version-of-delve-is-too-old-for.../</loc>
+    <loc>www.jalen-qian.com/p/goland-debug%E5%87%BA%E7%8E%B0version-of-delve-is-too-old-for.../</loc>
     <lastmod>2020-09-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
     <lastmod>2020-09-11T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</loc>
     <lastmod>2020-10-20T17:17:28+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</loc>
     <lastmod>2020-09-10T16:47:00+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</loc>
+    <loc>www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
+    <loc>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/hugo/</loc>
+    <loc>www.jalen-qian.com/tags/hugo/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/hugo/</loc>
+    <loc>www.jalen-qian.com/categories/hugo/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <loc>www.jalen-qian.com/p/hugo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2020-09-10T01:37:56+08:00</lastmod>
   </url><url>
-    <loc>https//:www.jalen-qian.com/archives/</loc>
+    <loc>www.jalen-qian.com/archives/</loc>
     <lastmod>2019-05-28T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/archives/"
+                href="www.jalen-qian.com/en/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/archives/"
+                href="www.jalen-qian.com/archives/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/p/</loc>
+    <loc>www.jalen-qian.com/p/</loc>
   </url><url>
-    <loc>https//:www.jalen-qian.com/categories/test/</loc>
+    <loc>www.jalen-qian.com/categories/test/</loc>
   </url><url>
-    <loc>https//:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</loc>
+    <loc>www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/links/"
+                href="www.jalen-qian.com/en/links/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/"
+                href="www.jalen-qian.com/%E9%93%BE%E6%8E%A5/"
                 />
   </url><url>
-    <loc>https//:www.jalen-qian.com/search/</loc>
+    <loc>www.jalen-qian.com/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https//:www.jalen-qian.com/en/search/"
+                href="www.jalen-qian.com/en/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https//:www.jalen-qian.com/search/"
+                href="www.jalen-qian.com/search/"
                 />
   </url>
 </urlset>

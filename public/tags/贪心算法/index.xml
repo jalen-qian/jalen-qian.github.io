@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>贪心算法 on Jalen的博客</title>
-        <link>https//:www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</link>
+        <link>www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</link>
         <description>Recent content in 贪心算法 on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 04 Nov 2023 11:22:47 +0800</lastBuildDate><atom:link href="https//:www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 04 Nov 2023 11:22:47 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>贪心算法二：贪心解题套路实践－返回最多的会议室宣讲场次</title>
-        <link>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</link>
+        <link>www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</link>
         <pubDate>Sat, 04 Nov 2023 11:22:47 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</guid>
+        <guid>www.jalen-qian.com/p/algorithm/greedy-algorithm-02/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;在上一篇博文中，通过一道比较基本的算法题来讨论了我们在遇到贪心这一类的算法题的时候的解题套路。简单来说，贪心问题实际上都是经验的积累，每道题的贪心策略，如果想要严格的证明其正确性是很难的，而且没有通用性。我们需要实际上并不需要证明，而是直接用实验验证的方式来解决。&lt;/p&gt;
 &lt;p&gt;上篇文章介绍了通过&lt;strong&gt;对数器&lt;/strong&gt;验证的方式。实际上对数器是我们在验证算法正确性上的一个十分有效的方式，同时在写对数器时的&lt;strong&gt;对比方法&lt;/strong&gt;（用暴力方式解决，复杂度高但好实现）、样本数据生成、测试用例等代码时，会对我们的Coding能力有很大的提升。&lt;/p&gt;
@@ -308,10 +308,10 @@
         </item>
         <item>
         <title>贪心算法一：从一道基本题讨论贪心方法论</title>
-        <link>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</link>
+        <link>www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</link>
         <pubDate>Fri, 03 Nov 2023 16:55:59 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</guid>
+        <guid>www.jalen-qian.com/p/algorithm/greedy-algorithm-01/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;贪心算法是一种基于贪心策略来求解问题的算法，贪心算法的思想是，规定一种清晰且有效的策略，在每一步都选择当前的最优解，以期望达到全局的最优解。在某些情况下，贪心策略可以得到最优解，有些情况下不可以。一个成功的贪心策略是可以达到全局最优解的策略。&lt;/p&gt;
 &lt;/blockquote&gt;

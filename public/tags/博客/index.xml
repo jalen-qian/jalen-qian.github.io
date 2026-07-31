@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>博客 on Jalen的博客</title>
-        <link>https//:www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/</link>
+        <link>www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/</link>
         <description>Recent content in 博客 on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 10 Sep 2020 08:37:56 +0800</lastBuildDate><atom:link href="https//:www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Sep 2020 08:37:56 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>[Hugo] 使用Hugo&#43;nginx搭建个人博客网站</title>
-        <link>https//:www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
+        <link>www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
+        <guid>www.jalen-qian.com/p/hugo-%E4%BD%BF%E7%94%A8hugo-nginx%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;服务器平台：Centos 64bit&lt;/p&gt;
 &lt;/blockquote&gt;

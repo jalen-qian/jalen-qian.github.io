@@ -2,153 +2,153 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on Jalen的博客</title>
-        <link>https//:www.jalen-qian.com/categories/</link>
+        <link>www.jalen-qian.com/categories/</link>
         <description>Recent content in Categories on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 04 Nov 2023 11:22:47 +0800</lastBuildDate><atom:link href="https//:www.jalen-qian.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 04 Nov 2023 11:22:47 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>算法</title>
-        <link>https//:www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</link>
+        <link>www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</link>
         <pubDate>Sat, 04 Nov 2023 11:22:47 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</guid>
+        <guid>www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/</guid>
         <description></description>
         </item>
         <item>
         <title>Kubernetes</title>
-        <link>https//:www.jalen-qian.com/categories/kubernetes/</link>
+        <link>www.jalen-qian.com/categories/kubernetes/</link>
         <pubDate>Sun, 08 Oct 2023 18:48:17 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/kubernetes/</guid>
+        <guid>www.jalen-qian.com/categories/kubernetes/</guid>
         <description></description>
         </item>
         <item>
         <title>Golang专栏</title>
-        <link>https//:www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</link>
+        <link>www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</link>
         <pubDate>Mon, 11 Sep 2023 19:16:31 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</guid>
+        <guid>www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/</guid>
         <description></description>
         </item>
         <item>
         <title>实践</title>
-        <link>https//:www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</link>
+        <link>www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</link>
         <pubDate>Fri, 08 Sep 2023 22:58:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</guid>
+        <guid>www.jalen-qian.com/categories/%E5%AE%9E%E8%B7%B5/</guid>
         <description></description>
         </item>
         <item>
         <title>云原生相关</title>
-        <link>https//:www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</link>
+        <link>www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</link>
         <pubDate>Wed, 19 May 2021 17:31:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</guid>
+        <guid>www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/</guid>
         <description></description>
         </item>
         <item>
         <title>GoLand</title>
-        <link>https//:www.jalen-qian.com/categories/goland/</link>
+        <link>www.jalen-qian.com/categories/goland/</link>
         <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/goland/</guid>
+        <guid>www.jalen-qian.com/categories/goland/</guid>
         <description></description>
         </item>
         <item>
         <title>Idea</title>
-        <link>https//:www.jalen-qian.com/categories/idea/</link>
+        <link>www.jalen-qian.com/categories/idea/</link>
         <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/idea/</guid>
+        <guid>www.jalen-qian.com/categories/idea/</guid>
         <description></description>
         </item>
         <item>
         <title>K8S</title>
-        <link>https//:www.jalen-qian.com/categories/k8s/</link>
+        <link>www.jalen-qian.com/categories/k8s/</link>
         <pubDate>Mon, 18 Jan 2021 17:55:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/k8s/</guid>
+        <guid>www.jalen-qian.com/categories/k8s/</guid>
         <description></description>
         </item>
         <item>
         <title>Deployment</title>
-        <link>https//:www.jalen-qian.com/categories/deployment/</link>
+        <link>www.jalen-qian.com/categories/deployment/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/deployment/</guid>
+        <guid>www.jalen-qian.com/categories/deployment/</guid>
         <description></description>
         </item>
         <item>
         <title>NFS</title>
-        <link>https//:www.jalen-qian.com/categories/nfs/</link>
+        <link>www.jalen-qian.com/categories/nfs/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/nfs/</guid>
+        <guid>www.jalen-qian.com/categories/nfs/</guid>
         <description></description>
         </item>
         <item>
         <title>Rinetd</title>
-        <link>https//:www.jalen-qian.com/categories/rinetd/</link>
+        <link>www.jalen-qian.com/categories/rinetd/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/rinetd/</guid>
+        <guid>www.jalen-qian.com/categories/rinetd/</guid>
         <description></description>
         </item>
         <item>
         <title>负载均衡</title>
-        <link>https//:www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
+        <link>www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
+        <guid>www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid>
         <description></description>
         </item>
         <item>
         <title>文件共享</title>
-        <link>https//:www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</link>
+        <link>www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</guid>
+        <guid>www.jalen-qian.com/categories/%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</guid>
         <description></description>
         </item>
         <item>
         <title>分类1</title>
-        <link>https//:www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</link>
+        <link>www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</link>
         <pubDate>Sun, 04 Oct 2020 13:34:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</guid>
+        <guid>www.jalen-qian.com/categories/%E5%88%86%E7%B1%BB1/</guid>
         <description></description>
         </item>
         <item>
         <title>Docker</title>
-        <link>https//:www.jalen-qian.com/categories/docker/</link>
+        <link>www.jalen-qian.com/categories/docker/</link>
         <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/docker/</guid>
+        <guid>www.jalen-qian.com/categories/docker/</guid>
         <description></description>
         </item>
         <item>
         <title>Git</title>
-        <link>https//:www.jalen-qian.com/categories/git/</link>
+        <link>www.jalen-qian.com/categories/git/</link>
         <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/git/</guid>
+        <guid>www.jalen-qian.com/categories/git/</guid>
         <description></description>
         </item>
         <item>
         <title>hugo</title>
-        <link>https//:www.jalen-qian.com/categories/hugo/</link>
+        <link>www.jalen-qian.com/categories/hugo/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/hugo/</guid>
+        <guid>www.jalen-qian.com/categories/hugo/</guid>
         <description></description>
         </item>
         <item>
         <title>Test</title>
-        <link>https//:www.jalen-qian.com/categories/test/</link>
+        <link>www.jalen-qian.com/categories/test/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https//:www.jalen-qian.com/categories/test/</guid>
-        <description>&lt;img src="/https/:www.jalen-qian.com/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
+        <guid>www.jalen-qian.com/categories/test/</guid>
+        <description>&lt;img src="/www.jalen-qian.com/categories/test/hutomo-abrianto-l2jk-uxb1BY-unsplash.jpg" alt="Featured image of post Test" /&gt;</description>
         </item>
         
     </channel>
