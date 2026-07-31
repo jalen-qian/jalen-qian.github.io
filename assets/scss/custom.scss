@@ -21,8 +21,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle interactive line field, rendered behind all Stack content. */
-.ambient-line-field {
+/* Subtle interactive particle network, rendered behind all Stack content. */
+.ambient-particle-network {
     position: fixed;
     inset: 0;
     z-index: 0;
@@ -38,7 +38,7 @@ body {
 }
 
 @media (max-width: 767px), (pointer: coarse), (prefers-reduced-motion: reduce) {
-    .ambient-line-field {
+    .ambient-particle-network {
         display: none;
     }
 }

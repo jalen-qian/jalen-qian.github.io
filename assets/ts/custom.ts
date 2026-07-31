@@ -1,20 +1,17 @@
 /**
- * A restrained interactive line field for the empty space around Stack's
- * cards. Lines drift naturally, gather around a slowly moving pointer and
- * scatter when the pointer accelerates or leaves the window.
+ * Canvas Nest-inspired background.
+ *
+ * Nearby drifting particles form a soft network. The pointer temporarily
+ * becomes another node: slow movement attracts particles and creates denser
+ * connections, while fast movement weakens those connections immediately.
  */
 
-type LineParticle = {
+type Particle = {
     x: number;
     y: number;
     vx: number;
     vy: number;
-    angle: number;
-    angularVelocity: number;
-    length: number;
-    attached: boolean;
-    offsetX: number;
-    offsetY: number;
+    radius: number;
 };
 
 const finePointer = window.matchMedia('(pointer: fine)');
@@ -23,14 +20,14 @@ const desktopLayout = window.matchMedia('(min-width: 768px)');
 
 if (finePointer.matches && !reducedMotion.matches && desktopLayout.matches) {
     const canvas = document.createElement('canvas');
-    canvas.className = 'ambient-line-field';
+    canvas.className = 'ambient-particle-network';
     canvas.setAttribute('aria-hidden', 'true');
     document.body.prepend(canvas);
 
     const context = canvas.getContext('2d');
 
     if (context) {
-        const particles: LineParticle[] = [];
+        const particles: Particle[] = [];
         const pointer = {
             x: 0,
             y: 0,
@@ -47,27 +44,26 @@ if (finePointer.matches && !reducedMotion.matches && desktopLayout.matches) {
         let animationFrame = 0;
         let previousFrame = 0;
         let resizeTimer = 0;
-        let lineColor = '';
+        let color = '52, 73, 94';
+
+        const particleConnectionDistance = 108;
+        const pointerConnectionDistance = 175;
 
         const randomBetween = (minimum: number, maximum: number) =>
             minimum + Math.random() * (maximum - minimum);
 
-        const createParticle = (): LineParticle => ({
+        const createParticle = (): Particle => ({
             x: Math.random() * width,
             y: Math.random() * height,
-            vx: randomBetween(-0.14, 0.14),
-            vy: randomBetween(-0.14, 0.14),
-            angle: Math.random() * Math.PI * 2,
-            angularVelocity: randomBetween(-0.0025, 0.0025),
-            length: randomBetween(12, 28),
-            attached: false,
-            offsetX: 0,
-            offsetY: 0
+            vx: randomBetween(-0.22, 0.22),
+            vy: randomBetween(-0.22, 0.22),
+            radius: randomBetween(0.7, 1.35)
         });
 
         const updateColor = () => {
-            const dark = document.documentElement.dataset.scheme === 'dark';
-            lineColor = dark ? 'rgba(210, 222, 230, 0.16)' : 'rgba(52, 73, 94, 0.15)';
+            color = document.documentElement.dataset.scheme === 'dark'
+                ? '205, 219, 228'
+                : '52, 73, 94';
         };
 
         const resize = () => {
@@ -80,76 +76,59 @@ if (finePointer.matches && !reducedMotion.matches && desktopLayout.matches) {
             canvas.style.height = `${height}px`;
             context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-            const desiredCount = Math.max(24, Math.min(54, Math.round((width * height) / 42000)));
+            // Comparable to the reference's 99 points on a full HD screen,
+            // with a conservative cap for high-resolution displays.
+            const desiredCount = Math.max(48, Math.min(96, Math.round((width * height) / 21000)));
             while (particles.length < desiredCount) particles.push(createParticle());
             if (particles.length > desiredCount) particles.length = desiredCount;
         };
 
-        const releaseParticles = (withImpulse: boolean) => {
-            for (const particle of particles) {
-                if (!particle.attached) continue;
-                particle.attached = false;
-                if (withImpulse) {
-                    const distance = Math.hypot(particle.offsetX, particle.offsetY) || 1;
-                    particle.vx += (particle.offsetX / distance) * randomBetween(0.7, 1.4);
-                    particle.vy += (particle.offsetY / distance) * randomBetween(0.7, 1.4);
-                }
-            }
+        const drawConnection = (
+            fromX: number,
+            fromY: number,
+            toX: number,
+            toY: number,
+            opacity: number,
+            lineWidth: number
+        ) => {
+            context.beginPath();
+            context.lineWidth = lineWidth;
+            context.strokeStyle = `rgba(${color}, ${opacity})`;
+            context.moveTo(fromX, fromY);
+            context.lineTo(toX, toY);
+            context.stroke();
         };
 
-        const attachParticle = (particle: LineParticle) => {
-            const radius = randomBetween(18, 72);
-            const angle = Math.random() * Math.PI * 2;
-            particle.attached = true;
-            particle.offsetX = Math.cos(angle) * radius;
-            particle.offsetY = Math.sin(angle) * radius;
-        };
+        const updateParticle = (particle: Particle, frameScale: number) => {
+            if (pointer.active && pointer.speed < 1.1) {
+                const dx = pointer.x - particle.x;
+                const dy = pointer.y - particle.y;
+                const distance = Math.hypot(dx, dy);
 
-        const updateParticle = (particle: LineParticle, frameScale: number) => {
-            if (particle.attached && pointer.active) {
-                const targetX = pointer.x + particle.offsetX;
-                const targetY = pointer.y + particle.offsetY;
-                particle.vx += (targetX - particle.x) * 0.018 * frameScale;
-                particle.vy += (targetY - particle.y) * 0.018 * frameScale;
-                particle.vx *= Math.pow(0.84, frameScale);
-                particle.vy *= Math.pow(0.84, frameScale);
-            } else {
-                if (pointer.active && pointer.speed < 0.75) {
-                    const dx = pointer.x - particle.x;
-                    const dy = pointer.y - particle.y;
-                    const distance = Math.hypot(dx, dy);
-
-                    if (distance < 190 && distance > 1) {
-                        const attraction = (1 - distance / 190) * 0.016 * frameScale;
-                        particle.vx += (dx / distance) * attraction;
-                        particle.vy += (dy / distance) * attraction;
-
-                        if (distance < 38 && Math.random() < 0.045 * frameScale) {
-                            attachParticle(particle);
-                        }
-                    }
+                if (distance < pointerConnectionDistance && distance > 1) {
+                    const force = (1 - distance / pointerConnectionDistance) * 0.012 * frameScale;
+                    particle.vx += (dx / distance) * force;
+                    particle.vy += (dy / distance) * force;
                 }
-
-                particle.vx *= Math.pow(0.997, frameScale);
-                particle.vy *= Math.pow(0.997, frameScale);
             }
 
-            const maximumSpeed = particle.attached ? 3.2 : 1.5;
             const speed = Math.hypot(particle.vx, particle.vy);
-            if (speed > maximumSpeed) {
-                particle.vx = (particle.vx / speed) * maximumSpeed;
-                particle.vy = (particle.vy / speed) * maximumSpeed;
+            if (speed > 0.72) {
+                particle.vx = (particle.vx / speed) * 0.72;
+                particle.vy = (particle.vy / speed) * 0.72;
             }
 
             particle.x += particle.vx * frameScale;
             particle.y += particle.vy * frameScale;
-            particle.angle += particle.angularVelocity * frameScale;
 
-            const margin = particle.length + 8;
-            if (particle.x < -margin) particle.x = width + margin;
-            if (particle.x > width + margin) particle.x = -margin;
-            if (particle.y < -margin) particle.y = height + margin;
-            if (particle.y > height + margin) particle.y = -margin;
+            if (particle.x <= 0 || particle.x >= width) {
+                particle.vx *= -1;
+                particle.x = Math.max(0, Math.min(width, particle.x));
+            }
+            if (particle.y <= 0 || particle.y >= height) {
+                particle.vy *= -1;
+                particle.y = Math.max(0, Math.min(height, particle.y));
+            }
         };
 
         const draw = (time: number) => {
@@ -161,24 +140,72 @@ if (finePointer.matches && !reducedMotion.matches && desktopLayout.matches) {
             previousFrame = time;
 
             if (pointer.active) {
-                pointer.speed *= Math.pow(0.82, frameScale);
-                if (time - pointer.lastMove > 1800) pointer.speed = 0;
+                pointer.speed *= Math.pow(0.8, frameScale);
+                if (time - pointer.lastMove > 1600) pointer.speed = 0;
             }
 
             context.clearRect(0, 0, width, height);
-            context.strokeStyle = lineColor;
-            context.lineWidth = 1.15;
-            context.lineCap = 'round';
 
+            for (const particle of particles) updateParticle(particle, frameScale);
+
+            // Connect nearby particles. Squared distances avoid unnecessary
+            // square roots in this O(n²) portion of the animation.
+            const connectionDistanceSquared = particleConnectionDistance ** 2;
+            for (let index = 0; index < particles.length; index++) {
+                const particle = particles[index];
+
+                for (let otherIndex = index + 1; otherIndex < particles.length; otherIndex++) {
+                    const other = particles[otherIndex];
+                    const dx = particle.x - other.x;
+                    const dy = particle.y - other.y;
+                    const distanceSquared = dx * dx + dy * dy;
+
+                    if (distanceSquared < connectionDistanceSquared) {
+                        const strength = 1 - distanceSquared / connectionDistanceSquared;
+                        drawConnection(
+                            particle.x,
+                            particle.y,
+                            other.x,
+                            other.y,
+                            0.05 + strength * 0.18,
+                            0.45 + strength * 0.35
+                        );
+                    }
+                }
+            }
+
+            // Treat the pointer as a temporary network node. Fast movement
+            // rapidly fades the links, which creates the requested release.
+            if (pointer.active) {
+                const pointerDistanceSquared = pointerConnectionDistance ** 2;
+                const movementStrength = Math.max(0, Math.min(1, 1.35 - pointer.speed));
+
+                if (movementStrength > 0) {
+                    for (const particle of particles) {
+                        const dx = particle.x - pointer.x;
+                        const dy = particle.y - pointer.y;
+                        const distanceSquared = dx * dx + dy * dy;
+
+                        if (distanceSquared < pointerDistanceSquared) {
+                            const strength = (1 - distanceSquared / pointerDistanceSquared) * movementStrength;
+                            drawConnection(
+                                particle.x,
+                                particle.y,
+                                pointer.x,
+                                pointer.y,
+                                0.08 + strength * 0.3,
+                                0.5 + strength * 0.55
+                            );
+                        }
+                    }
+                }
+            }
+
+            context.fillStyle = `rgba(${color}, 0.42)`;
             for (const particle of particles) {
-                updateParticle(particle, frameScale);
-                const halfLength = particle.length / 2;
-                const dx = Math.cos(particle.angle) * halfLength;
-                const dy = Math.sin(particle.angle) * halfLength;
                 context.beginPath();
-                context.moveTo(particle.x - dx, particle.y - dy);
-                context.lineTo(particle.x + dx, particle.y + dy);
-                context.stroke();
+                context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                context.fill();
             }
         };
 
@@ -192,28 +219,23 @@ if (finePointer.matches && !reducedMotion.matches && desktopLayout.matches) {
                 pointer.active = true;
             }
 
-            const distance = Math.hypot(
+            pointer.speed = Math.hypot(
                 event.clientX - pointer.previousX,
                 event.clientY - pointer.previousY
-            );
-            pointer.speed = distance / elapsed;
+            ) / elapsed;
             pointer.x = event.clientX;
             pointer.y = event.clientY;
             pointer.previousX = event.clientX;
             pointer.previousY = event.clientY;
             pointer.lastMove = now;
-
-            if (pointer.speed > 1.25) releaseParticles(true);
         }, { passive: true });
 
         document.documentElement.addEventListener('mouseleave', () => {
             pointer.active = false;
-            releaseParticles(false);
         });
 
         window.addEventListener('blur', () => {
             pointer.active = false;
-            releaseParticles(false);
         });
 
         window.addEventListener('resize', () => {
