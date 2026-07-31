@@ -22,6 +22,9 @@ languages:
         params:
             sidebar:
                 subtitle: Focused on Go (Golang), Java, cloud-native technologies, mobile internet, project management, and software architecture.
+            comments:
+                giscus:
+                    lang: en
 
 # Change it to your Disqus shortname before using
 disqusShortname: stack
@@ -70,7 +73,7 @@ params:
 
     comments:
         enabled: true
-        provider: waline
+        provider: giscus
 
         disqusjs:
             shortname:
@@ -97,22 +100,6 @@ params:
             clientSecret:
             autoCreateIssue: false
 
-        # Waline client configuration see: https://waline.js.org/en/reference/component.html
-        waline:
-            serverURL: https://waline.jalen-qian.com
-            lang: zh-cn
-            visitor: true
-            avatar: true
-            emoji:
-                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
-            requiredMeta:
-                - name
-                - email
-                - url
-            placeholder:
-            locale:
-                admin: Admin
-
         twikoo:
             envId:
             region:
@@ -126,15 +113,19 @@ params:
             siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
         giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            lightTheme:
-            darkTheme:
+            repo: jalen-qian/jalen-qian.github.io
+            repoID: R_kgDOTozIAQ
+            category: Announcements
+            categoryID: DIC_kwDOTozIAc4DCY_u
+            mapping: pathname
+            strict: 1
+            lightTheme: light
+            darkTheme: dark_dimmed
             reactionsEnabled: 1
             emitMetadata: 0
+            inputPosition: bottom
+            lang: zh-CN
+            loading: lazy
 
         gitalk:
             owner:
