@@ -1,4 +1,2 @@
-# hugo-blog
-基于Hugo的个人博客网站
-
-# 写文章流程
+# github.io
+Personal blog focusing on CS algorithms, programming, AI insights, and study notes from Victoria University of Wellington.
