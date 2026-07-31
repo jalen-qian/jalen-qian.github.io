@@ -1,5 +1,8 @@
 name: Translate Chinese posts
 
+# Updating this workflow also triggers a run, which is useful after rotating
+# API credentials or changing repository-level Actions configuration.
+
 on:
   push:
     branches:
