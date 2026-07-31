@@ -1,32 +1,43 @@
 /*
- * IDEA Darcula-inspired code blocks.
+ * IntelliJ IDEA-inspired code blocks (Light and Darcula).
  *
  * This site-level stylesheet intentionally lives outside the Stack theme so
  * theme upgrades do not overwrite it. Hugo/Chroma keeps generating the code
  * markup and line numbers; these rules only change its presentation.
  */
 .article-content {
-    --idea-editor-background: #2b2b2b;
-    --idea-gutter-background: #313335;
-    --idea-border: #3c3f41;
-    --idea-foreground: #a9b7c6;
-    --idea-muted: #606366;
-    --idea-keyword: #cc7832;
-    --idea-string: #6a8759;
-    --idea-number: #6897bb;
-    --idea-comment: #808080;
-    --idea-function: #ffc66d;
-    --idea-type: #a9b7c6;
-    --idea-constant: #9876aa;
+    /* IntelliJ Light */
+    --idea-editor-background: #ffffff;
+    --idea-gutter-background: #f7f8fa;
+    --idea-border: #d9dadd;
+    --idea-foreground: #2b2b2b;
+    --idea-muted: #9aa0a6;
+    --idea-keyword: #0033b3;
+    --idea-string: #067d17;
+    --idea-number: #1750eb;
+    --idea-comment: #8c8c8c;
+    --idea-function: #00627a;
+    --idea-type: #2b2b2b;
+    --idea-constant: #871094;
+    --idea-highlight: #f2f3f5;
+    --idea-error: #bc3f3c;
+    --idea-error-background: rgba(188, 63, 60, 0.1);
+    --idea-copy-background: #eef0f3;
+    --idea-copy-hover-background: #e1e4e8;
+    --idea-copy-border: #d5d8dc;
+    --idea-copy-color: #59636e;
+    --idea-copy-hover-color: #1f2328;
+    --idea-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 
     .highlight {
         background: var(--idea-editor-background) !important;
         border: 1px solid var(--idea-border);
         border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        box-shadow: var(--idea-shadow);
         color: var(--idea-foreground);
         overflow: hidden;
         padding: 18px 16px 18px 0;
+        transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
         pre,
         code,
@@ -68,7 +79,7 @@
         }
 
         .chroma .hl {
-            background: #323232;
+            background: var(--idea-highlight);
         }
 
         /* Keywords and declarations */
@@ -162,24 +173,24 @@
         }
 
         .chroma .err {
-            background: rgba(188, 63, 60, 0.2);
-            color: #bc3f3c;
+            background: var(--idea-error-background);
+            color: var(--idea-error);
         }
 
         .copyCodeButton {
-            background: #3c3f41;
-            border: 1px solid #4b4e50;
+            background: var(--idea-copy-background);
+            border: 1px solid var(--idea-copy-border);
             border-radius: 7px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
-            color: #b7c3cf;
+            color: var(--idea-copy-color);
             opacity: 0.72;
             padding: 7px 12px;
             right: 14px;
             top: 14px;
 
             &:hover {
-                background: #45494a;
-                color: #ffffff;
+                background: var(--idea-copy-hover-background);
+                color: var(--idea-copy-hover-color);
                 opacity: 1;
             }
         }
@@ -190,9 +201,34 @@
         background: var(--idea-editor-background);
         border: 1px solid var(--idea-border);
         border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        box-shadow: var(--idea-shadow);
         color: var(--idea-foreground);
     }
+}
+
+/* IntelliJ Darcula */
+[data-scheme="dark"] .article-content {
+    --idea-editor-background: #2b2b2b;
+    --idea-gutter-background: #313335;
+    --idea-border: #3c3f41;
+    --idea-foreground: #a9b7c6;
+    --idea-muted: #606366;
+    --idea-keyword: #cc7832;
+    --idea-string: #6a8759;
+    --idea-number: #6897bb;
+    --idea-comment: #808080;
+    --idea-function: #ffc66d;
+    --idea-type: #a9b7c6;
+    --idea-constant: #9876aa;
+    --idea-highlight: #323232;
+    --idea-error: #bc3f3c;
+    --idea-error-background: rgba(188, 63, 60, 0.2);
+    --idea-copy-background: #3c3f41;
+    --idea-copy-hover-background: #45494a;
+    --idea-copy-border: #4b4e50;
+    --idea-copy-color: #b7c3cf;
+    --idea-copy-hover-color: #ffffff;
+    --idea-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 600px) {
