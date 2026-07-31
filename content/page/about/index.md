@@ -10,7 +10,8 @@ lastmod: '2020-10-09'
 menu:
     main: 
         weight: -90
-        pre: user
+        params:
+            icon: user
 ---
 
 2017年软件工程专业毕业，在职业生涯里各种大厂小厂都待过，做过PHP、JAVA，Android，Golang，也会写一些前端代码。
