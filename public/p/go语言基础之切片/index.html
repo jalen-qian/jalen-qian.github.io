@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文主要介绍Go语言中的数据结构slice，以及基本使用 前言 之前介绍了Go语言中的数组，数组的长度是固定的，并且数组长度是类型的一部分，所以'>
+<title>Go语言基础之切片</title>
+
+<link rel='canonical' href='https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/'>
+
+<link rel="stylesheet" href="/https/:www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='Go语言基础之切片'>
+<meta property='og:description' content='本文主要介绍Go语言中的数据结构slice，以及基本使用 前言 之前介绍了Go语言中的数组，数组的长度是固定的，并且数组长度是类型的一部分，所以'>
+<meta property='og:url' content='https//:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/'>
+<meta property='og:site_name' content='Jalen的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Golang' /><meta property='article:published_time' content='2021-08-04T16:41:45&#43;08:00'/><meta property='article:modified_time' content='2021-08-04T16:41:45&#43;08:00'/>
+<meta name="twitter:title" content="Go语言基础之切片">
+<meta name="twitter:description" content="本文主要介绍Go语言中的数据结构slice，以及基本使用 前言 之前介绍了Go语言中的数组，数组的长度是固定的，并且数组长度是类型的一部分，所以">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/https/:www.jalen-qian.com">
+                
+                    
+                    
+                    
+                        
+                        <img src="/https/:www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/https/:www.jalen-qian.com">Jalen的博客</a></h1>
+            <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https//:www.jalen-qian.com/" selected>中文</option>
+                        
+                            <option value="https//:www.jalen-qian.com/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#切片">切片</a>
+      <ol>
+        <li><a href="#切片的定义">切片的定义</a></li>
+        <li><a href="#切片的长度和容量">切片的长度和容量</a></li>
+        <li><a href="#切片表达式">切片表达式</a>
+          <ol>
+            <li><a href="#简单的切片表达式">简单的切片表达式</a></li>
+            <li><a href="#完整的切片表达式">完整的切片表达式</a></li>
+            <li><a href="#使用make函数创建切片">使用make()函数创建切片</a></li>
+          </ol>
+        </li>
+        <li><a href="#切片的本质">切片的本质</a></li>
+        <li><a href="#切片的特性">切片的特性</a>
+          <ol>
+            <li><a href="#切片不能直接比较">切片不能直接比较</a></li>
+            <li><a href="#如何判断切片是否为空">如何判断切片是否为空？</a></li>
+            <li><a href="#切片的赋值拷贝">切片的赋值拷贝</a></li>
+            <li><a href="#切片的遍历">切片的遍历</a></li>
+          </ol>
+        </li>
+        <li><a href="#使用append函数添加元素">使用append()函数添加元素。</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="https/:www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/" >
+                Golang专栏
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/">Go语言基础之切片</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2021-08-04</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 8 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>本文主要介绍Go语言中的数据结构<code>slice</code>，以及基本使用</p>
+</blockquote>
+<h1 id="前言">前言</h1>
+<p>之前介绍了Go语言中的数组，数组的长度是固定的，并且数组长度是类型的一部分，所以使用数组有许多限制，比如对数组求和：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">arraySum</span><span class="p">(</span><span class="nx">arr</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">sum</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="nx">in</span> <span class="k">range</span> <span class="nx">arr</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">sum</span> <span class="p">=</span> <span class="nx">sum</span> <span class="o">+</span> <span class="nx">v</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">sum</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个求和函数只支持<code>[3]int</code>类型，其他类型都不支持了。
+再比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>a中最多只能有3个元素，无法增加更多的元素。</p>
+<h1 id="切片">切片</h1>
+<p>切片（<strong>slice</strong>）是一组相同类型元素的可变长度的数据结构，是对数组类型的抽象。切片非常灵活，支持动态扩容。</p>
+<p>切片是对数组的封装，属于引用类型，而不是值类型。一个切片的内部，包含了<code>容量</code> 、<code>长度</code> 和 <code>指针</code>。</p>
+<h2 id="切片的定义">切片的定义</h2>
+<p>声明切片的语法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">name</span> <span class="p">[]</span><span class="nx">T</span> <span class="c1">// T指对应的类型
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>name ：变量名</li>
+<li>T : 切片内元素的类型</li>
+</ul>
+<p>示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">i</span> <span class="o">:=</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 声明切片类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">a</span> <span class="p">[]</span><span class="kt">string</span>              <span class="c1">// 声明string类型切片
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">b</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>             <span class="c1">// 声明int类型切片，并初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">c</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">bool</span><span class="p">{</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">}</span> <span class="c1">// 声明bool类型的切片并初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">d</span> <span class="p">=</span> <span class="p">[]</span><span class="o">*</span><span class="kt">int</span><span class="p">{</span><span class="o">&amp;</span><span class="nx">i</span><span class="p">,</span> <span class="kc">nil</span><span class="p">}</span>     <span class="c1">// 声明一个整型指针类型，并初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="kd">var</span> <span class="nx">e</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">bool</span><span class="p">{</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">}</span> <span class="c1">// 声明一个bool类型的切片，并初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>              <span class="c1">// []
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>              <span class="c1">// []
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>              <span class="c1">// [true false]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>              <span class="c1">// [0xc0000aa058 &lt;nil&gt;]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span>       <span class="c1">// true
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">b</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span>       <span class="c1">// false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span>       <span class="c1">// false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">d</span> <span class="o">==</span> <span class="kc">nil</span><span class="p">)</span>       <span class="c1">// false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">c</span> <span class="o">==</span> <span class="nx">e</span><span class="p">)</span>         <span class="c1">// 切片不是值类型，只能和nil比较。Invalid operation: c==e (the operator == is not defined on []bool)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="切片的长度和容量">切片的长度和容量</h2>
+<p>前面提到，切片内部封装了<code>容量</code> 、<code>长度</code>，我们可以使用Go语言内置的<code>len()</code>函数求切片的长度，使用<code>cap()</code>函数求切片容量。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="p">[]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len(a):%v, cap(a):%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span> <span class="c1">// len(a):0, cap(a):0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nx">b</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;len(b):%v, cap(b):%v\n&#34;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">b</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">b</span><span class="p">))</span> <span class="c1">// len(b):3, cap(b):3
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="切片表达式">切片表达式</h2>
+<p>切片表达式的写法比如：<code>var a = b[low:high]</code>，其中，这里的<code>b</code>变量可以是<strong>字符串、数组、切片或者指向数组和切片的指针类型</strong>。
+切片表达式是一种可以从字符串、数组、数组指针或者切片构造子字符串或者子切片的一种语法。（注意：从数组用切片表达式生成的是切片）</p>
+<p>切片表达式有两种形式：</p>
+<ol>
+<li>简单的切片表达式，<code>var a = b[low:high]</code>，拥有两个索引界值。</li>
+<li>完整的切片表达式，<code>var a = b[low:high:size]</code>，除了拥有两个索引界值以外，还指定切片容量的索引位置。</li>
+</ol>
+<h3 id="简单的切片表达式">简单的切片表达式</h3>
+<p>切片是对数组的封装，其底层是一个数组。所以可以基于数组通过切片表达式得到一个切片。切片表达式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">a</span> <span class="p">=</span> <span class="nx">b</span><span class="p">[</span><span class="nx">low</span><span class="p">:</span><span class="nx">high</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>中的 <code>low</code> 和 <code>high</code> 分别表示左边界（<strong>包含</strong>）和右边界（<strong>不包含</strong>），切片长度是 <code>high - low</code>，切片容量是操作对象的长度。</p>
+<p>如下面的代码，切片 <code>s</code> 取的是数组 <code>a</code>中索引位置 <code>1 &lt;= 索引 &lt; 4</code> 的元素，
+切片长度是 <code>4 - 1 = 3</code>，容量是数组长度 <code>5</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s:%v, len(s):%v, cap(s):%v\n&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s</span><span class="p">:[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span><span class="mi">3</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span><span class="mi">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了方便，切片表达式支持省略 <code>low</code> 和 <code>high</code>的值。省略 <code>low</code> 则 <code>low</code> 值为 <code>0</code> ，省略 <code>high</code> 则 <code>high</code> 值为操作对象的长度。即：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">a</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="nx">等同于</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="nx">等同于</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">a</span><span class="p">[:]</span>  <span class="nx">等同于</span> <span class="nx">a</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">)]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong></p>
+<p>对于数组或者字符串，必须满足 <code>0&lt;=low&lt;=high&lt;=len(a)</code>，否则会索引越界（out of bounds）。</p>
+<p>对切片<code>s</code>执行切片表达式（切片再切片），<code>high</code> 的最大值不是长度，而是 <code>s</code> 的容量。索引必须是非负的，并且可以用int类型的值表示; 对于数组或常量字符串，常量索引也必须在有效范围内。如果low和high两个指标都是常数，它们必须满足low &lt;= high。如果索引在运行时超出范围，就会发生运行时panic。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s:%v, len(s):%v, cap(s):%v\n&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">s</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s1:%v, len(s1):%v, cap(s1):%v\n&#34;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>大家猜猜看，程序会输出什么？s1是否会报下标越界呢？
+执行结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s</span><span class="p">:[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s</span><span class="p">):</span><span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s1</span><span class="p">:[</span><span class="mi">5</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">1</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>并没有下标越界，并且输出了s中不存在的数字<code>5</code>。这是因为s1是对切片s再切片，切片表达式的 <code>high</code> 最大值是s的容量4，并没有越界。</p>
+<h3 id="完整的切片表达式">完整的切片表达式</h3>
+<p>完整的切片表达式的格式是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">a</span><span class="p">[</span><span class="nx">low</span><span class="p">:</span><span class="nx">high</span><span class="p">:</span><span class="nx">max</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于数组、数组指针、切片，可以使用完整的切片表达式，（<strong>注意：字符串不可以</strong>），完整的切片表达式，和普通切片表达式一样，只不过最终
+会把切片的容量设置为 <code>max - low</code> 的值。最终得到的是一个长度是 <code>high - low</code> , 容量为 <code>max - low</code>的切片。</p>
+<p>完整切片表达式，只能省略 <code>low</code>，如果省略，则默认为0。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>    <span class="c1">// 普通切片表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s2</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1">// 完整切片表达式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s1:%v, len(s1):%v, cap(s1):%v\n&#34;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s2:%v, len(s2):%v, cap(s2):%v\n&#34;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s1</span><span class="p">:[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s2</span><span class="p">:[</span><span class="mi">2</span> <span class="mi">3</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">):</span><span class="mi">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整切片表达式必须满足 <code>0 &lt;= low &lt;= high &lt;= max &lt;= cap(a)</code>。其他性质和普通切片表达式相同。</p>
+<h3 id="使用make函数创建切片">使用make()函数创建切片</h3>
+<p>前面通过切片表达式可以从一个数组创建切片，也介绍了创建并初始化一个切片（<code>var a = []int{1, 2, 3}</code>）。这两种方式都无法动态指定切片的下面介绍通过内置的 <code>make()</code> 函数动态创建切片。格式如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nb">make</span><span class="p">([]</span><span class="nx">T</span><span class="p">,</span> <span class="nx">size</span><span class="p">,</span> <span class="nx">cap</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li>[]T  ：切片的类型</li>
+<li>size ：切片的长度</li>
+<li>cap  : 分配内存的容量
+举个栗子：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// a:[0 0], len(a):2, cap(a):10
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;a:%v, len(a):%v, cap(a):%v&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">a</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">a</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到，切片的容量，也就是分配的存储空间是10，但是只使用了2，所以切片的长度是2。实际上底层数组开辟的内存空间长度是10。</p>
+<h2 id="切片的本质">切片的本质</h2>
+<p>切片本质上，是对数组做了一层封装。切片底层包含</p>
+<ol>
+<li>指向一个数组的指针</li>
+<li>切片的长度 <code>len</code></li>
+<li>切片的容量 <code>cap</code></li>
+</ol>
+<p>假设存在一个数组 <code>a := [8]int{0, 1, 2, 3, 4, 5, 6, 7}</code> ,有一个切片 <code>s1 := a[:5]</code>, 同时对 <code>s1</code> 再切片：<code>s2 := s1[1:3]</code>。那么切片的示意图如下：</p>
+<p><img src="http://cdn1.jalen-qian.com/Hugo/20210820161940aTzlPKPbDY.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210820161940647"
+	
+	
+></p>
+<p>由于 <code>s2</code> 是对 <code>s1</code> 再切片，它们的底层数组是同一个，示意图如下：</p>
+<p><img src="http://cdn1.jalen-qian.com/Hugo/20210820163022KSTMpTULbL.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210820163022314"
+	
+	
+></p>
+<p>这时候，如果我们将s2的第二个元素改为100，会怎样呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s2</span><span class="o">:=</span> <span class="nx">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s1:%v, len(s1):%v, cap(s1):%v\n&#34;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s2:%v, len(s2):%v, cap(s2):%v\n&#34;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;a:%v, s1:%v, s2:%v\n&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nl">s1:</span><span class="o">[</span><span class="n">0</span> <span class="n">1</span> <span class="n">2</span> <span class="n">3</span> <span class="n">4</span><span class="o">],</span> <span class="n">len</span><span class="o">(</span><span class="n">s1</span><span class="o">):</span><span class="n">5</span><span class="o">,</span> <span class="n">cap</span><span class="o">(</span><span class="n">s1</span><span class="o">):</span><span class="n">8</span>
+</span></span><span class="line"><span class="cl"><span class="nl">
+</span></span></span><span class="line"><span class="cl"><span class="nl">s2:</span><span class="o">[</span><span class="n">1</span> <span class="n">2</span><span class="o">],</span> <span class="n">len</span><span class="o">(</span><span class="n">s2</span><span class="o">):</span><span class="n">2</span><span class="o">,</span> <span class="n">cap</span><span class="o">(</span><span class="n">s2</span><span class="o">):</span><span class="n">7</span>
+</span></span><span class="line"><span class="cl"><span class="nl">
+</span></span></span><span class="line"><span class="cl"><span class="nl">a:</span><span class="o">[</span><span class="n">0</span> <span class="n">1</span> <span class="n">100</span> <span class="n">3</span> <span class="n">4</span> <span class="n">5</span> <span class="n">6</span> <span class="n">7</span><span class="o">],</span> <span class="n">s1</span><span class="o">:[</span><span class="n">0</span> <span class="n">1</span> <span class="n">100</span> <span class="n">3</span> <span class="n">4</span><span class="o">],</span> <span class="n">s2</span><span class="o">:[</span><span class="n">1</span> <span class="n">100</span><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们发现数组a，<strong>切片s1和s2的对应位置的值都变成了100</strong>。这说明 <code>s1</code> 和 <code>s2</code> 的底层数组都是数组<code>a</code>。这是我们需要注意的地方，如果在实际开发中，我们不希望改动到切片的原始数组或者原始切片，我们应该使用<code>copy()</code>函数拷贝。</p>
+<h2 id="切片的特性">切片的特性</h2>
+<h3 id="切片不能直接比较">切片不能直接比较</h3>
+<p>切片是引用类型，我们不能用 <code>==</code> 操作符来判断两个切片中的元素是否完全相等。切片唯一合法的比较操作是和<code>nil</code>比较。当切片是 <code>nil</code> 时，切片并没有底层数组。一个 <code>nil</code> 值切片的长度和容量都是0。</p>
+<h3 id="如何判断切片是否为空">如何判断切片是否为空？</h3>
+<p>首先定义什么是为空？一般来讲，我们判断切片是否为空，是想判断<strong>切片中存储的数据是否是空的</strong>。</p>
+<p>我们知道，切片是一种引用类型，只能和 <code>nil</code> 比较，当某个切片等于 <code>nil</code> 时，表示这个切片没有分配内存，这种时候当然可以说这个切片是空的。</p>
+<p>但是还有另一种情况，我们分配了内存，但是切片的<code>len</code>值为0，这时虽然底层数组开辟了空间，但是切片没有存储任何数据，按照上面的定义，切片也应该判定为空的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">s1</span> <span class="p">[]</span><span class="kt">int</span>         <span class="c1">//len(s1)=0;cap(s1)=0;s1==nil
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s2</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>        <span class="c1">//len(s2)=0;cap(s2)=0;s2!=nil
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s3</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">//len(s3)=0;cap(s3)=0;s3!=nil
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>当切片为<code>nil</code>时，<code>len(s)</code>也会返回0，所以判断切片是否为空，请使用<code>len(s) == 0</code>来判断，而不要使用 <code>s == nil</code>来判断。</p>
+<h3 id="切片的赋值拷贝">切片的赋值拷贝</h3>
+<p>切片的赋值拷贝，底层数组是同一个，所以对拷贝之后的切片改变其内部元素的值，原始数组的值也会被改变。示例如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// s1切片由a数组通过切片表达式获得
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s1</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">[:]</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 通过赋值拷贝得到s2切片
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s2</span> <span class="o">:=</span> <span class="nx">s1</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s1:%v, len(s1):%v, cap(s1):%v\n&#34;</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s2:%v, len(s2):%v, cap(s2):%v\n&#34;</span><span class="p">,</span> <span class="nx">s2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">),</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">=</span> <span class="mi">100</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;a:%v\ns1:%v\ns2:%v&#34;</span><span class="p">,</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">s1</span><span class="p">,</span> <span class="nx">s2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出结果如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">s1</span><span class="p">:[</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">3</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s1</span><span class="p">):</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s2</span><span class="p">:[</span><span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s2</span><span class="p">):</span><span class="mi">3</span><span class="p">,</span> <span class="nb">cap</span><span class="p">(</span><span class="nx">s2</span><span class="p">):</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">a</span><span class="p">:[</span><span class="mi">100</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s1</span><span class="p">:[</span><span class="mi">100</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s2</span><span class="p">:[</span><span class="mi">100</span> <span class="mi">20</span> <span class="mi">30</span><span class="p">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们发现，改变 <code>s2</code> 的第0个元素的值，数组 <code>a</code> 和切片 <code>s1</code> 的第0个元素的值也变成了100。说明：</p>
+<ul>
+<li>对数组进行切片，则数组就是新切片的底层数组</li>
+<li>对切片进行赋值拷贝，则新切片和原来的切片共享一个底层数组。</li>
+</ul>
+<p><strong>切片赋值拷贝后，对新切片改变值，会影响原来的切片的值</strong>，这点需要特别注意。</p>
+<h3 id="切片的遍历">切片的遍历</h3>
+<p>切片的遍历和数组相同。支持两种遍历方式，索引遍历和 <code>for range</code>  遍历。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 通过索引进行遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;index:%d, value:%d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">s</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// 通过for range进行遍历
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">s</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;index:%d, value:%d\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用append函数添加元素">使用append()函数添加元素。</h2>
+<p>Go语言内置的 <code>append()</code> 函数可以给切片动态添加元素。你可以只添加一个元素，也可以添加多个，也可以将另一个切片添加到该切片末尾（参数后面加&hellip;，注意不能是数组，只能是另一个切片）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>  <span class="c1">// [1 2 3]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>    <span class="c1">// [1 2 3 4]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">// [1 2 3 4 5 6]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">a</span> <span class="o">:=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">s1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="nx">a</span><span class="o">...</span><span class="p">)</span> <span class="c1">// 编译不通过，不能用数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">s1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span><span class="o">...</span><span class="p">)</span> <span class="c1">// [1 2 3 4 5 6 7 8 9]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong>：通过 <code>var</code> 关键字声明的零值切片可以直接<code>append()</code>添加元素，append函数会分配内存空间。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">s</span> <span class="p">[]</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;s:%v\n&#34;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="c1">// [1 2 3]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面的代码虽然没有问题，但是是没必要的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// 没有必要初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 没有必要初始化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nx">s1</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">s1</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">s1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每个切片都指向一个底层数组，这个数组的容量够用，就添加新的元素。当底层数组不能够容纳新的元素时，切片就会按照一定的策略进行自动扩容，此时切片的底层数组会更换。“扩容”往往发生在<code>append()</code>函数操作时，所以我们需要使用原变量接收<code>append()</code>函数返回的值。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https/:www.jalen-qian.com/tags/golang/">Golang</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>转载需要保留原始链接，未经明确许可，禁止商业使用。<a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go语言基础之流程控制</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go语言基础之数组</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go语言基础之变量与常量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go语言基础之数据类型</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Go语言基础之运算符</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"avatar":true,"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-cn","locale":{"admin":"Admin"},"requiredMeta":["name","email","url"],"serverURL":"https://waline.jalen-qian.com","visitor":true});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 Jalen的博客
+        <span><a class="copyright" href="http://beian.miit.gov.cn/">粤ICP备2020106088号</a></span>
+    </section>
+
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/https/:www.jalen-qian.com/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

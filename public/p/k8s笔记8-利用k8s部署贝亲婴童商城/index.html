@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='desc'>
+<meta name="keywords" content="K8S, 贝亲商城"><title>K8S笔记8 利用K8S部署贝亲婴童商城</title>
+
+<link rel='canonical' href='https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/'>
+
+<link rel="stylesheet" href="/https/:www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='K8S笔记8 利用K8S部署贝亲婴童商城'>
+<meta property='og:description' content='desc'>
+<meta property='og:url' content='https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/'>
+<meta property='og:site_name' content='Jalen的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='K8S' /><meta property='article:published_time' content='2021-01-18T09:47:00&#43;08:00'/><meta property='article:modified_time' content='2021-01-18T09:47:00&#43;08:00'/>
+<meta name="twitter:title" content="K8S笔记8 利用K8S部署贝亲婴童商城">
+<meta name="twitter:description" content="desc">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/https/:www.jalen-qian.com">
+                
+                    
+                    
+                    
+                        
+                        <img src="/https/:www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/https/:www.jalen-qian.com">Jalen的博客</a></h1>
+            <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https//:www.jalen-qian.com/" selected>中文</option>
+                        
+                            <option value="https//:www.jalen-qian.com/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#部署拓扑图">部署拓扑图</a></li>
+    <li><a href="#部署贝亲商城">部署贝亲商城</a>
+      <ol>
+        <li><a href="#部署资源">部署资源</a></li>
+        <li><a href="#部署贝亲商城-1">部署贝亲商城</a>
+          <ol>
+            <li><a href="#1-master创建nfs文件共享并挂载到node节点">1. master创建NFS文件共享，并挂载到Node节点</a></li>
+            <li><a href="#2-部署并初始化数据库">2. 部署并初始化数据库</a>
+              <ol>
+                <li><a href="#21-编写beiqin-db-deployyml文件">2.1 编写<code>beiqin-db-deploy.yml</code>文件</a></li>
+                <li><a href="#22-部署mysql到集群">2.2 部署mysql到集群</a></li>
+                <li><a href="#23-查看部署情况">2.3 查看部署情况</a></li>
+                <li><a href="#24-编辑db服务脚本">2.4 编辑db服务脚本</a></li>
+                <li><a href="#25-部署服务">2.5 部署服务</a></li>
+              </ol>
+            </li>
+            <li><a href="#3-部署web应用并初始化服务">3. 部署web应用并初始化服务</a>
+              <ol>
+                <li><a href="#31-编写部署脚本">3.1 编写部署脚本</a></li>
+                <li><a href="#32-创建部署">3.2 创建部署</a></li>
+                <li><a href="#33-创建服务">3.3 创建服务</a></li>
+                <li><a href="#34-验证服务">3.4 验证服务</a></li>
+              </ol>
+            </li>
+            <li><a href="#4-利用rinetd对外暴露服务">4. 利用Rinetd对外暴露服务</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="https/:www.jalen-qian.com/categories/k8s/" >
+                K8S
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/">K8S笔记8 利用K8S部署贝亲婴童商城</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            desc
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2021-01-18</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>经过前几篇的学习，已经基本了解了如何部署一个应用、如何创建文件共享、如何通过服务实现负载均衡以及如何通过<code>Renetd</code>实现服务对外暴露。接下来学习实战，如何部署一个通过 <code>Spring Boot</code> 开发的商城web应用——贝亲商城。</p>
+<h1 id="部署拓扑图">部署拓扑图</h1>
+<p><img src="http://cdn1.jalen-qian.com/20210115201332odau4FI8RN.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115201331863"
+	
+	
+></p>
+<p>通过这个拓扑图，我们可知：</p>
+<ul>
+<li>master节点上的文件共享区有数据库脚本，用来初始化<code>MySql</code>数据库，并部署在一个pod上</li>
+<li>通过<code>beiqin-db-service</code>这个服务，在集群上暴露<code>MySql</code>服务</li>
+<li>通过<code>openjdk:8u222</code>这个基础镜像，部署web服务（使用SpringBoot开发），容器对外暴露端口是80</li>
+<li>通过<code>beiqin-app-service</code>这个服务，对外暴露贝亲商城应用的端口，也是80</li>
+<li>采用<code>Renetd</code>实现宿主机IP和<code>beiqin-app-service</code>服务虚拟IP的映射，最终能够对集群外网提供服务</li>
+</ul>
+<h1 id="部署贝亲商城">部署贝亲商城</h1>
+<h2 id="部署资源">部署资源</h2>
+<p>我们将部署脚本还有服务jar包、mysql脚本文件等，放到<code>/usr/local/data/www-data/beiqin/</code>目录下。</p>
+<p>其中，<code>/usr/local/data/www-data/</code>是前文我们配置好的文件共享区。</p>
+<p>以下是部署贝亲商城应用所需的所有资源文件，下面将一一创建并部署</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@master www-data<span class="o">]</span><span class="c1"># tree beiqin</span>
+</span></span><span class="line"><span class="cl">beiqin
+</span></span><span class="line"><span class="cl">├── beiqin-app-deploy.yml   <span class="c1"># web应用部署脚本文件</span>
+</span></span><span class="line"><span class="cl">├── beiqin-app-service.yml  <span class="c1"># web应用服务部署脚本文件</span>
+</span></span><span class="line"><span class="cl">├── beiqin-db-deploy.yml    <span class="c1"># mysql部署脚本文件</span>
+</span></span><span class="line"><span class="cl">├── beiqin-db-service.yml   <span class="c1"># mysql服务部署脚本文件</span>
+</span></span><span class="line"><span class="cl">├── dist
+</span></span><span class="line"><span class="cl">│   ├── application.yml     <span class="c1"># 应用程序配置文件</span>
+</span></span><span class="line"><span class="cl">│   └── beiqin-app.jar      <span class="c1"># spring-boot开发的应用程序jar包，可以在openjdk容器中直接运行</span>
+</span></span><span class="line"><span class="cl">└── sql
+</span></span><span class="line"><span class="cl">    └── beiqin.sql          <span class="c1"># mysql脚本文件</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="部署贝亲商城-1">部署贝亲商城</h2>
+<h3 id="1-master创建nfs文件共享并挂载到node节点">1. master创建NFS文件共享，并挂载到Node节点</h3>
+<p>这里我们简单沿用 <a class="link" href="http://www.jalen-qian.com/post/k8s/05-nfs/"  target="_blank" rel="noopener"
+    >K8S笔记5 基于NFS的集群文件共享</a> 中配置的，将master的 <code>/usr/local/data/www-data/</code>目录挂载到 node 主机的 <code>/mnt</code>目录，这里不多赘述了。</p>
+<h3 id="2-部署并初始化数据库">2. 部署并初始化数据库</h3>
+<h4 id="21-编写beiqin-db-deployyml文件">2.1 编写<code>beiqin-db-deploy.yml</code>文件</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1beta1        </span><span class="w"> </span><span class="c"># 新版的k8s,版本号写法</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment                </span><span class="w"> </span><span class="c"># 脚本类型：创建部署</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-deploy        </span><span class="w"> </span><span class="c"># 部署名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">                    </span><span class="c"># 副本数，由于是mysql，只需要1个即可</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-deploy   </span><span class="w"> </span><span class="c"># pod标签</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w">                   </span><span class="c"># 创建挂载卷</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-volume  </span><span class="w"> </span><span class="c"># 挂载卷名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">hostPath</span><span class="p">:</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/mnt/beiqin/sql</span><span class="w"> </span><span class="c"># 挂载路径（数据卷在Node宿主机上的路径）</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql:5.7       </span><span class="w"> </span><span class="c"># 使用镜像：mysql:5.7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="m">3306</span><span class="w">   </span><span class="c"># 容器对集群暴露的端口号：3306</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">                    </span><span class="c"># 注意：env是之前没配置过的，表示容器的环境变量</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">MYSQL_ROOT_PASSWORD </span><span class="w"> </span><span class="c"># 环境变量1：mysql root密码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;root&#34;</span><span class="w">              </span><span class="c"># 环境变量的值，注意字符串要用&#34;&#34;包起来</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">                </span><span class="c"># 容器挂载信息</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-volume</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/docker-entrypoint-initdb.d </span><span class="w"> </span><span class="c"># 挂载路径，挂载到这个目录，容器启动时会自动加载里面的sql脚本文件</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="22-部署mysql到集群">2.2 部署mysql到集群</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># cd /usr/local/data/www-data/beiqin</span>
+</span></span><span class="line"><span class="cl">$ kubectl create -f beiqin-db-deploy.yml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="23-查看部署情况">2.3 查看部署情况</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 查看部署的pod</span>
+</span></span><span class="line"><span class="cl">$ kubectl get pod -o wide
+</span></span><span class="line"><span class="cl">NAME                                READY   STATUS    RESTARTS   AGE     IP            NODE    NOMINATED NODE   READINESS GATES
+</span></span><span class="line"><span class="cl">beiqin-db-deploy-757d87dc77-g5wrf   1/1     Running   <span class="m">0</span>          5m17s   10.244.1.12   node1   &lt;none&gt;           &lt;none&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入pod容器内部，查看mysql是否能登录 &amp; 是否执行了脚本创建了数据库和表</span>
+</span></span><span class="line"><span class="cl">$ kubectl <span class="nb">exec</span> -it beiqin-db-deploy-757d87dc77-g5wrf /bin/bash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在容器内部，登录mysql</span>
+</span></span><span class="line"><span class="cl">$ mysql -uroot -proot
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看数据库，可以发现数据库已经创建</span>
+</span></span><span class="line"><span class="cl">mysql&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> beiqin             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> performance_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> sys                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">5</span> rows in <span class="nb">set</span> <span class="o">(</span>0.06 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看表，发现表也已经创建</span>
+</span></span><span class="line"><span class="cl">mysql&gt; use beiqin<span class="p">;</span>
+</span></span><span class="line"><span class="cl">Reading table information <span class="k">for</span> completion of table and column names
+</span></span><span class="line"><span class="cl">You can turn off this feature to get a quicker startup with -A
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Database changed
+</span></span><span class="line"><span class="cl">mysql&gt; show tables<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+---------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Tables_in_beiqin    <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_category          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_evaluate          <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_goods             <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_goods_cover       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_goods_detail      <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_goods_param       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> t_promotion_seckill <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------------+
+</span></span><span class="line"><span class="cl"><span class="m">7</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="24-编辑db服务脚本">2.4 编辑db服务脚本</h4>
+<p>编写<code>beiqin-db-service.yml</code> ，这个脚本和部署脚本相比简单得多~</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w"> </span><span class="c"># 类型：服务</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-service</span><span class="w"> </span><span class="c"># 服务名称</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c"># 服务也是一个特殊的pod，也需要配置标签</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c"># 选择关联的pod标签，也就是上一步创建的db部署pod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-db-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">3310</span><span class="w"> </span><span class="c"># 服务对外暴露端口，对外指的是容器外，集群内</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="m">3306</span><span class="w"> </span><span class="c"># 服务容器内端口</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="25-部署服务">2.5 部署服务</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ kubectl create -f beiqin-db-service.yml
+</span></span><span class="line"><span class="cl"><span class="c1"># 验证服务是否正常 kubectl get svc 和 kubectl get service 完全等效</span>
+</span></span><span class="line"><span class="cl">$ kubectl get svc
+</span></span><span class="line"><span class="cl">NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>    AGE
+</span></span><span class="line"><span class="cl">beiqin-db-service   ClusterIP   10.107.5.137   &lt;none&gt;        3310/TCP   7s
+</span></span><span class="line"><span class="cl">kubernetes          ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP    27h
+</span></span><span class="line"><span class="cl"><span class="c1"># 这里我们可以看到，服务的虚拟IP是 10.107.5.137 ，对外暴露端口是 3310（pod外，集群内）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 进一步查看服务的详细信息</span>
+</span></span><span class="line"><span class="cl">$ kubectl describe svc beiqin-db-service
+</span></span><span class="line"><span class="cl">Name:              beiqin-db-service
+</span></span><span class="line"><span class="cl">Namespace:         default
+</span></span><span class="line"><span class="cl">Labels:            <span class="nv">app</span><span class="o">=</span>beiqin-db-service
+</span></span><span class="line"><span class="cl">Annotations:       &lt;none&gt;
+</span></span><span class="line"><span class="cl">Selector:          <span class="nv">app</span><span class="o">=</span>beiqin-db-deploy
+</span></span><span class="line"><span class="cl">Type:              ClusterIP
+</span></span><span class="line"><span class="cl">IP:                10.107.5.137 <span class="c1"># 虚拟IP</span>
+</span></span><span class="line"><span class="cl">Port:              &lt;unset&gt;  3310/TCP <span class="c1"># 对外暴露的端口</span>
+</span></span><span class="line"><span class="cl">TargetPort:        3306/TCP <span class="c1"># 目标端口</span>
+</span></span><span class="line"><span class="cl">Endpoints:         10.244.1.12:3306 <span class="c1"># 关联的pod虚拟IP和端口号，10.244.1.12是启动的那个db部署pod的虚拟IP</span>
+</span></span><span class="line"><span class="cl">Session Affinity:  None
+</span></span><span class="line"><span class="cl">Events:            &lt;none&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-部署web应用并初始化服务">3. 部署web应用并初始化服务</h3>
+<h4 id="31-编写部署脚本">3.1 编写部署脚本</h4>
+<p>编辑 <code>beiqin-app-deploy.yml</code> 文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1beta1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-app-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="c"># 副本数：2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-app-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name </span><span class="p">:</span><span class="w"> </span><span class="l">beqin-app-volume</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">hostPath</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">/mnt/beiqin/dist</span><span class="w"> </span><span class="c"># 数据卷宿主机挂载目录，存放jar包和应用配置</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beiqin-app-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">openjdk:8u222-jre </span><span class="w"> </span><span class="c"># 容器镜像，使用openjdk:8u222-jre</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;/bin/sh&#34;</span><span class="p">]</span><span class="w"> </span><span class="c"># 注意：这里 command表示容器启动时执行的指令，这里执行shell命令</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;-c&#34;</span><span class="p">,</span><span class="s2">&#34;cd /usr/local/beiqin/dist;java -jar beiqin-app.jar&#34;</span><span class="p">]</span><span class="w"> </span><span class="c"># 指令参数</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">volumeMounts</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">beqin-app-volume</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l">/usr/local/beiqin/dist</span><span class="w"> </span><span class="c"># 容器内挂载的目录</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="32-创建部署">3.2 创建部署</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ kubectl create -f beiqin-app-deploy.yml
+</span></span><span class="line"><span class="cl">deployment.apps/beiqin-app-deploy created
+</span></span><span class="line"><span class="cl">$ kubectl get pod -o wide
+</span></span><span class="line"><span class="cl">NAME                                 READY   STATUS    RESTARTS   AGE     IP            NODE    NOMINATED NODE   READINESS GATES
+</span></span><span class="line"><span class="cl">beiqin-app-deploy-5958f57879-n9p9b   1/1     Running   <span class="m">0</span>          75s     10.244.2.17   node2   &lt;none&gt;           &lt;none&gt;
+</span></span><span class="line"><span class="cl">beiqin-app-deploy-5958f57879-nfs8s   1/1     Running   <span class="m">0</span>          75s     10.244.1.19   node1   &lt;none&gt;           &lt;none&gt;
+</span></span><span class="line"><span class="cl">beiqin-db-deploy-757d87dc77-g5wrf    1/1     Running   <span class="m">2</span>          2d19h   10.244.1.17   node1   &lt;none&gt;           &lt;none&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="33-创建服务">3.3 创建服务</h4>
+<p>编辑服务脚本，写入如下内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim beiqin-app-service.yml
+</span></span><span class="line"><span class="cl">apiVersion: v1
+</span></span><span class="line"><span class="cl">kind: Service
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: beiqin-app-service
+</span></span><span class="line"><span class="cl">  labels:
+</span></span><span class="line"><span class="cl">    app: beiqin-app-service
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    app: beiqin-app-deploy
+</span></span><span class="line"><span class="cl">  ports:
+</span></span><span class="line"><span class="cl">  - port: <span class="m">80</span>
+</span></span><span class="line"><span class="cl">    targetPort: <span class="m">80</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建服务到集群</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ kubectl create -f beiqin-app-service.yml 
+</span></span><span class="line"><span class="cl">service/beiqin-app-service created
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看服务pod状态</span>
+</span></span><span class="line"><span class="cl">$ kubectl get svc
+</span></span><span class="line"><span class="cl">NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>    AGE
+</span></span><span class="line"><span class="cl">beiqin-app-service   ClusterIP   10.97.138.238   &lt;none&gt;        80/TCP     58s
+</span></span><span class="line"><span class="cl">beiqin-db-service    ClusterIP   10.107.5.137    &lt;none&gt;        3310/TCP   2d19h
+</span></span><span class="line"><span class="cl">kubernetes           ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP    3d22h
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>至此，贝亲商城已经完全部署到了集群环境，我们这里看到服务的虚拟IP是<code>10.97.138.238</code>，我们可以验证下这个服务IP的80端口是否能提供服务。</p>
+<h4 id="34-验证服务">3.4 验证服务</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ curl http://10.97.138.238/goods?gid<span class="o">=</span><span class="m">1791</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://cdn1.jalen-qian.com/20210118164459zV77gl1lzt.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210118164458934"
+	
+	
+></p>
+<h3 id="4-利用rinetd对外暴露服务">4. 利用Rinetd对外暴露服务</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim /etc/rinetd.conf
+</span></span><span class="line"><span class="cl">0.0.0.0 <span class="m">80</span> 10.97.138.238 <span class="m">80</span>
+</span></span><span class="line"><span class="cl">$ rinetd -c /etc/rinetd.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后通过本机访问虚拟机master的IP，成功访问到了服务</p>
+<p><img src="http://cdn1.jalen-qian.com/202101181650106mkwc9OHF9.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210118165010644"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https/:www.jalen-qian.com/tags/k8s/">K8S</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>转载需要保留原始链接，未经明确许可，禁止商业使用。<a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记9 Kubernetes命令总结</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记4 利用Deployment部署Tomcat集群</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记5 基于NFS的集群文件共享</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记6 基于Rinetd的Service负载均衡实现</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记7 更新集群配置与资源限定</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"avatar":true,"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-cn","locale":{"admin":"Admin"},"requiredMeta":["name","email","url"],"serverURL":"https://waline.jalen-qian.com","visitor":true});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 Jalen的博客
+        <span><a class="copyright" href="http://beian.miit.gov.cn/">粤ICP备2020106088号</a></span>
+    </section>
+
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/https/:www.jalen-qian.com/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

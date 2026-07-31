@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='desc'>
+<meta name="keywords" content="K8S, Rinetd, 负载均衡"><title>K8S笔记6 基于Rinetd的Service负载均衡实现</title>
+
+<link rel='canonical' href='https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
+
+<link rel="stylesheet" href="/https/:www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='K8S笔记6 基于Rinetd的Service负载均衡实现'>
+<meta property='og:description' content='desc'>
+<meta property='og:url' content='https//:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
+<meta property='og:site_name' content='Jalen的博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='K8S' /><meta property='article:tag' content='Rinetd' /><meta property='article:tag' content='负载均衡' /><meta property='article:published_time' content='2021-01-15T09:47:00&#43;08:00'/><meta property='article:modified_time' content='2021-01-15T09:47:00&#43;08:00'/>
+<meta name="twitter:title" content="K8S笔记6 基于Rinetd的Service负载均衡实现">
+<meta name="twitter:description" content="desc">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/https/:www.jalen-qian.com">
+                
+                    
+                    
+                    
+                        
+                        <img src="/https/:www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/https/:www.jalen-qian.com">Jalen的博客</a></h1>
+            <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https//:www.jalen-qian.com/" selected>中文</option>
+                        
+                            <option value="https//:www.jalen-qian.com/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#service实现负载均衡">Service实现负载均衡</a></li>
+    <li><a href="#端口转发工具rinetd">端口转发工具Rinetd</a>
+      <ol>
+        <li><a href="#安装rinetd">安装Rinetd</a></li>
+        <li><a href="#配置rinetd">配置Rinetd</a></li>
+        <li><a href="#运行rinetdconf">运行Rinetd.conf</a>
+          <ol>
+            <li><a href="#查看映射情况">查看映射情况</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="https/:www.jalen-qian.com/categories/k8s/" >
+                K8S
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/rinetd/" >
+                Rinetd
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" >
+                负载均衡
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/">K8S笔记6 基于Rinetd的Service负载均衡实现</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            desc
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2021-01-15</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 3 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>在上一篇我们介绍了如何使用NFS实现文件共享以及如何将共享文件挂载到每个pod的容器中。</p>
+<h1 id="service实现负载均衡">Service实现负载均衡</h1>
+<p><img src="http://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115172545864"
+	
+	
+></p>
+<p>这里我们直接使用Service的负载均衡，不再将端口直接暴露在宿主机节点上，集群内部通过k8s内部网络相互访问。由tomcat-service这个特殊的pod来实现流量转发与负载均衡。</p>
+<p>修改<code>tomcat-service.yml</code>如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tomcat-service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">tomcat-service</span><span class="w"> </span><span class="c"># Service也是一个特殊的pod，需要设置lables</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  type: NodePort # Service类型</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">tomcat-cluster</span><span class="w"> </span><span class="c"># 指定绑定的pod</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="m">8000</span><span class="w"> </span><span class="c"># Service在k8s集群内部暴露的端口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="m">8080</span><span class="w"> </span><span class="c"># 被映射的容器暴露端口</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#    nodePort: 32500 # 集群每个Node节点上对外暴露的端口</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115173037045"
+	
+	
+></p>
+<p>变更service</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ kubectl apply -f tomcat-service.yml
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看服务状态</span>
+</span></span><span class="line"><span class="cl">$ kubectl get service
+</span></span><span class="line"><span class="cl"><span class="c1"># 输出信息如下</span>
+</span></span><span class="line"><span class="cl">NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>    AGE
+</span></span><span class="line"><span class="cl">kubernetes       ClusterIP   10.96.0.1       &lt;none&gt;        443/TCP    23h
+</span></span><span class="line"><span class="cl">tomcat-service   ClusterIP   10.99.160.131   &lt;none&gt;        8000/TCP   2m23s
+</span></span><span class="line"><span class="cl"><span class="c1">#这里可以看到服务的虚拟IP为 10.99.160.131 </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在NFS共享目录中增加用户测试的 <code>index.jsp</code>，验证负载均衡效果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 在Master节点（NFS Server）中执行如下命令</span>
+</span></span><span class="line"><span class="cl">$ mkdir /usr/local/data/www-data/test/
+</span></span><span class="line"><span class="cl"><span class="c1"># 编写一个用户测试的jsp文件</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s2">&#34;IP:&lt;%=request.getLocalAddr()%&gt;&#34;</span> &gt; /usr/local/data/www-data/test/index.jsp
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看Service内部IP</span>
+</span></span><span class="line"><span class="cl">$ kubectl get service tomcat-service
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用curl测试，10.99.160.131 为上一步中获取的 ClusterIP</span>
+</span></span><span class="line"><span class="cl">$ curl 10.99.160.131:8000/test/index.jsp
+</span></span><span class="line"><span class="cl"><span class="c1"># 返回处理请求的pod容器的ip</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># IP:10.244.2.10</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># IP:10.244.1.10</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://cdn1.jalen-qian.com/20210115175024xES1QYWxQy.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115175024796"
+	
+	
+></p>
+<p>我们发现，请求被随机转发到了不同的Pod（打印的虚拟IP不同）</p>
+<h1 id="端口转发工具rinetd">端口转发工具Rinetd</h1>
+<p>在上面的步骤中，我们实现了集群内的负载均衡。在测试时我们访问<code>index.jsp</code>页面的地址是 <code>curl 10.99.160.131:8000/test/index.jsp</code> ，这个IP是集群服务的虚拟IP地址，我们无法从外部访问。那么怎么将<code>master</code>主机的网卡<code>IP</code>地址<code>192.168.233.128</code> 映射到这个虚拟<code>IP</code>地址，呢？答案是通过<code>Rinted</code></p>
+<ul>
+<li><code>Rinetd</code>是<code>Linux</code>操作系统中为重定向传输控制协议工具</li>
+<li>可将源IP端口数据转发至目标IP端口</li>
+<li>在<code>Kubernetes</code>中用于将service服务对外暴露</li>
+</ul>
+<h2 id="安装rinetd">安装Rinetd</h2>
+<p><code>Rinetd</code>只能通过源代码安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 进入到 /usr/local目录</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> /usr/local
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载rinetd安装包</span>
+</span></span><span class="line"><span class="cl">$ wget http://www.boutell.com/rinetd/http/rinetd.tar.gz
+</span></span><span class="line"><span class="cl"><span class="c1"># 如果没有wget yum install wget 下载</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 解压</span>
+</span></span><span class="line"><span class="cl">$ tar -zxvf rinetd.tar.gz
+</span></span><span class="line"><span class="cl"><span class="c1"># 进入解压的目录</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> rinetd
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改目录下的 rinetd.c ,改变端口范围</span>
+</span></span><span class="line"><span class="cl">$ sed -i <span class="s1">&#39;s/65536/65535/g&#39;</span> rinetd.c
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建rinted依赖目录，这个目录是rinetd这个软件强制要求，必须手动创建</span>
+</span></span><span class="line"><span class="cl">$ mkdir -p /usr/man/
+</span></span><span class="line"><span class="cl"><span class="c1"># 安装C语言编译器</span>
+</span></span><span class="line"><span class="cl">$ yum install -y gcc
+</span></span><span class="line"><span class="cl"><span class="c1"># 编译并安装</span>
+</span></span><span class="line"><span class="cl">$ make <span class="o">&amp;&amp;</span> make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置rinetd">配置Rinetd</h2>
+<p>我们需要增加配置文件 <code>/etc/rinetd.conf</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vim /etc/rinetd.conf
+</span></span><span class="line"><span class="cl"><span class="c1"># 增加IP映射，这句的意思是，将所有访问本机8000端口的请求，都转发到虚拟IP 10.99.160.131的8000端口</span>
+</span></span><span class="line"><span class="cl">0.0.0.0 <span class="m">8000</span> 10.99.160.131 <span class="m">8000</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 或者直接执行 echo &#34;0.0.0.0 8000 10.99.160.131 8000&#34; &gt; /etc/rinetd.conf</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="运行rinetdconf">运行Rinetd.conf</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ rinetd -c /etc/rinetd.conf
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="查看映射情况">查看映射情况</h3>
+<p>使用<code>netstat -nptl</code>可以看到<code>rinetd</code>开启了8000端口</p>
+<p><img src="http://cdn1.jalen-qian.com/20210115183018AlcBvEmeGi.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115183018503"
+	
+	
+></p>
+<p>使用如下地址可在浏览器中访问<code>rinted + service</code>提供的服务</p>
+<p>http://192.168.233.128:8000/test/index.jsp</p>
+<p><img src="http://cdn1.jalen-qian.com/20210115183103cf3vhLluin.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20210115183103354"
+	
+	
+></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="https/:www.jalen-qian.com/tags/k8s/">K8S</a>
+        
+            <a href="https/:www.jalen-qian.com/tags/rinetd/">Rinetd</a>
+        
+            <a href="https/:www.jalen-qian.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>转载需要保留原始链接，未经明确许可，禁止商业使用。<a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记9 Kubernetes命令总结</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记8 利用K8S部署贝亲婴童商城</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记4 利用Deployment部署Tomcat集群</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记5 基于NFS的集群文件共享</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="https/:www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">K8S笔记7 更新集群配置与资源限定</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet'/>
+<div id="waline" class="waline-container"></div>
+<style>
+    .waline-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+        --waline-font-size: var(--article-font-size);
+    }
+    .waline-container .wl-count {
+        color: var(--card-text-color-main);
+    }
+</style><script>
+    
+    Waline.init({"avatar":true,"dark":"html[data-scheme=\"dark\"]","el":"#waline","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"lang":"zh-cn","locale":{"admin":"Admin"},"requiredMeta":["name","email","url"],"serverURL":"https://waline.jalen-qian.com","visitor":true});
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 Jalen的博客
+        <span><a class="copyright" href="http://beian.miit.gov.cn/">粤ICP备2020106088号</a></span>
+    </section>
+
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/https/:www.jalen-qian.com/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

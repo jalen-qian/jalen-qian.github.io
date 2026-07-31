@@ -5,7 +5,7 @@ lastmod: 2020-09-10T01:37:56+08:00
 draft: false
 tags: ["Hugo","博客"]
 categories: ["Hugo"]
-author: "jalen"
+author: "Jalen Qian"
 ---
 
 > 服务器平台：Centos 64bit

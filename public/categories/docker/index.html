@@ -1,224 +1,560 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Docker · Jalen&#39;s Blog</title>
-  <meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。'>
+<title>Category: Docker - Jalen的博客</title>
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel='canonical' href='https//:www.jalen-qian.com/categories/docker/'>
 
-<meta name="theme-color" content="#f8f5ec" />
-<meta name="msapplication-navbutton-color" content="#f8f5ec">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+<link rel="stylesheet" href="/https/:www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='Category: Docker - Jalen的博客'>
+<meta property='og:description' content='专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。'>
+<meta property='og:url' content='https//:www.jalen-qian.com/categories/docker/'>
+<meta property='og:site_name' content='Jalen的博客'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-11-04T11:22:47&#43;08:00 '/>
+<meta name="twitter:title" content="Category: Docker - Jalen的博客">
+<meta name="twitter:description" content="专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。"><link rel="alternate" type="application/rss&#43;xml" href="https//:www.jalen-qian.com/categories/docker/index.xml">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/https/:www.jalen-qian.com">
+                
+                    
+                    
+                    
+                        
+                        <img src="/https/:www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/https/:www.jalen-qian.com">Jalen的博客</a></h1>
+            <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/CaiJimmy/hugo-theme-stack'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
 
 
-<meta name="author" content="Jalen Qian" /><meta name="description" content="个人技术分享与学习总结，专注于Go、PHP、Java等领域" /><meta name="keywords" content="Go, 后端技术, 学习分享" />
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
 
 
 
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
 
 
 
-<meta name="generator" content="Hugo 0.74.3 with theme even" />
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+                
+                
+                    
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
 
 
-<link rel="canonical" href="http://localhost:1313/categories/docker/" />
-  <link href="http://localhost:1313/categories/docker/index.xml" rel="alternate" type="application/rss+xml" title="Jalen&#39;s Blog" />
-  <link href="http://localhost:1313/categories/docker/index.xml" rel="feed" type="application/rss+xml" title="Jalen&#39;s Blog" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                
+                <span>关于我</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
 
-<link href="/sass/main.min.8c3cbcb0324c2bb4875ceccba4007cbad4b4ac8377f33af9953c3e7684534a50.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Docker" />
-<meta property="og:description" content="个人技术分享与学习总结，专注于Go、PHP、Java等领域" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/categories/docker/" />
-<meta property="og:updated_time" content="2020-09-25T00:00:00+00:00" />
-<meta itemprop="name" content="Docker">
-<meta itemprop="description" content="个人技术分享与学习总结，专注于Go、PHP、Java等领域">
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Docker"/>
-<meta name="twitter:description" content="个人技术分享与学习总结，专注于Go、PHP、Java等领域"/>
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
 
-<!--[if lte IE 9]>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
-<![endif]-->
 
-<!--[if lt IE 9]>
-  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
-<![endif]-->
-<link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <div id="mobile-navbar" class="mobile-navbar">
-  <div class="mobile-header-logo">
-    <a href="/" class="logo">Jalen&#39;s Blog</a>
-  </div>
-  <div class="mobile-navbar-icon">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</div>
-<nav id="mobile-menu" class="mobile-menu slideout-menu">
-  <ul class="mobile-menu-list">
-    <a href="/">
-        <li class="mobile-menu-item">首页</li>
-      </a><a href="/post/">
-        <li class="mobile-menu-item">归档</li>
-      </a><a href="/tags/">
-        <li class="mobile-menu-item">标签</li>
-      </a><a href="/categories/">
-        <li class="mobile-menu-item">分类</li>
-      </a><a href="/about/">
-        <li class="mobile-menu-item">关于</li>
-      </a>
-  </ul>
-</nav>
-  <div class="container" id="mobile-panel">
-    <header id="header" class="header">
-        <div class="logo-wrapper">
-  <a href="/" class="logo">Jalen&#39;s Blog</a>
-  <p style="color:#8a8a8a;margin:0;font-size:14px">个人技术分享与学习总结，专注于Go、PHP、Java等领域</p>
-</div>
 
-<nav class="site-navbar">
-  <ul id="menu" class="menu">
-    <li class="menu-item">
-        <a class="menu-item-link" href="/">首页</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/post/">归档</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/tags/">标签</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/categories/">分类</a>
-      </li><li class="menu-item">
-        <a class="menu-item-link" href="/about/">关于</a>
-      </li>
-  </ul>
-</nav>
-    </header>
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='https/:www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
 
-    <main id="main" class="main">
-      <div class="content-wrapper">
-        <div id="content" class="content">
-          <section id="archive" class="archive">
-  <div class="archive-title category">
-        <h2 class="archive-name">Docker</h2>
-      </div>
 
-  <div class="archive-post">
-      <span class="archive-post-time">
-        2020-09-25
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/docker/yum_install_docker_repo/" class="archive-post-link">
-          【docker】在Centos8.0下用yum安装Docker报找不到源解决办法
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2020-09-25
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/docker/aliyun_mirrors/" class="archive-post-link">
-          【docker】Centos下给Doctor配置阿里云镜像加速器
-        </a>
-      </span>
-    </div><div class="archive-post">
-      <span class="archive-post-time">
-        2020-09-25
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/docker/install-docker-error/" class="archive-post-link">
-          【docker】Centos8.0安装docker报错：Problem package docker-ce-3...
-        </a>
-      </span>
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https//:www.jalen-qian.com/" selected>中文</option>
+                        
+                            <option value="https//:www.jalen-qian.com/en/" >English</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="https/:www.jalen-qian.com/search/" class="search-form widget" >
+        <p>
+            <label>搜索</label>
+            <input name="keyword" required placeholder="输入关键词..." />
+        
+            <button title="搜索">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">归档</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="https/:www.jalen-qian.com/archives/#2023">
+                        
+                            <span class="year">2023</span>
+                            <span class="count">6</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="https/:www.jalen-qian.com/archives/#2021">
+                        
+                            <span class="year">2021</span>
+                            <span class="count">9</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="https/:www.jalen-qian.com/archives/#2020">
+                        
+                            <span class="year">2020</span>
+                            <span class="count">13</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="https/:www.jalen-qian.com/archives/#0001">
+                        
+                            <span class="year">0001</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">分类</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="https/:www.jalen-qian.com/categories/golang%E4%B8%93%E6%A0%8F/" class="font_size_7">
+                Golang专栏
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/k8s/" class="font_size_6">
+                K8S
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/%E7%AE%97%E6%B3%95/" class="font_size_3">
+                算法
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/goland/" class="font_size_2">
+                GoLand
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/hugo/" class="font_size_2">
+                hugo
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/deployment/" class="font_size_1">
+                Deployment
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/git/" class="font_size_1">
+                Git
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/idea/" class="font_size_1">
+                Idea
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/categories/kubernetes/" class="font_size_1">
+                Kubernetes
+            </a>
+        
     </div>
 </section>
 
-<nav class="pagination">
-  
-  
-</nav>
-        </div>
+            
         
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="social-links">
-            <a href="mailto:jalen_qian@163.com" class="iconfont icon-email" title="email"></a>
-            <a href="https://github.com/jalen-qian" class="iconfont icon-github" title="github"></a>
-    <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
-</div>
-
-<div class="copyright">
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
 
 
-    <div class="busuanzi-footer">
-            <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
-                <span class="division">|</span>
-            <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
-        </div>
 
-    <span class="copyright-year">
-	Copyright
-    &copy; 
-    2020
-    
-        
-        
-	❤️
-    <span class="author">Jalen Qian</span>
-	<span><a style="color:#8a8a8a;" href="http://beian.miit.gov.cn/">粤ICP备2020106088号</a></span>
- </span>
-    <span class="power-by">
-    
-    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
-  </span>
-    <span class="division">|</span>
-    <span class="theme-info">
-    
-        
-    Theme -  <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
- </span>
-</div>
-    </footer>
-
-    <div class="back-to-top" id="back-to-top">
-      <i class="iconfont icon-up"></i>
     </div>
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="https/:www.jalen-qian.com/tags/golang/" class="font_size_6">
+                Golang
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/k8s/" class="font_size_6">
+                K8S
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/centos/" class="font_size_3">
+                Centos
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/goland/" class="font_size_2">
+                GoLand
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/hugo/" class="font_size_2">
+                hugo
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/yum/" class="font_size_2">
+                yum
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="font_size_2">
+                贪心算法
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/deployment/" class="font_size_1">
+                Deployment
+            </a>
+        
+            <a href="https/:www.jalen-qian.com/tags/git/" class="font_size_1">
+                Git
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
 
 
+            <main class="main full-width">
+    <header>
+        <h3 class="section-title">
+            
+                Categories
+            
+        </h3>
 
-<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count"></h3>
+                <h1 class="section-term">Docker</h1>
+                
+            </div>
+        </div>
+    </header>
+    
+    <section class="article-list--compact">
+        
+            <article>
+    <a href="https/:www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../">
+        <div class="article-details">
+            <h2 class="article-title">【docker】Centos8.0安装docker报错：Problem package docker-ce-3...</h2>
+            <footer class="article-time">
+                <time datetime='2020-09-25T00:00:00Z'>2020-09-25</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="https/:www.jalen-qian.com/p/dockercentos%E4%B8%8B%E7%BB%99doctor%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8/">
+        <div class="article-details">
+            <h2 class="article-title">【docker】Centos下给Doctor配置阿里云镜像加速器</h2>
+            <footer class="article-time">
+                <time datetime='2020-09-25T00:00:00Z'>2020-09-25</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+            <article>
+    <a href="https/:www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+        <div class="article-details">
+            <h2 class="article-title">【docker】在Centos8.0下用yum安装Docker报找不到源解决办法</h2>
+            <footer class="article-time">
+                <time datetime='2020-09-25T00:00:00Z'>2020-09-25</time>
+            </footer>
+        </div>
+    </a>
+</article>
+        
+    </section>
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2026 Jalen的博客
+        <span><a class="copyright" href="http://beian.miit.gov.cn/">粤ICP备2020106088号</a></span>
+    </section>
+
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
 
 
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/https/:www.jalen-qian.com/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
 
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
 
+        document.head.appendChild(customFont);
+    }());
+</script>
 
-
-
-
-</body>
+    </body>
 </html>
