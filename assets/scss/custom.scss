@@ -7,9 +7,9 @@
  */
 .article-content {
     /* IntelliJ Light */
-    --idea-editor-background: #ffffff;
-    --idea-gutter-background: #f7f8fa;
-    --idea-border: #d9dadd;
+    --idea-editor-background: #fafafa;
+    --idea-gutter-background: #f2f2f2;
+    --idea-border: var(--card-separator-color);
     --idea-foreground: #2b2b2b;
     --idea-muted: #9aa0a6;
     --idea-keyword: #0033b3;
@@ -22,17 +22,17 @@
     --idea-highlight: #f2f3f5;
     --idea-error: #bc3f3c;
     --idea-error-background: rgba(188, 63, 60, 0.1);
-    --idea-copy-background: #eef0f3;
-    --idea-copy-hover-background: #e1e4e8;
-    --idea-copy-border: #d5d8dc;
-    --idea-copy-color: #59636e;
-    --idea-copy-hover-color: #1f2328;
-    --idea-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --idea-copy-background: var(--card-background-selected);
+    --idea-copy-hover-background: #dedede;
+    --idea-copy-border: var(--card-separator-color);
+    --idea-copy-color: var(--card-text-color-secondary);
+    --idea-copy-hover-color: var(--card-text-color-main);
+    --idea-shadow: var(--shadow-l1);
 
     .highlight {
         background: var(--idea-editor-background) !important;
         border: 1px solid var(--idea-border);
-        border-radius: 12px;
+        border-radius: var(--card-border-radius);
         box-shadow: var(--idea-shadow);
         color: var(--idea-foreground);
         overflow: hidden;
@@ -180,7 +180,7 @@
         .copyCodeButton {
             background: var(--idea-copy-background);
             border: 1px solid var(--idea-copy-border);
-            border-radius: 7px;
+            border-radius: var(--tag-border-radius);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
             color: var(--idea-copy-color);
             opacity: 0.72;
@@ -200,7 +200,7 @@
     > pre:not(.chroma) {
         background: var(--idea-editor-background);
         border: 1px solid var(--idea-border);
-        border-radius: 12px;
+        border-radius: var(--card-border-radius);
         box-shadow: var(--idea-shadow);
         color: var(--idea-foreground);
     }
@@ -210,7 +210,7 @@
 [data-scheme="dark"] .article-content {
     --idea-editor-background: #2b2b2b;
     --idea-gutter-background: #313335;
-    --idea-border: #3c3f41;
+    --idea-border: var(--card-separator-color);
     --idea-foreground: #a9b7c6;
     --idea-muted: #606366;
     --idea-keyword: #cc7832;
@@ -223,17 +223,17 @@
     --idea-highlight: #323232;
     --idea-error: #bc3f3c;
     --idea-error-background: rgba(188, 63, 60, 0.2);
-    --idea-copy-background: #3c3f41;
+    --idea-copy-background: var(--card-background-selected);
     --idea-copy-hover-background: #45494a;
-    --idea-copy-border: #4b4e50;
-    --idea-copy-color: #b7c3cf;
-    --idea-copy-hover-color: #ffffff;
-    --idea-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    --idea-copy-border: var(--card-separator-color);
+    --idea-copy-color: var(--card-text-color-secondary);
+    --idea-copy-hover-color: var(--card-text-color-main);
+    --idea-shadow: var(--shadow-l1);
 }
 
 @media (max-width: 600px) {
     .article-content .highlight {
-        border-radius: 9px;
+        border-radius: var(--card-border-radius);
         padding-right: 10px;
 
         pre,
