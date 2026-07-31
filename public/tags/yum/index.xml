@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>yum on Jalen的博客</title>
-        <link>www.jalen-qian.com/tags/yum/</link>
+        <link>https://www.jalen-qian.com/tags/yum/</link>
         <description>Recent content in yum on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="www.jalen-qian.com/tags/yum/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://www.jalen-qian.com/tags/yum/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【docker】Centos8.0安装docker报错：Problem package docker-ce-3...</title>
-        <link>www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</link>
+        <link>https://www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</link>
         <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</guid>
+        <guid>https://www.jalen-qian.com/p/dockercentos8.0%E5%AE%89%E8%A3%85docker%E6%8A%A5%E9%94%99problem-package-docker-ce-3.../</guid>
         <description>&lt;h3 id=&#34;事情经过&#34;&gt;事情经过&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;在&lt;a class=&#34;link&#34; href=&#34;www.jalen-qian.com/post/docker/yum_install_docker_repo/&#34; &gt;Centos8.0下用yum安装Docker&lt;/a&gt;，执行命令后报错，内容大概是需要containerd.io的版本 &amp;gt;= 1.2.2-3&lt;/p&gt;
+&lt;p&gt;在&lt;a class=&#34;link&#34; href=&#34;https://www.jalen-qian.com/post/docker/yum_install_docker_repo/&#34; &gt;Centos8.0下用yum安装Docker&lt;/a&gt;，执行命令后报错，内容大概是需要containerd.io的版本 &amp;gt;= 1.2.2-3&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;执行的命令如下:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -127,10 +127,10 @@
         </item>
         <item>
         <title>【docker】在Centos8.0下用yum安装Docker报找不到源解决办法</title>
-        <link>www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
+        <link>https://www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</link>
         <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
+        <guid>https://www.jalen-qian.com/p/docker%E5%9C%A8centos8.0%E4%B8%8B%E7%94%A8yum%E5%AE%89%E8%A3%85docker%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0%E6%BA%90%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;在阿里云服务器（Centos8系统）安装doker时，报找不到源，如下图：&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -182,7 +182,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;sudo yum install docker-ce docker-ce-cli containerd.io
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;ps:如安装失败&lt;a class=&#34;link&#34; href=&#34;www.jalen-qian.com/post/docker/install-docker-error/&#34; &gt;请戳这里&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;ps:如安装失败&lt;a class=&#34;link&#34; href=&#34;https://www.jalen-qian.com/post/docker/install-docker-error/&#34; &gt;请戳这里&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>NFS on Jalen的博客</title>
-        <link>www.jalen-qian.com/tags/nfs/</link>
+        <link>https://www.jalen-qian.com/tags/nfs/</link>
         <description>Recent content in NFS on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 15 Jan 2021 09:47:00 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/nfs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 15 Jan 2021 09:47:00 +0800</lastBuildDate><atom:link href="https://www.jalen-qian.com/tags/nfs/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>K8S笔记5 基于NFS的集群文件共享</title>
-        <link>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</link>
+        <link>https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</link>
         <pubDate>Fri, 15 Jan 2021 09:47:00 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</guid>
+        <guid>https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/</guid>
         <description>&lt;p&gt;在上一篇我们介绍了如何用&lt;code&gt;yml&lt;/code&gt;脚本和&lt;code&gt;kubectl&lt;/code&gt;命令的方式部署Tomcat集群，主要讲了如何创建部署，以及创建服务对外暴露端口供外部访问。这里部署的服务起到了转发和负载均衡器的作用。&lt;/p&gt;
 &lt;p&gt;由于多个&lt;code&gt;pod&lt;/code&gt;同时提供服务，在处理公共的数据或者文件时，就不太好处理，这一节我们讲一个方案：通过NFS将一台服务器中的文件共享，并通过挂载命令将共享文件夹挂载到pod容器中。这样任何一个pod中访问到的都是同一份文件，任何pod修改了文件，也会实时变更到整个集群中。&lt;/p&gt;
 &lt;h1 id=&#34;nfs介绍&#34;&gt;NFS介绍&lt;/h1&gt;

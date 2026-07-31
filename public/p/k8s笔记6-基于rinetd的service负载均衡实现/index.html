@@ -4,11 +4,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='desc'>
 <meta name="keywords" content="K8S, Rinetd, 负载均衡"><title>K8S笔记6 基于Rinetd的Service负载均衡实现</title>
 
-<link rel='canonical' href='www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
+<link rel='canonical' href='https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
 
-<link rel="stylesheet" href="/www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='K8S笔记6 基于Rinetd的Service负载均衡实现'>
+<link rel="stylesheet" href="/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='K8S笔记6 基于Rinetd的Service负载均衡实现'>
 <meta property='og:description' content='desc'>
-<meta property='og:url' content='www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
+<meta property='og:url' content='https://www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/'>
 <meta property='og:site_name' content='Jalen的博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='K8S' /><meta property='article:tag' content='Rinetd' /><meta property='article:tag' content='负载均衡' /><meta property='article:published_time' content='2021-01-15T09:47:00&#43;08:00'/><meta property='article:modified_time' content='2021-01-15T09:47:00&#43;08:00'/>
 <meta name="twitter:title" content="K8S笔记6 基于Rinetd的Service负载均衡实现">
@@ -50,13 +50,13 @@
         
             
             <figure class="site-avatar">
-                <a href="/www.jalen-qian.com">
+                <a href="/">
                 
                     
                     
                     
                         
-                        <img src="/www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                        <img src="/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -69,7 +69,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/www.jalen-qian.com">Jalen的博客</a></h1>
+            <h1 class="site-name"><a href="/">Jalen的博客</a></h1>
             <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
         </div>
     </header><ol class="social-menu">
@@ -119,7 +119,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/' >
+            <a href='/' >
                 
                 
                 
@@ -139,7 +139,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+            <a href='/%E5%85%B3%E4%BA%8E%E6%88%91/' >
                 
                 
                     
@@ -160,7 +160,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/archives/' >
+            <a href='/archives/' >
                 
                 
                 
@@ -180,7 +180,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/search/' >
+            <a href='/search/' >
                 
                 
                 
@@ -199,7 +199,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
                 
                 
                 
@@ -232,9 +232,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="www.jalen-qian.com/" selected>中文</option>
+                            <option value="https://www.jalen-qian.com/" selected>中文</option>
                         
-                            <option value="www.jalen-qian.com/en/" >English</option>
+                            <option value="https://www.jalen-qian.com/en/" >English</option>
                         
                     </select>
                 </li>
@@ -317,15 +317,15 @@
     
     <header class="article-category">
         
-            <a href="www.jalen-qian.com/categories/k8s/" >
+            <a href="/categories/k8s/" >
                 K8S
             </a>
         
-            <a href="www.jalen-qian.com/categories/rinetd/" >
+            <a href="/categories/rinetd/" >
                 Rinetd
             </a>
         
-            <a href="www.jalen-qian.com/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" >
+            <a href="/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" >
                 负载均衡
             </a>
         
@@ -334,7 +334,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/">K8S笔记6 基于Rinetd的Service负载均衡实现</a>
+            <a href="/p/k8s%E7%AC%94%E8%AE%B06-%E5%9F%BA%E4%BA%8Erinetd%E7%9A%84service%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/">K8S笔记6 基于Rinetd的Service负载均衡实现</a>
         </h2>
     
         
@@ -617,11 +617,11 @@
     
     <section class="article-tags">
         
-            <a href="www.jalen-qian.com/tags/k8s/">K8S</a>
+            <a href="/tags/k8s/">K8S</a>
         
-            <a href="www.jalen-qian.com/tags/rinetd/">Rinetd</a>
+            <a href="/tags/rinetd/">Rinetd</a>
         
-            <a href="www.jalen-qian.com/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
+            <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
         
     </section>
 
@@ -656,7 +656,7 @@
             
                 
 <article class="">
-    <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">
+    <a href="/p/k8s%E7%AC%94%E8%AE%B09-kubernetes%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/">
         
         
 
@@ -669,7 +669,7 @@
             
                 
 <article class="">
-    <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/">
+    <a href="/p/k8s%E7%AC%94%E8%AE%B08-%E5%88%A9%E7%94%A8k8s%E9%83%A8%E7%BD%B2%E8%B4%9D%E4%BA%B2%E5%A9%B4%E7%AB%A5%E5%95%86%E5%9F%8E/">
         
         
 
@@ -682,7 +682,7 @@
             
                 
 <article class="">
-    <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/">
+    <a href="/p/k8s%E7%AC%94%E8%AE%B04-%E5%88%A9%E7%94%A8deployment%E9%83%A8%E7%BD%B2tomcat%E9%9B%86%E7%BE%A4/">
         
         
 
@@ -695,7 +695,7 @@
             
                 
 <article class="">
-    <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">
+    <a href="/p/k8s%E7%AC%94%E8%AE%B05-%E5%9F%BA%E4%BA%8Enfs%E7%9A%84%E9%9B%86%E7%BE%A4%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB/">
         
         
 
@@ -708,7 +708,7 @@
             
                 
 <article class="">
-    <a href="www.jalen-qian.com/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/">
+    <a href="/p/k8s%E7%AC%94%E8%AE%B07-%E6%9B%B4%E6%96%B0%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E8%B5%84%E6%BA%90%E9%99%90%E5%AE%9A/">
         
         
 
@@ -848,7 +848,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/www.jalen-qian.com/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

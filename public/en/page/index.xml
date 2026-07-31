@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Jalen&#39;s blog</title>
-        <link>www.jalen-qian.com/en/page/</link>
+        <link>https://www.jalen-qian.com/en/page/</link>
         <description>Recent content in Pages on Jalen&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="www.jalen-qian.com/en/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://www.jalen-qian.com/en/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Archives</title>
-        <link>www.jalen-qian.com/en/archives/</link>
+        <link>https://www.jalen-qian.com/en/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/en/archives/</guid>
+        <guid>https://www.jalen-qian.com/en/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>About</title>
-        <link>www.jalen-qian.com/en/about/</link>
+        <link>https://www.jalen-qian.com/en/about/</link>
         <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/en/about/</guid>
+        <guid>https://www.jalen-qian.com/en/about/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>www.jalen-qian.com/en/links/</link>
+        <link>https://www.jalen-qian.com/en/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/en/links/</guid>
+        <guid>https://www.jalen-qian.com/en/links/</guid>
         <description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
 &lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -59,10 +59,10 @@
         </item>
         <item>
         <title>Search</title>
-        <link>www.jalen-qian.com/en/search/</link>
+        <link>https://www.jalen-qian.com/en/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/en/search/</guid>
+        <guid>https://www.jalen-qian.com/en/search/</guid>
         <description></description>
         </item>
         

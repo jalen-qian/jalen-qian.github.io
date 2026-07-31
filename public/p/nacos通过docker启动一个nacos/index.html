@@ -4,11 +4,11 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='前言：今天接到一个需求，由于客户集群的应用多是基于需要将配置中心的配置推送到Nacos中，手动研究了一下，通过docker快速启动了一个本地'>
 <title>[Nacos]通过docker启动一个Nacos</title>
 
-<link rel='canonical' href='www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/'>
+<link rel='canonical' href='https://www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/'>
 
-<link rel="stylesheet" href="/www.jalen-qian.com/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='[Nacos]通过docker启动一个Nacos'>
+<link rel="stylesheet" href="/scss/style.min.832fcb08ea4d0e42e4fa790ebeda2d9715715b812058938167691b50836b8072.css"><meta property='og:title' content='[Nacos]通过docker启动一个Nacos'>
 <meta property='og:description' content='前言：今天接到一个需求，由于客户集群的应用多是基于需要将配置中心的配置推送到Nacos中，手动研究了一下，通过docker快速启动了一个本地'>
-<meta property='og:url' content='www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/'>
+<meta property='og:url' content='https://www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/'>
 <meta property='og:site_name' content='Jalen的博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Nacos' /><meta property='article:published_time' content='2021-05-19T17:31:56&#43;08:00'/><meta property='article:modified_time' content='2021-05-19T17:37:56&#43;08:00'/>
 <meta name="twitter:title" content="[Nacos]通过docker启动一个Nacos">
@@ -50,13 +50,13 @@
         
             
             <figure class="site-avatar">
-                <a href="/www.jalen-qian.com">
+                <a href="/">
                 
                     
                     
                     
                         
-                        <img src="/www.jalen-qian.com/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
+                        <img src="/img/golang-header_hu6203b4e13f61da46ef743848d456734c_90255_300x0_resize_box_3.png" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -69,7 +69,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/www.jalen-qian.com">Jalen的博客</a></h1>
+            <h1 class="site-name"><a href="/">Jalen的博客</a></h1>
             <h2 class="site-description">专注于Go语言(golang)、Java、云原生、移动互联网、项目管理与软件技术架构。</h2>
         </div>
     </header><ol class="social-menu">
@@ -119,7 +119,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/' >
+            <a href='/' >
                 
                 
                 
@@ -139,7 +139,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/' >
+            <a href='/%E5%85%B3%E4%BA%8E%E6%88%91/' >
                 
                 
                     
@@ -160,7 +160,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/archives/' >
+            <a href='/archives/' >
                 
                 
                 
@@ -180,7 +180,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/search/' >
+            <a href='/search/' >
                 
                 
                 
@@ -199,7 +199,7 @@
         
         
         <li >
-            <a href='www.jalen-qian.com/%E9%93%BE%E6%8E%A5/' >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
                 
                 
                 
@@ -232,9 +232,9 @@
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="www.jalen-qian.com/" selected>中文</option>
+                            <option value="https://www.jalen-qian.com/" selected>中文</option>
                         
-                            <option value="www.jalen-qian.com/en/" >English</option>
+                            <option value="https://www.jalen-qian.com/en/" >English</option>
                         
                     </select>
                 </li>
@@ -317,7 +317,7 @@
     
     <header class="article-category">
         
-            <a href="www.jalen-qian.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/" >
+            <a href="/categories/%E4%BA%91%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%85%B3/" >
                 云原生相关
             </a>
         
@@ -326,7 +326,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="www.jalen-qian.com/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/">[Nacos]通过docker启动一个Nacos</a>
+            <a href="/p/nacos%E9%80%9A%E8%BF%87docker%E5%90%AF%E5%8A%A8%E4%B8%80%E4%B8%AAnacos/">[Nacos]通过docker启动一个Nacos</a>
         </h2>
     
         
@@ -441,7 +441,7 @@
     
     <section class="article-tags">
         
-            <a href="www.jalen-qian.com/tags/nacos/">Nacos</a>
+            <a href="/tags/nacos/">Nacos</a>
         
     </section>
 
@@ -606,7 +606,7 @@
                 src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
                 
                 >
-            </script><script type="text/javascript" src="/www.jalen-qian.com/ts/main.js" defer></script>
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
 <script>
     (function () {
         const customFont = document.createElement('link');

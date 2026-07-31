@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>面试题 on Jalen的博客</title>
-        <link>www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+        <link>https://www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
         <description>Recent content in 面试题 on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 11 Sep 2023 19:16:31 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 11 Sep 2023 19:16:31 +0800</lastBuildDate><atom:link href="https://www.jalen-qian.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Go面试题：使用3个协程顺序打印cat、dog、fish各100次</title>
-        <link>www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</link>
+        <link>https://www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</link>
         <pubDate>Mon, 11 Sep 2023 19:16:31 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E9%9D%A2%E8%AF%95%E9%A2%98%E4%BD%BF%E7%94%A83%E4%B8%AA%E5%8D%8F%E7%A8%8B%E9%A1%BA%E5%BA%8F%E6%89%93%E5%8D%B0catdogfish%E5%90%84100%E6%AC%A1/</guid>
         <description>&lt;h1 id=&#34;面试题&#34;&gt;面试题&lt;/h1&gt;
 &lt;p&gt;这是一个比较经典的golang面试题，考察的是对channel的使用，下面是题目要求：&lt;/p&gt;
 &lt;ol&gt;

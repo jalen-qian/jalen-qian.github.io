@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Idea on Jalen的博客</title>
-        <link>www.jalen-qian.com/tags/idea/</link>
+        <link>https://www.jalen-qian.com/tags/idea/</link>
         <description>Recent content in Idea on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="www.jalen-qian.com/tags/idea/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 15 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.jalen-qian.com/tags/idea/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>GoLand 安装了protobuf插件导致启动闪退问题</title>
-        <link>www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</link>
+        <link>https://www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</link>
         <pubDate>Thu, 15 Apr 2021 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</guid>
+        <guid>https://www.jalen-qian.com/p/goland-%E5%AE%89%E8%A3%85%E4%BA%86protobuf%E6%8F%92%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%90%AF%E5%8A%A8%E9%97%AA%E9%80%80%E9%97%AE%E9%A2%98/</guid>
         <description>&lt;h2 id=&#34;问题描述&#34;&gt;问题描述&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在用Goland编写&lt;code&gt;proto&lt;/code&gt;文件时，编辑器提示安装proto插件，手欠点击了安装。下次启动Goland时，直接就闪退了。&lt;/p&gt;

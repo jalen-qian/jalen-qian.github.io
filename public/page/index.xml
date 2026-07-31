@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on Jalen的博客</title>
-        <link>www.jalen-qian.com/page/</link>
+        <link>https://www.jalen-qian.com/page/</link>
         <description>Recent content in Pages on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="www.jalen-qian.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.jalen-qian.com/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>关于我</title>
-        <link>www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
+        <link>https://www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</link>
         <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
+        <guid>https://www.jalen-qian.com/%E5%85%B3%E4%BA%8E%E6%88%91/</guid>
         <description>&lt;p&gt;2017年软件工程专业毕业，在职业生涯里各种大厂小厂都待过，做过PHP、JAVA，Android，Golang，也会写一些前端代码。&lt;/p&gt;
 &lt;p&gt;2020年开始接触Golang和k8s，并学习云原生相关技术架构，也是目前工作的主要方向。&lt;/p&gt;
 &lt;p&gt;平时也喜欢刷刷算法，写写文章，希望能帮助更多的人爱上编程。&lt;/p&gt;
@@ -19,18 +19,18 @@
         </item>
         <item>
         <title>归档</title>
-        <link>www.jalen-qian.com/archives/</link>
+        <link>https://www.jalen-qian.com/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/archives/</guid>
+        <guid>https://www.jalen-qian.com/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>链接</title>
-        <link>www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</link>
+        <link>https://www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</guid>
+        <guid>https://www.jalen-qian.com/%E9%93%BE%E6%8E%A5/</guid>
         <description>&lt;p&gt;To use this feature, add &lt;code&gt;links&lt;/code&gt; section to frontmatter.&lt;/p&gt;
 &lt;p&gt;This page&amp;rsquo;s frontmatter:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -62,10 +62,10 @@
         </item>
         <item>
         <title>搜索</title>
-        <link>www.jalen-qian.com/search/</link>
+        <link>https://www.jalen-qian.com/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>www.jalen-qian.com/search/</guid>
+        <guid>https://www.jalen-qian.com/search/</guid>
         <description></description>
         </item>
         

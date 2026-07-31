@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Golang on Jalen的博客</title>
-        <link>www.jalen-qian.com/tags/golang/</link>
+        <link>https://www.jalen-qian.com/tags/golang/</link>
         <description>Recent content in Golang on Jalen的博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 04 Aug 2021 16:41:45 +0800</lastBuildDate><atom:link href="www.jalen-qian.com/tags/golang/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 04 Aug 2021 16:41:45 +0800</lastBuildDate><atom:link href="https://www.jalen-qian.com/tags/golang/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Go语言基础之切片</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</link>
         <pubDate>Wed, 04 Aug 2021 16:41:45 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%88%87%E7%89%87/</guid>
         <description>&lt;blockquote&gt;
 &lt;p&gt;本文主要介绍Go语言中的数据结构&lt;code&gt;slice&lt;/code&gt;，以及基本使用&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -546,10 +546,10 @@
         </item>
         <item>
         <title>Go语言基础之流程控制</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
         <pubDate>Fri, 11 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
         <description>&lt;p&gt;流程控制是每种编程语言控制逻辑走向和执行次序的重要部分，流程控制可以说是一门语言的“经脉”。&lt;/p&gt;
 &lt;p&gt;Go语言中最常用的流程控制有&lt;code&gt;if&lt;/code&gt;和&lt;code&gt;for&lt;/code&gt;，而&lt;code&gt;switch&lt;/code&gt;和&lt;code&gt;goto&lt;/code&gt;主要是为了简化代码、降低重复代码而生的结构，属于扩展类的流程控制。&lt;/p&gt;
 &lt;h2 id=&#34;if-else分支结构&#34;&gt;if else(分支结构)&lt;/h2&gt;
@@ -1027,10 +1027,10 @@
         </item>
         <item>
         <title>Go语言基础之数组</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</link>
         <pubDate>Thu, 10 Sep 2020 17:17:28 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E7%BB%84/</guid>
         <description>&lt;p&gt;本文主要介绍Go语言中数组（array）及它的基本使用。&lt;/p&gt;
 &lt;h1 id=&#34;array数组&#34;&gt;Array(数组)&lt;/h1&gt;
 &lt;p&gt;数组是同一种数据类型元素的集合。 在Go语言中，数组从声明时就确定，使用时可以修改数组成员，但是数组大小不可变化。 基本语法：&lt;/p&gt;
@@ -1335,10 +1335,10 @@
         </item>
         <item>
         <title>Go语言基础之变量与常量</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</link>
         <pubDate>Thu, 10 Sep 2020 16:47:00 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F/</guid>
         <description>&lt;h3 id=&#34;标识符与关键字&#34;&gt;标识符与关键字&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;标识符&lt;/li&gt;
@@ -1755,10 +1755,10 @@
         </item>
         <item>
         <title>Go语言基础之数据类型</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid>
         <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.liwenzhou.com/posts/Go/02_datatype/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;参考文章&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Go语言包含丰富的数据类型，除了基本的整型、浮点型、字符串、布尔型外，还有数组、切片(slice)、函数、Map、结构体、通道(Channel)等等。Go语言的基本数据类型与其他语言大同小异。&lt;/p&gt;
@@ -2519,10 +2519,10 @@
         </item>
         <item>
         <title>Go语言基础之运算符</title>
-        <link>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
+        <link>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</link>
         <pubDate>Thu, 10 Sep 2020 08:37:56 +0800</pubDate>
         
-        <guid>www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
+        <guid>https://www.jalen-qian.com/p/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E4%B9%8B%E8%BF%90%E7%AE%97%E7%AC%A6/</guid>
         <description>&lt;p&gt;运算符用于在程序运行时执行数学或逻辑运算。&lt;/p&gt;
 &lt;h2 id=&#34;运算符&#34;&gt;运算符&lt;/h2&gt;
 &lt;p&gt;Go 语言内置的运算符有：&lt;/p&gt;
