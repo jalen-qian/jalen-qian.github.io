@@ -1,0 +1,219 @@
+/*
+ * IDEA Darcula-inspired code blocks.
+ *
+ * This site-level stylesheet intentionally lives outside the Stack theme so
+ * theme upgrades do not overwrite it. Hugo/Chroma keeps generating the code
+ * markup and line numbers; these rules only change its presentation.
+ */
+.article-content {
+    --idea-editor-background: #2b2b2b;
+    --idea-gutter-background: #313335;
+    --idea-border: #3c3f41;
+    --idea-foreground: #a9b7c6;
+    --idea-muted: #606366;
+    --idea-keyword: #cc7832;
+    --idea-string: #6a8759;
+    --idea-number: #6897bb;
+    --idea-comment: #808080;
+    --idea-function: #ffc66d;
+    --idea-type: #a9b7c6;
+    --idea-constant: #9876aa;
+
+    .highlight {
+        background: var(--idea-editor-background) !important;
+        border: 1px solid var(--idea-border);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        color: var(--idea-foreground);
+        overflow: hidden;
+        padding: 18px 16px 18px 0;
+
+        pre,
+        code,
+        .chroma {
+            background: transparent !important;
+            color: var(--idea-foreground);
+            font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.95em;
+            line-height: 1.58;
+            tab-size: 4;
+        }
+
+        .chroma .lntable {
+            background: var(--idea-editor-background);
+        }
+
+        .chroma .lntd:first-child {
+            background: var(--idea-gutter-background);
+            border-right: 1px solid var(--idea-border);
+            flex: 0 0 auto;
+            margin-right: 12px;
+            min-width: 3.6em;
+        }
+
+        .chroma .lntd:last-child {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .chroma .lnt,
+        .chroma .ln {
+            color: var(--idea-muted);
+            padding: 0 12px;
+            text-align: right;
+        }
+
+        .chroma .line {
+            min-height: 1.58em;
+        }
+
+        .chroma .hl {
+            background: #323232;
+        }
+
+        /* Keywords and declarations */
+        .chroma .k,
+        .chroma .kc,
+        .chroma .kd,
+        .chroma .kn,
+        .chroma .kp,
+        .chroma .kr,
+        .chroma .kt {
+            color: var(--idea-keyword);
+            font-weight: normal;
+        }
+
+        /* Functions, methods and labels */
+        .chroma .nf,
+        .chroma .fm,
+        .chroma .nl {
+            color: var(--idea-function);
+        }
+
+        /* Types, built-ins and attributes */
+        .chroma .na,
+        .chroma .nb,
+        .chroma .bp,
+        .chroma .nc,
+        .chroma .nn,
+        .chroma .nt {
+            color: var(--idea-type);
+        }
+
+        /* Variables and constants */
+        .chroma .no,
+        .chroma .nv,
+        .chroma .vc,
+        .chroma .vg,
+        .chroma .vi,
+        .chroma .vm {
+            color: var(--idea-constant);
+        }
+
+        /* Strings */
+        .chroma .s,
+        .chroma .sa,
+        .chroma .sb,
+        .chroma .sc,
+        .chroma .dl,
+        .chroma .sd,
+        .chroma .s2,
+        .chroma .se,
+        .chroma .sh,
+        .chroma .si,
+        .chroma .sx,
+        .chroma .sr,
+        .chroma .s1,
+        .chroma .ss {
+            color: var(--idea-string);
+        }
+
+        /* Numbers */
+        .chroma .m,
+        .chroma .mb,
+        .chroma .mf,
+        .chroma .mh,
+        .chroma .mi,
+        .chroma .il,
+        .chroma .mo {
+            color: var(--idea-number);
+        }
+
+        /* Comments and preprocessor directives */
+        .chroma .c,
+        .chroma .ch,
+        .chroma .cm,
+        .chroma .c1,
+        .chroma .cs,
+        .chroma .cp,
+        .chroma .cpf {
+            color: var(--idea-comment);
+            font-style: normal;
+        }
+
+        .chroma .o,
+        .chroma .ow,
+        .chroma .p,
+        .chroma .n,
+        .chroma .nx,
+        .chroma .py,
+        .chroma .w {
+            color: var(--idea-foreground);
+        }
+
+        .chroma .err {
+            background: rgba(188, 63, 60, 0.2);
+            color: #bc3f3c;
+        }
+
+        .copyCodeButton {
+            background: #3c3f41;
+            border: 1px solid #4b4e50;
+            border-radius: 7px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+            color: #b7c3cf;
+            opacity: 0.72;
+            padding: 7px 12px;
+            right: 14px;
+            top: 14px;
+
+            &:hover {
+                background: #45494a;
+                color: #ffffff;
+                opacity: 1;
+            }
+        }
+    }
+
+    /* Plain fenced blocks without a language still use the editor surface. */
+    > pre:not(.chroma) {
+        background: var(--idea-editor-background);
+        border: 1px solid var(--idea-border);
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+        color: var(--idea-foreground);
+    }
+}
+
+@media (max-width: 600px) {
+    .article-content .highlight {
+        border-radius: 9px;
+        padding-right: 10px;
+
+        pre,
+        code,
+        .chroma {
+            font-size: 0.9em;
+        }
+
+        .chroma .lntd:first-child {
+            margin-right: 8px;
+            min-width: 3.1em;
+        }
+
+        .chroma .lnt,
+        .chroma .ln {
+            padding: 0 8px;
+        }
+    }
+}
