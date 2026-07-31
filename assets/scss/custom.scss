@@ -1,4 +1,27 @@
 /*
+ * Platform-native typography.
+ *
+ * Keep Latin and CJK glyphs in each operating system's matching UI family:
+ * SF Pro + PingFang on Apple platforms, Segoe UI + Microsoft YaHei on
+ * Windows, and Roboto/Noto Sans on Android and Linux.
+ */
+:root {
+    --sys-font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC",
+        sans-serif;
+    --base-font-family: var(--sys-font-family);
+    --article-font-family: var(--base-font-family);
+}
+
+body {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*
  * IntelliJ IDEA-inspired code blocks (Light and Darcula).
  *
  * This site-level stylesheet intentionally lives outside the Stack theme so
