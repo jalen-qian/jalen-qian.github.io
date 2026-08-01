@@ -1,15 +1,7 @@
-/*
- * Platform-native typography.
- *
- * Keep Latin and CJK glyphs in each operating system's matching UI family:
- * SF Pro + PingFang on Apple platforms, Segoe UI + Microsoft YaHei on
- * Windows, and Roboto/Noto Sans on Android and Linux.
- */
+/* Editorial typography: a warm, handwritten style shared by Latin and CJK. */
 :root {
-    --sys-font-family: "SF Pro Text", "SF Pro Display", -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
-        "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC",
-        sans-serif;
+    --sys-font-family: "LXGW WenKai", "Kaiti SC", STKaiti, KaiTi,
+        "Noto Serif CJK SC", serif;
     --base-font-family: var(--sys-font-family);
     --article-font-family: var(--base-font-family);
 }
