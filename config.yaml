@@ -23,7 +23,7 @@ languages:
             sidebar:
                 subtitle: Focused on Go (Golang), Java, cloud-native technologies, mobile internet, project management, and software architecture.
             comments:
-                giscus:
+                twikoo:
                     lang: en
 
 # Change it to your Disqus shortname before using
@@ -73,7 +73,7 @@ params:
 
     comments:
         enabled: true
-        provider: giscus
+        provider: twikoo
 
         disqusjs:
             shortname:
@@ -101,10 +101,11 @@ params:
             autoCreateIssue: false
 
         twikoo:
-            envId:
+            # Verified Twikoo 1.7.15 backend deployed on Vercel.
+            envId: https://twikoo-jalen-qian.vercel.app
             region:
             path:
-            lang:
+            lang: zh-CN
 
         # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
         cactus:

@@ -1,0 +1,67 @@
+{{- with .Site.Params.comments.twikoo -}}
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.7.15/dist/twikoo.all.min.js"></script>
+
+<div id="tcomment"></div>
+
+<style>
+    .twikoo {
+        --twikoo-body-text-color-main: var(--body-text-color);
+        --twikoo-body-text-color: var(--card-text-color-secondary);
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+
+    .twikoo .el-input-group__prepend,
+    .twikoo .tk-action-icon,
+    .twikoo .tk-submit-action-icon,
+    .twikoo .tk-time,
+    .twikoo .tk-comments-no,
+    .twikoo .tk-comments-count,
+    .twikoo .el-button,
+    .twikoo .el-input__count {
+        color: var(--twikoo-body-text-color) !important;
+    }
+
+    .twikoo .el-input__inner,
+    .twikoo .el-textarea__inner,
+    .twikoo .tk-preview-container,
+    .twikoo .tk-content,
+    .twikoo .tk-nick,
+    .twikoo .tk-send,
+    .twikoo .tk-comments-no,
+    .twikoo .tk-submit-action-icon {
+        color: var(--twikoo-body-text-color-main) !important;
+    }
+
+    .twikoo .el-input__inner,
+    .twikoo .el-textarea__inner,
+    .twikoo .tk-preview-container,
+    .twikoo .OwO .OwO-body {
+        background-color: var(--body-background) !important;
+        border-color: var(--card-separator-color) !important;
+    }
+
+    .twikoo a,
+    .twikoo .tk-nick-link {
+        color: var(--accent-color);
+    }
+</style>
+
+<script>
+    twikoo.init({
+        envId: {{ .envId | jsonify | safeJS }},
+        el: '#tcomment',
+        {{- with .region }}
+        region: {{ . | jsonify | safeJS }},
+        {{- end }}
+        {{- with .path }}
+        path: {{ . | jsonify | safeJS }},
+        {{- end }}
+        {{- with .lang }}
+        lang: {{ . | jsonify | safeJS }},
+        {{- end }}
+    });
+</script>
+{{- end -}}
