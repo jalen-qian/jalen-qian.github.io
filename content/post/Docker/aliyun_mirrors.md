@@ -24,7 +24,7 @@ author: "Jalen"
 
 点击进入并登陆后，在下图所示地方复制加速地址：
 
-![](http://cdn1.jalen-qian.com/BlogBase/docker-mirror-cdn.png)
+![](https://cdn1.jalen-qian.com/BlogBase/docker-mirror-cdn.png)
 
 #### 配置镜像加速器
 

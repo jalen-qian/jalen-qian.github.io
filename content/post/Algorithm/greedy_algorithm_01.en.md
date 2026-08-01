@@ -364,7 +364,7 @@ func copyStringArray(arr []string) []string {
 
 **The test result is shown below:**
 
-![image-20231104011721591](http://cdn1.jalen-qian.com/Jalen/20231104011721zgyD85oRln.png)
+![image-20231104011721591](https://cdn1.jalen-qian.com/Jalen/20231104011721zgyD85oRln.png)
 
 ## A Standard Approach to Solving Greedy Algorithm Problems
 

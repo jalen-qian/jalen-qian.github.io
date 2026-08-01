@@ -611,7 +611,7 @@ The binary tree can be viewed as the serialized representation of the N-ary tree
 
 For example, you could encode the following ternary tree in this way:
 
-![encode_n_ary_tree](http://cdn1.jalen-qian.com/Jalen/202310252347566kVNEQA8pk.png)
+![encode_n_ary_tree](https://cdn1.jalen-qian.com/Jalen/202310252347566kVNEQA8pk.png)
 
 Note that the method above is only an example and may or may not work. You do not need to follow this conversion format; you may devise and implement a different method.
 
@@ -621,10 +621,10 @@ Here is an example:
 
 Suppose we have the following N-ary tree:
 
-![n-tree](http://cdn1.jalen-qian.com/Jalen/20231025234832tsaA6b8rnU.png)
+![n-tree](https://cdn1.jalen-qian.com/Jalen/20231025234832tsaA6b8rnU.png)
 
 The binary tree produced using the approach above is as follows:
-![image-20231025234850336](http://cdn1.jalen-qian.com/Jalen/20231025234850OkqJCOUeZw.png)
+![image-20231025234850336](https://cdn1.jalen-qian.com/Jalen/20231025234850OkqJCOUeZw.png)
 
 As we can see, all of a's children are attached along the right boundary of a's left subtree: b->c->d.
 

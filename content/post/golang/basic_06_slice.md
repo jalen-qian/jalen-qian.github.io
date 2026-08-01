@@ -192,11 +192,11 @@ func main(){
 
 假设存在一个数组 `a := [8]int{0, 1, 2, 3, 4, 5, 6, 7}` ,有一个切片 `s1 := a[:5]`, 同时对 `s1` 再切片：`s2 := s1[1:3]`。那么切片的示意图如下：
 
-![image-20210820161940647](http://cdn1.jalen-qian.com/Hugo/20210820161940aTzlPKPbDY.png)
+![image-20210820161940647](https://cdn1.jalen-qian.com/Hugo/20210820161940aTzlPKPbDY.png)
 
 由于 `s2` 是对 `s1` 再切片，它们的底层数组是同一个，示意图如下：
 
-![image-20210820163022314](http://cdn1.jalen-qian.com/Hugo/20210820163022KSTMpTULbL.png)
+![image-20210820163022314](https://cdn1.jalen-qian.com/Hugo/20210820163022KSTMpTULbL.png)
 
 这时候，如果我们将s2的第二个元素改为100，会怎样呢？
 ```go

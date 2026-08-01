@@ -10,7 +10,7 @@ author: "Jalen"
 
 > When installing Docker on an Alibaba Cloud server running CentOS 8, a repository not found error occurred, as shown below:
 
-![img](http://cdn1.jalen-qian.com/BlogBase/yum_install_docker_fail.png)
+![img](https://cdn1.jalen-qian.com/BlogBase/yum_install_docker_fail.png)
 
 ### Solution
 

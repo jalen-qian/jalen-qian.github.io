@@ -14,7 +14,7 @@ In the previous article, we introduced how to use NFS for file sharing and how t
 
 # Implementing Load Balancing with Service
 
-![image-20210115172545864](http://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png)
+![image-20210115172545864](https://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png)
 
 Here, we use Service load balancing directly instead of exposing ports on the host nodes. Services within the cluster communicate with one another through the K8S internal network. The special pod named tomcat-service handles traffic forwarding and load balancing.
 
@@ -37,7 +37,7 @@ spec:
 #    # External exposure at every Node node in the cluster Port
 ```
 
-![image-20210115173037045](http://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png)
+![image-20210115173037045](https://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png)
 
 Apply the Service changes:
 
@@ -68,7 +68,7 @@ $ curl 10.99.160.131:8000/test/index.jsp
 # IP:10.244.1.10
 ```
 
-![image-20210115175024796](http://cdn1.jalen-qian.com/20210115175024xES1QYWxQy.png)
+![image-20210115175024796](https://cdn1.jalen-qian.com/20210115175024xES1QYWxQy.png)
 
 We can see that requests are randomly forwarded to different Pods, as indicated by the different virtual IP addresses displayed.
 
@@ -125,10 +125,10 @@ $ rinetd -c /etc/rinetd.conf
 
 Use `netstat -nptl` to verify that port 8000 is open on `rinetd`.
 
-![image-20210115183018503](http://cdn1.jalen-qian.com/20210115183018AlcBvEmeGi.png)
+![image-20210115183018503](https://cdn1.jalen-qian.com/20210115183018AlcBvEmeGi.png)
 
 Use the following address in a browser to access the service provided by `rinted + service`:
 
 http://192.168.233.128:8000/test/index.jsp
 
-![image-20210115183103354](http://cdn1.jalen-qian.com/20210115183103cf3vhLluin.png)
+![image-20210115183103354](https://cdn1.jalen-qian.com/20210115183103cf3vhLluin.png)

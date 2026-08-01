@@ -106,7 +106,7 @@ Here, we store all deployment scripts in the `/usr/local/k8s/tomcat-deploy` dire
           - containerPort: 8080
   ```
 
-  ![image-20210115114226596](http://cdn1.jalen-qian.com/20210115114226nVBdc7WHSG.png)
+  ![image-20210115114226596](https://cdn1.jalen-qian.com/20210115114226nVBdc7WHSG.png)
 
 - Deploy the Tomcat cluster
 
@@ -195,7 +195,7 @@ We only set the container's exposed port to 8080, without configuring any settin
 
 As shown below, we can deploy a `Service`. This `Service` is also a pod and has its own virtual IP address and port. The service pod is deployed on the master node. When an external request arrives, it is first sent to port 8000 of the service and then distributed to the two Tomcat containers according to the load-balancing rules. The service here can be understood as a load balancer on the K8S cluster.
 
-![image-20210115120623179](http://cdn1.jalen-qian.com/20210115120623ZjBsrcRTfZ.png)
+![image-20210115120623179](https://cdn1.jalen-qian.com/20210115120623ZjBsrcRTfZ.png)
 
 ## Creating a Tomcat Service
 

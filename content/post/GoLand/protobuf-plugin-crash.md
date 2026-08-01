@@ -12,7 +12,7 @@ author: "Jalen"
 
 > 在用Goland编写`proto`文件时，编辑器提示安装proto插件，手欠点击了安装。下次启动Goland时，直接就闪退了。
 
-![image-20210415145243661](http://cdn1.jalen-qian.com/Hugo/202104151452442aNsHDGzUy.png)
+![image-20210415145243661](https://cdn1.jalen-qian.com/Hugo/202104151452442aNsHDGzUy.png)
 
 > 查找IDEA的日志文件
 >

@@ -30,6 +30,9 @@ concurrency:
 
 jobs:
   translate:
+    # Allow mechanical content-only fixes to skip paid AI translation while
+    # still letting other push workflows (such as the Hugo build) run.
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip translate]') }}
     runs-on: ubuntu-latest
 
     steps:

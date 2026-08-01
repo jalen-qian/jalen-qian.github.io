@@ -12,7 +12,7 @@ author: "钱文军"
 
 # 如何删除处于Terminating状态的namespace
 
-![image-20231008185617416](http://cdn1.jalen-qian.com/Jalen/202310081856178lBSXGWXdL.png)
+![image-20231008185617416](https://cdn1.jalen-qian.com/Jalen/202310081856178lBSXGWXdL.png)
 
 > 有时候，我们使用kubectl delete ns xxx 删除某个namespace后，会发现这个namespace并没有消失，而是长时间处于Terminating状态。出现这种情况，可能是因为kubelet阻塞导致的，说明还有其他资源在使用这个namespace。即使重启kubelet再删除也不好使，或者使用以下命令强制删除，也发现删除不了。
 
@@ -112,7 +112,7 @@ kubectl proxy
 
 此命令默认会在本机的8001端口启动一个代理服务，代理kubernetes集群的api，启动后我们就可以通过8001端口的api接口处理此问题。
 
-![image-20231008190834926](http://cdn1.jalen-qian.com/Jalen/20231008190835YYpiPkX4RT.png)
+![image-20231008190834926](https://cdn1.jalen-qian.com/Jalen/20231008190835YYpiPkX4RT.png)
 
 ## 6.使用命令调用api
 

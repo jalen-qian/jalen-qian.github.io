@@ -14,7 +14,7 @@ author: "Jalen"
 
 # Service实现负载均衡
 
-![image-20210115172545864](http://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png)
+![image-20210115172545864](https://cdn1.jalen-qian.com/20210115172546hSu71RHlc7.png)
 
 这里我们直接使用Service的负载均衡，不再将端口直接暴露在宿主机节点上，集群内部通过k8s内部网络相互访问。由tomcat-service这个特殊的pod来实现流量转发与负载均衡。
 
@@ -37,7 +37,7 @@ spec:
 #    nodePort: 32500 # 集群每个Node节点上对外暴露的端口
 ```
 
-![image-20210115173037045](http://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png)
+![image-20210115173037045](https://cdn1.jalen-qian.com/20210115173037bKSm3G3J5X.png)
 
 变更service
 
@@ -68,7 +68,7 @@ $ curl 10.99.160.131:8000/test/index.jsp
 # IP:10.244.1.10
 ```
 
-![image-20210115175024796](http://cdn1.jalen-qian.com/20210115175024xES1QYWxQy.png)
+![image-20210115175024796](https://cdn1.jalen-qian.com/20210115175024xES1QYWxQy.png)
 
 我们发现，请求被随机转发到了不同的Pod（打印的虚拟IP不同）
 
@@ -125,10 +125,10 @@ $ rinetd -c /etc/rinetd.conf
 
 使用`netstat -nptl`可以看到`rinetd`开启了8000端口
 
-![image-20210115183018503](http://cdn1.jalen-qian.com/20210115183018AlcBvEmeGi.png)
+![image-20210115183018503](https://cdn1.jalen-qian.com/20210115183018AlcBvEmeGi.png)
 
 使用如下地址可在浏览器中访问`rinted + service`提供的服务
 
 http://192.168.233.128:8000/test/index.jsp
 
-![image-20210115183103354](http://cdn1.jalen-qian.com/20210115183103cf3vhLluin.png)
+![image-20210115183103354](https://cdn1.jalen-qian.com/20210115183103cf3vhLluin.png)

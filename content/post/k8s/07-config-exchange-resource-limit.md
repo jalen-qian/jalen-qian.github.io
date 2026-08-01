@@ -91,7 +91,7 @@ kubectl apply -f tomcat-deploy.yml
 
 查看集群pod信息，发现pod增加为了3个
 
-![image-20210115185712445](http://cdn1.jalen-qian.com/20210115185712GAxJU2nWfi.png)
+![image-20210115185712445](https://cdn1.jalen-qian.com/20210115185712GAxJU2nWfi.png)
 
 这里说明一下k8s部署pod的原则是“资源优先”原则，即哪个node上资源更多，就将pod优先部署到这个node上
 

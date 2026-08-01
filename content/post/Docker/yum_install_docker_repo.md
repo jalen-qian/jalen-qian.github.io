@@ -10,7 +10,7 @@ author: "Jalen"
 
 > 在阿里云服务器（Centos8系统）安装doker时，报找不到源，如下图：
 
-![img](http://cdn1.jalen-qian.com/BlogBase/yum_install_docker_fail.png)
+![img](https://cdn1.jalen-qian.com/BlogBase/yum_install_docker_fail.png)
 
 ### 解决
 

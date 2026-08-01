@@ -18,7 +18,7 @@ author: "Jalen Qian"
  yum install git
 ```
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909140210.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909140210.png)
 
 # 二.安装Go
 由于Hugo是基于Go开发的，所以安装Hugo之前需要先安装Go
@@ -33,7 +33,7 @@ wget https://studygolang.com/dl/golang/go1.15.1.linux-amd64.tar.gz
 ```
 
 执行完后，可以看到已经保存到本地根目录
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909154347.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909154347.png)
 
 ## 2.2安装Go到指定目录
 
@@ -47,7 +47,7 @@ tar -C /usr/local -xzf go1.15.1.linux-amd64.tar.gz
 
 输入`go version`命令判断是否安装成功
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909155238.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909155238.png)
 
 ## 2.3配置GoPath
 
@@ -77,7 +77,7 @@ export GOPROXY=https://mirrors.aliyun.com/goproxy/#设置go代理
 
 输入`go env`判断是否配置成功
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909163159.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909163159.png)
 
 如果打印的`GOPATH`和`GOROOT`都是上面配置的路径，说明成功了
 
@@ -97,7 +97,7 @@ brew install hugo
 
 <b><span style="color:red;">这里我们选择下图所示的文件进行下载</span></b>
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909180910.png?imageView2/1/w/500)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909180910.png?imageView2/1/w/500)
 
 复制链接地址后，下载到本地
 
@@ -117,7 +117,7 @@ tar -C /usr/local/hugo -xzf hugo_0.74.3_Linux-64bit.tar.gz
 ```
 ## 3.3配置hugo命令到环境变量
 如上述配置Go环境变量一样，将`/usr/local/hugo`目录添加到`PATH`中
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909181621.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909181621.png)
 
 执行命令让环境变量生效：
 ```
@@ -127,7 +127,7 @@ source /etc/profile
 ```
 hugo version #输出Hugo版本号表示安装成功
 ```
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909182050.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909182050.png)
 
 ## 3.5创建Hugo项目
 
@@ -141,7 +141,7 @@ cd /usr/local/goPath/src/github.com/
 hugo new site blog
 ```
 hugo命令会创建一个blog项目，项目结构如下：
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909183329.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909183329.png)
 
 ```
 .
@@ -159,7 +159,7 @@ hugo命令会创建一个blog项目，项目结构如下：
 Hugo 有主题市场 https://themes.gohugo.io/ 可以进入挑选。
 
 例如这个主题，网站上的示例图如下：
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909184526.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909184526.png)
 [https://github.com/olOwOlo/hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)
 
 要使用这个主题，直接通过git clone到blog目录

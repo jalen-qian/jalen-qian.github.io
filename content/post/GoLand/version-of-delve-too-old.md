@@ -14,7 +14,7 @@ author: "jalen"
 >
 > <span style="color:red">Version of Delve is too old for this version of Go(maximum supported version 1.12, suppress this error with --check-go-version=false)</span>
 
-![问题](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915183807.png)
+![问题](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915183807.png)
 
 这个问题出现的原因是因为Go1.14版本默认没有安装 `delve` 这个工具，而`debug`需要用到
 
@@ -32,11 +32,11 @@ go get -u github.com/go-delve/delve/cmd/dlv
 
 如果执行成功，会在`src`目录下创建`\github.com\go-delve\delve\`文件夹，并将`delve`项目下载到此目录，如下图所示：
 
-![](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915222715.png?imageView2/2/w/450)
+![](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915222715.png?imageView2/2/w/450)
 
 同时，`$GOPATH\bin\`目录下，会生成编译好了的`dlv.exe`文件，如下：
 
-![](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915223303.png)
+![](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915223303.png)
 
 ### 下载失败解决办法
 
@@ -58,9 +58,9 @@ go install github.com/go-delve/delve/cmd/dlv
 
 这时候如果你的GoLand没有添加过，会弹出一个`create`的框，点击`create`即可
 
-![image-20200915224704239](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915224801.png)
+![image-20200915224704239](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915224801.png)
 
-![create](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915225207.png?imageView2/2/w/500)
+![create](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200915225207.png?imageView2/2/w/500)
 
 6.输入`dlv.path=$GOPATH\bin\dlv.exe`，比如我的电脑上，输入的是
 

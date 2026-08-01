@@ -204,7 +204,7 @@ func generateRandomPrograms(maxSize int, timeMax int) []Program {
 
 After testing 100,000 sets of randomly generated test cases, **the results of both implementations are identical, which is sufficient to demonstrate the correctness of Greedy Strategy 2.**
 
-![image-20231106151822766](http://cdn1.jalen-qian.com/Jalen/20231106151822pL1N19lHvc.png)
+![image-20231106151822766](https://cdn1.jalen-qian.com/Jalen/20231106151822pL1N19lHvc.png)
 
 ## Summary
 

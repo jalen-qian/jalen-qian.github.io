@@ -14,7 +14,7 @@ I use Git every day, but I cannot remember many of its commands.
 
 Generally, you only need to remember the six commands shown below for everyday use. However, to use Git proficiently, you may need to remember 60 to 100 commands.
 
-![img](http://cdn1.jalen-qian.com/BlogBase/bg2015120901.png)
+![img](https://cdn1.jalen-qian.com/BlogBase/bg2015120901.png)
 
 Below is my list of commonly used Git commands. The translations of several Git-specific terms are as follows:
 

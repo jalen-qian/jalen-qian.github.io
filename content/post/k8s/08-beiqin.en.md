@@ -14,7 +14,7 @@ After studying the previous articles, we now have a basic understanding of how t
 
 # Deployment Topology
 
-![image-20210115201331863](http://cdn1.jalen-qian.com/20210115201332odau4FI8RN.png)
+![image-20210115201331863](https://cdn1.jalen-qian.com/20210115201332odau4FI8RN.png)
 
 From this topology diagram, we can see that:
 
@@ -275,7 +275,7 @@ At this point, the Pigeon Store has been fully deployed to the cluster environme
 $ curl http://10.97.138.238/goods?gid=1791
 ```
 
-![image-20210118164458934](http://cdn1.jalen-qian.com/20210118164459zV77gl1lzt.png)
+![image-20210118164458934](https://cdn1.jalen-qian.com/20210118164459zV77gl1lzt.png)
 
 ### 4. Expose the Service Externally Using Rinetd
 
@@ -287,4 +287,4 @@ $ rinetd -c /etc/rinetd.conf
 
 Finally, we successfully accessed the service locally through the IP address of the virtual machine's master node.
 
-![image-20210118165010644](http://cdn1.jalen-qian.com/202101181650106mkwc9OHF9.png)
+![image-20210118165010644](https://cdn1.jalen-qian.com/202101181650106mkwc9OHF9.png)

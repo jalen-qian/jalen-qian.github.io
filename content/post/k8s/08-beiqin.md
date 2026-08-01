@@ -14,7 +14,7 @@ author: "Jalen"
 
 # 部署拓扑图
 
-![image-20210115201331863](http://cdn1.jalen-qian.com/20210115201332odau4FI8RN.png)
+![image-20210115201331863](https://cdn1.jalen-qian.com/20210115201332odau4FI8RN.png)
 
 通过这个拓扑图，我们可知：
 
@@ -275,7 +275,7 @@ kubernetes           ClusterIP   10.96.0.1       <none>        443/TCP    3d22h
 $ curl http://10.97.138.238/goods?gid=1791
 ```
 
-![image-20210118164458934](http://cdn1.jalen-qian.com/20210118164459zV77gl1lzt.png)
+![image-20210118164458934](https://cdn1.jalen-qian.com/20210118164459zV77gl1lzt.png)
 
 ### 4. 利用Rinetd对外暴露服务
 
@@ -287,4 +287,4 @@ $ rinetd -c /etc/rinetd.conf
 
 最后通过本机访问虚拟机master的IP，成功访问到了服务
 
-![image-20210118165010644](http://cdn1.jalen-qian.com/202101181650106mkwc9OHF9.png)
+![image-20210118165010644](https://cdn1.jalen-qian.com/202101181650106mkwc9OHF9.png)

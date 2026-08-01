@@ -12,7 +12,7 @@ author: "Wenjun Qian"
 
 # How to Delete a Namespace Stuck in the Terminating State
 
-![image-20231008185617416](http://cdn1.jalen-qian.com/Jalen/202310081856178lBSXGWXdL.png)
+![image-20231008185617416](https://cdn1.jalen-qian.com/Jalen/202310081856178lBSXGWXdL.png)
 
 > Sometimes, after using `kubectl delete ns xxx` to delete a namespace, you may find that the namespace does not disappear and remains in the Terminating state for a long time. This may occur because the kubelet is blocked, indicating that other resources are still using the namespace. Restarting the kubelet and trying to delete it again may not work, and even forcing the deletion with the following command may fail.
 
@@ -112,7 +112,7 @@ kubectl proxy
 
 By default, this command starts a proxy service on local port 8001 to proxy the Kubernetes cluster API. Once it is running, we can use the API endpoint on port 8001 to resolve this issue.
 
-![image-20231008190834926](http://cdn1.jalen-qian.com/Jalen/20231008190835YYpiPkX4RT.png)
+![image-20231008190834926](https://cdn1.jalen-qian.com/Jalen/20231008190835YYpiPkX4RT.png)
 
 ## 6. Call the API Using the Command
 

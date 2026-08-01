@@ -28,7 +28,7 @@ How can multiple `Pod` instances in a cluster read and write the same data? As s
 - Then, the `/mnt` folders of `node1` and `node2` are bound to `www-data` through the NFS protocol
 - Finally, use the mount command to mount the `/mnt` folder of each node to the `/tomcat/webapps` folder in the container
 
-![image-20210115143239403](http://cdn1.jalen-qian.com/2021011514323947i7kcJiXa.png)
+![image-20210115143239403](https://cdn1.jalen-qian.com/2021011514323947i7kcJiXa.png)
 
 ## Procedure
 
@@ -106,7 +106,7 @@ A Node is required as the NFS service node. We will directly use the `master` no
 
    Then check whether the file exists in the `/mnt` directory on the client node
 
-   ![image-20210115150441356](http://cdn1.jalen-qian.com/202101151504414gLoihKjyh.png)
+   ![image-20210115150441356](https://cdn1.jalen-qian.com/202101151504414gLoihKjyh.png)
 
    The file is accessible, indicating that the mount was successful.
 
@@ -170,11 +170,11 @@ You can update this Tomcat cluster using the `kubel apply` command, or use `kube
 
    We can log in to the host where each pod is located and use `docker ps` to view the running containers, as shown below
 
-   ![image-20210115152217018](http://cdn1.jalen-qian.com/20210115152217itk483FhMn.png)
+   ![image-20210115152217018](https://cdn1.jalen-qian.com/20210115152217itk483FhMn.png)
 
    We can then use the `docker exec -it [container-ID] /bin/bash` command to enter the container and check whether the mounted files exist in the `/usr/local/tomcat/webapps` folder.
 
-   ![image-20210115152446645](http://cdn1.jalen-qian.com/20210115152446Llz9LzoBkf.png)
+   ![image-20210115152446645](https://cdn1.jalen-qian.com/20210115152446Llz9LzoBkf.png)
 
    This approach is too cumbersome. Can we use the `kubectl` command on the `master` node to enter a container on a child node? The answer is yes.
 
@@ -185,7 +185,7 @@ You can update this Tomcat cluster using the `kubel apply` command, or use `kube
    $ kubectl exec -it [pod名称] /bin/bash
    ```
 
-   ![image-20210115152927484](http://cdn1.jalen-qian.com/20210115152927eyk00JKVhK.png)
+   ![image-20210115152927484](https://cdn1.jalen-qian.com/20210115152927eyk00JKVhK.png)
 
 This completes the configuration of NFS-based file sharing for the K8S cluster.
 

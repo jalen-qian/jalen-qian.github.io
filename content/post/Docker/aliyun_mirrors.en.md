@@ -24,7 +24,7 @@ The Alibaba Cloud registry mirror service is available at [https://cr.console.al
 
 After opening the page and logging in, copy the mirror URL from the location shown in the image below:
 
-![](http://cdn1.jalen-qian.com/BlogBase/docker-mirror-cdn.png)
+![](https://cdn1.jalen-qian.com/BlogBase/docker-mirror-cdn.png)
 
 #### Configure the Registry Mirror
 

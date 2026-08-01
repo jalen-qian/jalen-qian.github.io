@@ -69,7 +69,7 @@ func printAnimal(word string, ch1 <-chan struct{}, ch2 chan<- struct{}) {
 
 执行效果如下：
 
-![image-20230911195718738](http://cdn1.jalen-qian.com/Jalen/20230911195718p4gM9lkzbt.png)
+![image-20230911195718738](https://cdn1.jalen-qian.com/Jalen/20230911195718p4gM9lkzbt.png)
 
 # 题后思考
 

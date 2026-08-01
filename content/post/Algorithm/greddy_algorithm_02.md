@@ -204,7 +204,7 @@ func generateRandomPrograms(maxSize int, timeMax int) []Program {
 
 在测试了十万组随机测试用例之后，**两种实现的结果都是一致的，足以说明贪心策略2的正确性**
 
-![image-20231106151822766](http://cdn1.jalen-qian.com/Jalen/20231106151822pL1N19lHvc.png)
+![image-20231106151822766](https://cdn1.jalen-qian.com/Jalen/20231106151822pL1N19lHvc.png)
 
 ## 总结
 

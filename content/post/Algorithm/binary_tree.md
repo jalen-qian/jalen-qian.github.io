@@ -612,7 +612,7 @@ leetCode原题链接：[https://leetcode.cn/problems/encode-n-ary-tree-to-binary
 
 例如，你可以将下面的 3-叉 树以该种方式编码：
 
-![encode_n_ary_tree](http://cdn1.jalen-qian.com/Jalen/202310252347566kVNEQA8pk.png)
+![encode_n_ary_tree](https://cdn1.jalen-qian.com/Jalen/202310252347566kVNEQA8pk.png)
 
 注意，上面的方法仅仅是一个例子，可能可行也可能不可行。你没有必要遵循这种形式转化，你可以自己创造和实现不同的方法。
 
@@ -622,10 +622,10 @@ leetCode原题链接：[https://leetcode.cn/problems/encode-n-ary-tree-to-binary
 
 比如一颗N叉树如下：
 
-![n-tree](http://cdn1.jalen-qian.com/Jalen/20231025234832tsaA6b8rnU.png)
+![n-tree](https://cdn1.jalen-qian.com/Jalen/20231025234832tsaA6b8rnU.png)
 
 上述思路转换后的二叉树如下：
-![image-20231025234850336](http://cdn1.jalen-qian.com/Jalen/20231025234850OkqJCOUeZw.png)
+![image-20231025234850336](https://cdn1.jalen-qian.com/Jalen/20231025234850OkqJCOUeZw.png)
 
 我们可以看到，a的孩子，全部挂在了a左子树的右边界 b->c->d
 

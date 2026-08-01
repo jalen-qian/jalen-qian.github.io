@@ -47,8 +47,8 @@ docker run --name nacos-standalone -e MODE=standalone -p 8848:8848 -d nacos/naco
 
 默认的用户名和密码都是 `nacos`
 
-![image-20210519194118405](http://cdn1.jalen-qian.com/Hugo/20210519194118BgB4YVCEr6.png)
+![image-20210519194118405](https://cdn1.jalen-qian.com/Hugo/20210519194118BgB4YVCEr6.png)
 
 登录之后，可以在配置管理里面添加配置
 
-![image-20210519194213398](http://cdn1.jalen-qian.com/Hugo/20210519194213s8MBkfHGV3.png)
+![image-20210519194213398](https://cdn1.jalen-qian.com/Hugo/20210519194213s8MBkfHGV3.png)

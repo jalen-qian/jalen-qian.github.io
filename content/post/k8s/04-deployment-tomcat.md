@@ -106,7 +106,7 @@ kubectl delete deployment 部署名称
           - containerPort: 8080
   ```
 
-  ![image-20210115114226596](http://cdn1.jalen-qian.com/20210115114226nVBdc7WHSG.png)
+  ![image-20210115114226596](https://cdn1.jalen-qian.com/20210115114226nVBdc7WHSG.png)
 
 - 部署 tomcat 集群
 
@@ -195,7 +195,7 @@ ports:
 
 如下图，我们可以部署一个`服务`，这个`服务`也是一个pod，也有自己的虚拟IP和端口，服务pod是部署在master节点上的，当一个外部的请求进来时，会先送达给服务的8000端口。再按照负载均衡的规则分发给两个tomcat容器。这里的服务可以理解为K8S集群上的负载均衡器。
 
-![image-20210115120623179](http://cdn1.jalen-qian.com/20210115120623ZjBsrcRTfZ.png)
+![image-20210115120623179](https://cdn1.jalen-qian.com/20210115120623ZjBsrcRTfZ.png)
 
 ## 创建Tomcat服务
 

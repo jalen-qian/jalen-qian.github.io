@@ -91,7 +91,7 @@ kubectl apply -f tomcat-deploy.yml
 
 Check the cluster's Pod information. The number of Pods has increased to 3.
 
-![image-20210115185712445](http://cdn1.jalen-qian.com/20210115185712GAxJU2nWfi.png)
+![image-20210115185712445](https://cdn1.jalen-qian.com/20210115185712GAxJU2nWfi.png)
 
 It is worth noting that K8S follows a "resources first" principle when deploying Pods. In other words, a Pod is preferentially deployed to the node with more available resources.
 

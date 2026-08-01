@@ -18,7 +18,7 @@ If you are using a fresh CentOS operating system, you first need to install Git.
  yum install git
 ```
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909140210.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909140210.png)
 
 # 2. Install Go
 
@@ -34,7 +34,7 @@ wget https://studygolang.com/dl/golang/go1.15.1.linux-amd64.tar.gz
 
 After the command finishes, you can see that the package has been saved to the local root directory.
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909154347.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909154347.png)
 
 ## 2.2 Install Go in the Specified Directory
 
@@ -48,7 +48,7 @@ Go is now installed in the `/usr/local/go` directory.
 
 Enter the `go version` command to verify whether the installation was successful.
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909155238.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909155238.png)
 
 ## 2.3 Configure GOPATH
 
@@ -78,7 +78,7 @@ export GOPROXY=https://mirrors.aliyun.com/goproxy/#Setup GoAgent
 
 Enter `go env` to verify whether the configuration was successful.
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909163159.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909163159.png)
 
 If the printed `GOPATH` and `GOROOT` values both match the paths configured above, the configuration was successful.
 
@@ -100,7 +100,7 @@ Download the installation package from [https://github.com/gohugoio/hugo/release
 
 <b><span style="color:red;">Here, we select the file shown below for download.</span></b>
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909180910.png?imageView2/1/w/500)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909180910.png?imageView2/1/w/500)
 
 After copying the link address, download it locally.
 
@@ -124,7 +124,7 @@ tar -C /usr/local/hugo -xzf hugo_0.74.3_Linux-64bit.tar.gz
 
 As with the Go environment variable configuration above, add the `/usr/local/hugo` directory to `PATH`.
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909181621.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909181621.png)
 
 Run the following command to apply the environment variables:
 
@@ -136,7 +136,7 @@ source /etc/profile
 ```
 hugo version #Output Hugo version number means installation is successful
 ```
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909182050.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909182050.png)
 
 ## 3.5 Create a Hugo Project
 
@@ -155,7 +155,7 @@ hugo new site blog
 
 The Hugo command creates a `blog` project with the following structure:
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909183329.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909183329.png)
 
 ```
 .
@@ -175,7 +175,7 @@ Hugo has a theme marketplace at https://themes.gohugo.io/ where you can browse a
 
 For example, the following image shows the preview of this theme on the website:
 
-![image](http://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909184526.png)
+![image](https://cdn1.jalen-qian.com/Hugo/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20200909184526.png)
 
 [https://github.com/olOwOlo/hugo-theme-even](https://github.com/olOwOlo/hugo-theme-even)
 

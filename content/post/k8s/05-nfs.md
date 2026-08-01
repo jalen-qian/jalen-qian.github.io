@@ -28,7 +28,7 @@ author: "Jalen"
 - 然后，`node1` 和 `node2` 的 `/mnt` 文件夹通过 NFS 协议与 `www-data` 绑定
 - 最后，通过挂在命令，将每个节点的 `/mnt` 文件夹，挂在到容器中的 `/tomcat/webapps` 文件夹
 
-![image-20210115143239403](http://cdn1.jalen-qian.com/2021011514323947i7kcJiXa.png)
+![image-20210115143239403](https://cdn1.jalen-qian.com/2021011514323947i7kcJiXa.png)
 
 ## 操作步骤
 
@@ -106,7 +106,7 @@ author: "Jalen"
 
    然后在客户端节点的`/mnt` 目录查看是否存在该文件
 
-   ![image-20210115150441356](http://cdn1.jalen-qian.com/202101151504414gLoihKjyh.png)
+   ![image-20210115150441356](https://cdn1.jalen-qian.com/202101151504414gLoihKjyh.png)
 
    发现能访问，说明挂载成功。
 
@@ -170,11 +170,11 @@ author: "Jalen"
 
    我们可以进入到每个pod所在的主机，然后通过`docker ps` 查看正在运行的容器，如下图
 
-   ![image-20210115152217018](http://cdn1.jalen-qian.com/20210115152217itk483FhMn.png)
+   ![image-20210115152217018](https://cdn1.jalen-qian.com/20210115152217itk483FhMn.png)
 
    然后我们可以通过 `docker exec -it [容器ID] /bin/bash` 命令进入到容器中，查看`/usr/local/tomcat/webapps`文件夹是否存在挂载的文件
 
-   ![image-20210115152446645](http://cdn1.jalen-qian.com/20210115152446Llz9LzoBkf.png)
+   ![image-20210115152446645](https://cdn1.jalen-qian.com/20210115152446Llz9LzoBkf.png)
 
    这样太麻烦了，在`master` 节点能否通过 `kubectl` 命令进入到子节点的容器呢？答案是肯定的
 
@@ -185,7 +185,7 @@ author: "Jalen"
    $ kubectl exec -it [pod名称] /bin/bash
    ```
 
-   ![image-20210115152927484](http://cdn1.jalen-qian.com/20210115152927eyk00JKVhK.png)
+   ![image-20210115152927484](https://cdn1.jalen-qian.com/20210115152927eyk00JKVhK.png)
 
 至此就完成了基于NFS的K8S集群文件共享设置。
 

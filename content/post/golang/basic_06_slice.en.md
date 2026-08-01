@@ -202,11 +202,11 @@ A slice is essentially a wrapper around an array. Internally, a slice contains:
 
 Suppose there is an array `a := [8]int{0, 1, 2, 3, 4, 5, 6, 7}` and a slice `s1 := a[:5]`, and `s1` is sliced again to produce `s2 := s1[1:3]`. The slices can be illustrated as follows:
 
-![image-20210820161940647](http://cdn1.jalen-qian.com/Hugo/20210820161940aTzlPKPbDY.png)
+![image-20210820161940647](https://cdn1.jalen-qian.com/Hugo/20210820161940aTzlPKPbDY.png)
 
 Because `s2` is obtained by slicing `s1`, they share the same underlying array, as illustrated below:
 
-![image-20210820163022314](http://cdn1.jalen-qian.com/Hugo/20210820163022KSTMpTULbL.png)
+![image-20210820163022314](https://cdn1.jalen-qian.com/Hugo/20210820163022KSTMpTULbL.png)
 
 What happens if we now change the second element of `s2` to 100?
 ```go

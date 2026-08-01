@@ -12,7 +12,7 @@ author: "Jalen"
 
 > While editing an `proto` file in GoLand, the editor prompted me to install the proto plugin, and I clicked Install. The next time I started GoLand, it crashed immediately.
 
-![image-20210415145243661](http://cdn1.jalen-qian.com/Hugo/202104151452442aNsHDGzUy.png)
+![image-20210415145243661](https://cdn1.jalen-qian.com/Hugo/202104151452442aNsHDGzUy.png)
 
 > Locate the IDEA log file.
 >

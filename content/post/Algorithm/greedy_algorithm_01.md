@@ -364,7 +364,7 @@ func copyStringArray(arr []string) []string {
 
 **跑测试的结果如下：**
 
-![image-20231104011721591](http://cdn1.jalen-qian.com/Jalen/20231104011721zgyD85oRln.png)
+![image-20231104011721591](https://cdn1.jalen-qian.com/Jalen/20231104011721zgyD85oRln.png)
 
 ## 贪心算法的解题套路
 
